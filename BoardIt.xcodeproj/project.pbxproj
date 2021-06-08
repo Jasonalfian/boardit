@@ -103,7 +103,7 @@
 		023BAA6E266F4EE500B3BB09 /* Projects Feature */ = {
 			isa = PBXGroup;
 			children = (
-				023BAA70266F4F1200B3BB09 /* Model */,
+				023BAA9E266FDBB000B3BB09 /* Model */,
 				023BAA6F266F4F0300B3BB09 /* Pages */,
 			);
 			path = "Projects Feature";
@@ -116,21 +116,6 @@
 				023BAA72266F4F2700B3BB09 /* All Project Page */,
 			);
 			path = Pages;
-			sourceTree = "<group>";
-		};
-		023BAA70266F4F1200B3BB09 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				023BAA71266F4F1F00B3BB09 /* DataStore */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		023BAA71266F4F1F00B3BB09 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataStore;
 			sourceTree = "<group>";
 		};
 		023BAA72266F4F2700B3BB09 /* All Project Page */ = {
@@ -186,7 +171,7 @@
 		023BAA81266F515500B3BB09 /* Edit Subscene Feature */ = {
 			isa = PBXGroup;
 			children = (
-				023BAA83266F527E00B3BB09 /* Model */,
+				023BAA9C266FDBA300B3BB09 /* Model */,
 				023BAA82266F527200B3BB09 /* Pages */,
 			);
 			path = "Edit Subscene Feature";
@@ -199,21 +184,6 @@
 				023BAA62266F4DED00B3BB09 /* Drawing Page */,
 			);
 			path = Pages;
-			sourceTree = "<group>";
-		};
-		023BAA83266F527E00B3BB09 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				023BAA84266F528300B3BB09 /* DataStore */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		023BAA84266F528300B3BB09 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataStore;
 			sourceTree = "<group>";
 		};
 		023BAA85266F528F00B3BB09 /* Edit Subscene Page */ = {
@@ -244,7 +214,7 @@
 		023BAA8C266F568E00B3BB09 /* Presentation Feature */ = {
 			isa = PBXGroup;
 			children = (
-				023BAA8E266F56B100B3BB09 /* Model */,
+				023BAA9A266FDB9300B3BB09 /* Model */,
 				023BAA8D266F56A900B3BB09 /* Pages */,
 			);
 			path = "Presentation Feature";
@@ -256,21 +226,6 @@
 				023BAA91266F56E100B3BB09 /* Presentation Page */,
 			);
 			path = Pages;
-			sourceTree = "<group>";
-		};
-		023BAA8E266F56B100B3BB09 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				023BAA8F266F56B600B3BB09 /* DataStore */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		023BAA8F266F56B600B3BB09 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataStore;
 			sourceTree = "<group>";
 		};
 		023BAA91266F56E100B3BB09 /* Presentation Page */ = {
@@ -296,6 +251,51 @@
 				023BAA94266F579E00B3BB09 /* PresentationPage.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		023BAA9A266FDB9300B3BB09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				023BAA9B266FDB9900B3BB09 /* DataStore */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		023BAA9B266FDB9900B3BB09 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		023BAA9C266FDBA300B3BB09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				023BAA9D266FDBA700B3BB09 /* DataStore */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		023BAA9D266FDBA700B3BB09 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		023BAA9E266FDBB000B3BB09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				023BAA9F266FDBB400B3BB09 /* DataStore */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		023BAA9F266FDBB400B3BB09 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStore;
 			sourceTree = "<group>";
 		};
 		2C87DA7D266A0A5A007F783E = {
