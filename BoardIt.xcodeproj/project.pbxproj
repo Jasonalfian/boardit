@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		023BAA6B266F4EAD00B3BB09 /* DrawingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA6A266F4EAD00B3BB09 /* DrawingPageViewController.swift */; };
-		023BAA6D266F4ED100B3BB09 /* DrawingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA6C266F4ED100B3BB09 /* DrawingPage.storyboard */; };
 		023BAA79266F4FEA00B3BB09 /* AllScenePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */; };
 		023BAA7B266F500400B3BB09 /* AllScenePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */; };
 		023BAA7D266F505900B3BB09 /* AllProjectPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA7C266F505900B3BB09 /* AllProjectPage.storyboard */; };
@@ -17,6 +16,7 @@
 		023BAA8B266F538900B3BB09 /* EditSubscenePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */; };
 		023BAA95266F579E00B3BB09 /* PresentationPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA94266F579E00B3BB09 /* PresentationPage.storyboard */; };
 		023BAA97266F57B200B3BB09 /* PresentationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA96266F57B200B3BB09 /* PresentationPageViewController.swift */; };
+		023BAA99266F619100B3BB09 /* DrawingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA98266F619100B3BB09 /* DrawingPage.storyboard */; };
 		2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA89266A0A5A007F783E /* AppDelegate.swift */; };
 		2C87DA8C266A0A5A007F783E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */; };
 		2C87DA8E266A0A5A007F783E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA8D266A0A5A007F783E /* ViewController.swift */; };
@@ -35,7 +35,6 @@
 
 /* Begin PBXFileReference section */
 		023BAA6A266F4EAD00B3BB09 /* DrawingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPageViewController.swift; sourceTree = "<group>"; };
-		023BAA6C266F4ED100B3BB09 /* DrawingPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = DrawingPage.storyboard; path = "MVC-Template/Feature/Drawing Feature/Pages/Drawing Page/Controller/DrawingPage.storyboard"; sourceTree = SOURCE_ROOT; };
 		023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllScenePage.storyboard; sourceTree = "<group>"; };
 		023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllScenePageViewController.swift; sourceTree = "<group>"; };
 		023BAA7C266F505900B3BB09 /* AllProjectPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllProjectPage.storyboard; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubscenePageViewController.swift; sourceTree = "<group>"; };
 		023BAA94266F579E00B3BB09 /* PresentationPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresentationPage.storyboard; sourceTree = "<group>"; };
 		023BAA96266F57B200B3BB09 /* PresentationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationPageViewController.swift; sourceTree = "<group>"; };
+		023BAA98266F619100B3BB09 /* DrawingPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrawingPage.storyboard; sourceTree = "<group>"; };
 		2C87DA86266A0A5A007F783E /* BoardIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C87DA89266A0A5A007F783E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		023BAA63266F4E0B00B3BB09 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				023BAA6C266F4ED100B3BB09 /* DrawingPage.storyboard */,
+				023BAA98266F619100B3BB09 /* DrawingPage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -484,12 +484,12 @@
 			files = (
 				2C87DA96266A0A5B007F783E /* LaunchScreen.storyboard in Resources */,
 				2C87DABD266A667C007F783E /* ExampleTableViewCell.xib in Resources */,
+				023BAA99266F619100B3BB09 /* DrawingPage.storyboard in Resources */,
 				023BAA95266F579E00B3BB09 /* PresentationPage.storyboard in Resources */,
 				023BAA7D266F505900B3BB09 /* AllProjectPage.storyboard in Resources */,
 				2C87DA93266A0A5B007F783E /* Assets.xcassets in Resources */,
 				2C87DA91266A0A5A007F783E /* Main.storyboard in Resources */,
 				023BAA89266F536A00B3BB09 /* EditSubcenePage.storyboard in Resources */,
-				023BAA6D266F4ED100B3BB09 /* DrawingPage.storyboard in Resources */,
 				023BAA79266F4FEA00B3BB09 /* AllScenePage.storyboard in Resources */,
 				2C87DAB7266A60EC007F783E /* SF-Compact-Rounded-Bold.otf in Resources */,
 			);
