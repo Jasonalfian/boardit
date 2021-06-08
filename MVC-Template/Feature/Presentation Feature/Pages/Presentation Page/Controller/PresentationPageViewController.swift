@@ -1,13 +1,13 @@
 //
-//  DetailPageViewController.swift
-//  MVC-Template
+//  PresentationPageViewController.swift
+//  BoardIt
 //
-//  Created by Allicia Viona Sagi on 04/06/21.
+//  Created by Gilbert Nicholas on 08/06/21.
 //
 
 import UIKit
 
-class DetailPageViewController: UIViewController {
+class PresentationPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
