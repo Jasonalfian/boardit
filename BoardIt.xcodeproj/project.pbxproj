@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		023BAA6B266F4EAD00B3BB09 /* DrawingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA6A266F4EAD00B3BB09 /* DrawingPageViewController.swift */; };
-		023BAA79266F4FEA00B3BB09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA78266F4FEA00B3BB09 /* Main.storyboard */; };
+		023BAA79266F4FEA00B3BB09 /* AllScenePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */; };
 		023BAA7B266F500400B3BB09 /* AllScenePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */; };
-		023BAA7D266F505900B3BB09 /* AllProjectPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA7C266F505900B3BB09 /* AllProjectPage.storyboard */; };
+		023BAA7D266F505900B3BB09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA7C266F505900B3BB09 /* Main.storyboard */; };
 		023BAA7F266F507300B3BB09 /* AllProjectPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA7E266F507300B3BB09 /* AllProjectPageViewController.swift */; };
 		023BAA89266F536A00B3BB09 /* EditSubcenePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023BAA88266F536A00B3BB09 /* EditSubcenePage.storyboard */; };
 		023BAA8B266F538900B3BB09 /* EditSubscenePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */; };
@@ -39,9 +39,9 @@
 
 /* Begin PBXFileReference section */
 		023BAA6A266F4EAD00B3BB09 /* DrawingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPageViewController.swift; sourceTree = "<group>"; };
-		023BAA78266F4FEA00B3BB09 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllScenePage.storyboard; sourceTree = "<group>"; };
 		023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllScenePageViewController.swift; sourceTree = "<group>"; };
-		023BAA7C266F505900B3BB09 /* AllProjectPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllProjectPage.storyboard; sourceTree = "<group>"; };
+		023BAA7C266F505900B3BB09 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		023BAA7E266F507300B3BB09 /* AllProjectPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllProjectPageViewController.swift; sourceTree = "<group>"; };
 		023BAA88266F536A00B3BB09 /* EditSubcenePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSubcenePage.storyboard; sourceTree = "<group>"; };
 		023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubscenePageViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		023BAA75266F4F6F00B3BB09 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				023BAA78266F4FEA00B3BB09 /* Main.storyboard */,
+				023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,7 +169,7 @@
 		023BAA77266F4F9500B3BB09 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				023BAA7C266F505900B3BB09 /* AllProjectPage.storyboard */,
+				023BAA7C266F505900B3BB09 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -498,11 +498,11 @@
 				2C87DABD266A667C007F783E /* ExampleTableViewCell.xib in Resources */,
 				023BAA99266F619100B3BB09 /* DrawingPage.storyboard in Resources */,
 				023BAA95266F579E00B3BB09 /* PresentationPage.storyboard in Resources */,
-				023BAA7D266F505900B3BB09 /* AllProjectPage.storyboard in Resources */,
+				023BAA7D266F505900B3BB09 /* Main.storyboard in Resources */,
 				2C87DA93266A0A5B007F783E /* Assets.xcassets in Resources */,
 				2C87DA91266A0A5A007F783E /* Main.storyboard in Resources */,
 				023BAA89266F536A00B3BB09 /* EditSubcenePage.storyboard in Resources */,
-				023BAA79266F4FEA00B3BB09 /* Main.storyboard in Resources */,
+				023BAA79266F4FEA00B3BB09 /* AllScenePage.storyboard in Resources */,
 				2C87DAB7266A60EC007F783E /* SF-Compact-Rounded-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
