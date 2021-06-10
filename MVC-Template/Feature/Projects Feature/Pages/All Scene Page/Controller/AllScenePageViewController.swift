@@ -7,14 +7,25 @@
 
 import UIKit
 
-class AllScenePageViewController: UIViewController {
+class AllScenePageViewController: UIViewController, UICollectionViewDataSource {
 
+    
+
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        collectionView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
 
     /*
     // MARK: - Navigation
