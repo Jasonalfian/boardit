@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--All Scene Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -16,33 +21,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="allscene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Paj-R2-8Ph">
-                                <rect key="frame" x="566" y="407" width="63" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koq-Hz-5IW">
-                                <rect key="frame" x="501" y="239" width="14" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mML-p3-PQn">
-                                <rect key="frame" x="443" y="460" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-3f-c2I">
+                                <rect key="frame" x="0.0" y="135" width="1194" height="699"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-K2-ggS">
+                                <rect key="frame" x="55" y="55" width="1089" height="65"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="46"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pug-K2-ggS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="55" id="EO3-o3-dIp"/>
+                            <constraint firstItem="xfW-3f-c2I" firstAttribute="top" secondItem="Pug-K2-ggS" secondAttribute="bottom" constant="15" id="Y0Q-Z6-dGp"/>
+                            <constraint firstItem="xfW-3f-c2I" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ZpJ-bj-sfT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Pug-K2-ggS" secondAttribute="trailing" constant="50" id="aws-P0-P4x"/>
+                            <constraint firstAttribute="bottom" secondItem="xfW-3f-c2I" secondAttribute="bottom" id="cxJ-Yz-Dj3"/>
+                            <constraint firstItem="Pug-K2-ggS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="55" id="paf-La-Luy"/>
+                            <constraint firstItem="xfW-3f-c2I" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="q0v-LH-m1z"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7bn-4S-sqV"/>
                     <connections>
+                        <outlet property="table" destination="xfW-3f-c2I" id="zKq-HU-zoB"/>
                         <segue destination="vJf-0C-a8Z" kind="show" identifier="editSubsceneSegue" id="JCj-l6-kSI"/>
                         <segue destination="xL4-lt-sPH" kind="show" identifier="presentationSegue" id="nrT-ub-gz4"/>
                     </connections>

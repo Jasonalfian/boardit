@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCollectionViewCell" id="gTV-IL-0wX" customClass="MyCollectionViewCell" customModule="BoardIt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="308"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="308"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sy7-uP-BaX">
+                        <rect key="frame" x="0.0" y="40" width="405" height="268"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qgQ-xL-dsO">
+                        <rect key="frame" x="20" y="60" width="365" height="204"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3O-pv-Isp">
+                        <rect key="frame" x="0.0" y="263" width="405" height="45"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="C15-QQ-sMB"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Judulnya nanti akan disini" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oel-qh-GCB">
+                        <rect key="frame" x="20" y="274" width="222.5" height="24"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last edited on 13/02/12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3S5-Lp-uto">
+                        <rect key="frame" x="200" y="274" width="185" height="24"/>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Oel-qh-GCB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="3GM-rW-efr"/>
+                <constraint firstItem="3S5-Lp-uto" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="200" id="4nV-8A-gfA"/>
+                <constraint firstItem="qgQ-xL-dsO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="60" id="66i-ty-aMS"/>
+                <constraint firstAttribute="bottom" secondItem="3S5-Lp-uto" secondAttribute="bottom" constant="10" id="AKI-tx-VNl"/>
+                <constraint firstItem="c3O-pv-Isp" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="AcA-9v-34C"/>
+                <constraint firstAttribute="bottom" secondItem="Oel-qh-GCB" secondAttribute="bottom" constant="10" id="CG2-RO-GJK"/>
+                <constraint firstAttribute="bottom" secondItem="Sy7-uP-BaX" secondAttribute="bottom" id="F5W-Vx-2gg"/>
+                <constraint firstAttribute="trailing" secondItem="Sy7-uP-BaX" secondAttribute="trailing" id="Lss-yV-xLB"/>
+                <constraint firstItem="Oel-qh-GCB" firstAttribute="top" secondItem="qgQ-xL-dsO" secondAttribute="bottom" constant="10" id="MLe-tB-14v"/>
+                <constraint firstItem="Sy7-uP-BaX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="OtI-dx-Ajd"/>
+                <constraint firstAttribute="bottom" secondItem="c3O-pv-Isp" secondAttribute="bottom" id="QVc-ff-gpM"/>
+                <constraint firstAttribute="trailing" secondItem="3S5-Lp-uto" secondAttribute="trailing" constant="20" id="cLi-aD-VXk"/>
+                <constraint firstItem="qgQ-xL-dsO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="dgL-Uc-vz0"/>
+                <constraint firstItem="Sy7-uP-BaX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="et3-tj-CZI"/>
+                <constraint firstAttribute="trailing" secondItem="c3O-pv-Isp" secondAttribute="trailing" id="ftJ-Nk-Kpk"/>
+                <constraint firstItem="c3O-pv-Isp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kJ7-qr-ST9"/>
+                <constraint firstAttribute="trailing" secondItem="qgQ-xL-dsO" secondAttribute="trailing" constant="20" id="laU-8T-Lbz"/>
+                <constraint firstItem="3S5-Lp-uto" firstAttribute="top" secondItem="qgQ-xL-dsO" secondAttribute="bottom" constant="10" id="tEY-6w-qm3"/>
+            </constraints>
+            <size key="customSize" width="405" height="308"/>
+            <connections>
+                <outlet property="BaseHitam" destination="c3O-pv-Isp" id="ZCt-Hm-0hr"/>
+                <outlet property="BaseView" destination="Sy7-uP-BaX" id="3WG-t0-3SO"/>
+                <outlet property="myDate" destination="3S5-Lp-uto" id="GoK-Yx-cnN"/>
+                <outlet property="myImageView" destination="qgQ-xL-dsO" id="vZG-Eh-D5o"/>
+                <outlet property="myTitle" destination="Oel-qh-GCB" id="dlO-vO-xmv"/>
+            </connections>
+            <point key="canvasLocation" x="241.30434782608697" y="188.16964285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

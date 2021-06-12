@@ -53,6 +53,10 @@
 		5EE46CAD2671B1D50080242C /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C9B2671B1D40080242C /* Poppins-ExtraBoldItalic.ttf */; };
 		5EE46CAE2671B1D50080242C /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C9C2671B1D40080242C /* Poppins-BlackItalic.ttf */; };
 		5EE46CAF2671B1D50080242C /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C9D2671B1D50080242C /* Poppins-Thin.ttf */; };
+		EB169FAB2674A472005918DC /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169FA92674A472005918DC /* CollectionTableViewCell.swift */; };
+		EB169FAC2674A472005918DC /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB169FAA2674A472005918DC /* CollectionTableViewCell.xib */; };
+		EB169FAF2674A496005918DC /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169FAD2674A496005918DC /* MyCollectionViewCell.swift */; };
+		EB169FB02674A496005918DC /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB169FAE2674A496005918DC /* MyCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +108,10 @@
 		5EE46C9B2671B1D40080242C /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		5EE46C9C2671B1D40080242C /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		5EE46C9D2671B1D50080242C /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		EB169FA92674A472005918DC /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		EB169FAA2674A472005918DC /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
+		EB169FAD2674A496005918DC /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		EB169FAE2674A496005918DC /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +197,8 @@
 		023BAA75266F4F6F00B3BB09 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EB169FA82674A42C005918DC /* Collection Cell */,
+				EB169FA72674A427005918DC /* Table Cell */,
 				023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */,
 			);
 			path = View;
@@ -499,6 +509,24 @@
 			path = Poppins;
 			sourceTree = "<group>";
 		};
+		EB169FA72674A427005918DC /* Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB169FA92674A472005918DC /* CollectionTableViewCell.swift */,
+				EB169FAA2674A472005918DC /* CollectionTableViewCell.xib */,
+			);
+			path = "Table Cell";
+			sourceTree = "<group>";
+		};
+		EB169FA82674A42C005918DC /* Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB169FAD2674A496005918DC /* MyCollectionViewCell.swift */,
+				EB169FAE2674A496005918DC /* MyCollectionViewCell.xib */,
+			);
+			path = "Collection Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -576,12 +604,14 @@
 				5EE46CAE2671B1D50080242C /* Poppins-BlackItalic.ttf in Resources */,
 				5EE46CA12671B1D50080242C /* Poppins-LightItalic.ttf in Resources */,
 				023BAA89266F536A00B3BB09 /* EditSubcenePage.storyboard in Resources */,
+				EB169FB02674A496005918DC /* MyCollectionViewCell.xib in Resources */,
 				5EE46CAD2671B1D50080242C /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				023BAA79266F4FEA00B3BB09 /* AllScenePage.storyboard in Resources */,
 				5EE46C9E2671B1D50080242C /* Poppins-Light.ttf in Resources */,
 				2C87DAB7266A60EC007F783E /* SF-Compact-Rounded-Bold.otf in Resources */,
 				5EE46CAB2671B1D50080242C /* Poppins-Medium.ttf in Resources */,
 				5EE46CA42671B1D50080242C /* Poppins-SemiBold.ttf in Resources */,
+				EB169FAC2674A472005918DC /* CollectionTableViewCell.xib in Resources */,
 				5EE46CAA2671B1D50080242C /* Poppins-ExtraBold.ttf in Resources */,
 				5EE46CAC2671B1D50080242C /* Poppins-Black.ttf in Resources */,
 			);
@@ -600,6 +630,7 @@
 				5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */,
 				2C87DABC266A667C007F783E /* ExampleTableViewCell.swift in Sources */,
 				023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */,
+				EB169FAF2674A496005918DC /* MyCollectionViewCell.swift in Sources */,
 				5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */,
 				023BAA7B266F500400B3BB09 /* AllScenePageViewController.swift in Sources */,
 				023BAA8B266F538900B3BB09 /* EditSubscenePageViewController.swift in Sources */,
@@ -611,6 +642,7 @@
 				023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */,
 				2C87DA8C266A0A5A007F783E /* SceneDelegate.swift in Sources */,
 				2C87DAC2266A686F007F783E /* AppNameColor.swift in Sources */,
+				EB169FAB2674A472005918DC /* CollectionTableViewCell.swift in Sources */,
 				023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
