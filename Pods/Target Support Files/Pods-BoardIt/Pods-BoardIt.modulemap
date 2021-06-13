@@ -1,0 +1,6 @@
+framework module Pods_BoardIt {
+  umbrella header "Pods-BoardIt-umbrella.h"
+
+  export *
+  module * { export * }
+}

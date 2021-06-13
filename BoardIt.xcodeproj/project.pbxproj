@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,6 +53,7 @@
 		5EE46CAD2671B1D50080242C /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C9B2671B1D40080242C /* Poppins-ExtraBoldItalic.ttf */; };
 		5EE46CAE2671B1D50080242C /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C9C2671B1D40080242C /* Poppins-BlackItalic.ttf */; };
 		5EE46CAF2671B1D50080242C /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C9D2671B1D50080242C /* Poppins-Thin.ttf */; };
+		ED01FAB77916BA2AF33C5AD5 /* Pods_BoardIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE00951D39B69DD2C8325C2 /* Pods_BoardIt.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelPresentation.swift; sourceTree = "<group>"; };
 		023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelEdit.swift; sourceTree = "<group>"; };
 		023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProjects.swift; sourceTree = "<group>"; };
+		19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.debug.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.debug.xcconfig"; sourceTree = "<group>"; };
 		2C87DA86266A0A5A007F783E /* BoardIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C87DA89266A0A5A007F783E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		2C87DAC1266A686F007F783E /* AppNameColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNameColor.swift; sourceTree = "<group>"; };
 		2C87DADB266A7233007F783E /* ReusableFunctionsOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableFunctionsOne.swift; sourceTree = "<group>"; };
 		2C87DADF266A7256007F783E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		46574E55D652F5C2B5F1868E /* Pods-BoardIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.release.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.release.xcconfig"; sourceTree = "<group>"; };
 		5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E4C6458266DF384002F89CD /* BoardIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoardIt.xcdatamodel; sourceTree = "<group>"; };
 		5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		5EE46C9B2671B1D40080242C /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		5EE46C9C2671B1D40080242C /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		5EE46C9D2671B1D50080242C /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		BCE00951D39B69DD2C8325C2 /* Pods_BoardIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoardIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED01FAB77916BA2AF33C5AD5 /* Pods_BoardIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +353,8 @@
 			children = (
 				2C87DA88266A0A5A007F783E /* MVC-Template */,
 				2C87DA87266A0A5A007F783E /* Products */,
+				B63DB410BBB2AE971D13E40D /* Pods */,
+				92B1B13148BDFDCA414E2360 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -499,6 +506,23 @@
 			path = Poppins;
 			sourceTree = "<group>";
 		};
+		92B1B13148BDFDCA414E2360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCE00951D39B69DD2C8325C2 /* Pods_BoardIt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B63DB410BBB2AE971D13E40D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */,
+				46574E55D652F5C2B5F1868E /* Pods-BoardIt.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,9 +530,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C87DA9A266A0A5B007F783E /* Build configuration list for PBXNativeTarget "BoardIt" */;
 			buildPhases = (
+				ADC909EDA80D759C4568B7C5 /* [CP] Check Pods Manifest.lock */,
 				2C87DA82266A0A5A007F783E /* Sources */,
 				2C87DA83266A0A5A007F783E /* Frameworks */,
 				2C87DA84266A0A5A007F783E /* Resources */,
+				836BC4A0B0A708A7043F71A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -588,6 +614,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		836BC4A0B0A708A7043F71A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoardIt/Pods-BoardIt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoardIt/Pods-BoardIt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BoardIt/Pods-BoardIt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADC909EDA80D759C4568B7C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoardIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C87DA82266A0A5A007F783E /* Sources */ = {
@@ -755,6 +823,7 @@
 		};
 		2C87DA9B266A0A5B007F783E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -774,6 +843,7 @@
 		};
 		2C87DA9C266A0A5B007F783E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46574E55D652F5C2B5F1868E /* Pods-BoardIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
