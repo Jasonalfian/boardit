@@ -20,6 +20,17 @@
 		023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */; };
 		023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */; };
 		023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */; };
+		29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */; };
+		29DF7DC02677AB0B0068C330 /* NewProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */; };
+		29DF7DC12677AB0B0068C330 /* NewProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DBC2677AB0B0068C330 /* NewProjectTableViewCell.swift */; };
+		29DF7DC62677ABB90068C330 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF7DC42677ABB90068C330 /* MyCollectionViewCell.xib */; };
+		29DF7DC72677ABB90068C330 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DC52677ABB90068C330 /* MyCollectionViewCell.swift */; };
+		29DF7DCB2677ABBF0068C330 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DC92677ABBF0068C330 /* CollectionTableViewCell.swift */; };
+		29DF7DCC2677ABBF0068C330 /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF7DCA2677ABBF0068C330 /* CollectionTableViewCell.xib */; };
+		29DF7DCE2677AC0B0068C330 /* EditModalTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DCD2677AC0B0068C330 /* EditModalTypeController.swift */; };
+		29DF7DD32677AD880068C330 /* ShotSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DD02677AD880068C330 /* ShotSize.swift */; };
+		29DF7DD42677AD880068C330 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DD12677AD880068C330 /* Movement.swift */; };
+		29DF7DD52677AD880068C330 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DD22677AD880068C330 /* Angle.swift */; };
 		2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA89266A0A5A007F783E /* AppDelegate.swift */; };
 		2C87DA8C266A0A5A007F783E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */; };
 		2C87DA8E266A0A5A007F783E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA8D266A0A5A007F783E /* ViewController.swift */; };
@@ -71,6 +82,17 @@
 		023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelEdit.swift; sourceTree = "<group>"; };
 		023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProjects.swift; sourceTree = "<group>"; };
 		19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.debug.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.debug.xcconfig"; sourceTree = "<group>"; };
+		29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
+		29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTableViewCell.xib; sourceTree = "<group>"; };
+		29DF7DBC2677AB0B0068C330 /* NewProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewCell.swift; sourceTree = "<group>"; };
+		29DF7DC42677ABB90068C330 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		29DF7DC52677ABB90068C330 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		29DF7DC92677ABBF0068C330 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		29DF7DCA2677ABBF0068C330 /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
+		29DF7DCD2677AC0B0068C330 /* EditModalTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditModalTypeController.swift; sourceTree = "<group>"; };
+		29DF7DD02677AD880068C330 /* ShotSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotSize.swift; sourceTree = "<group>"; };
+		29DF7DD12677AD880068C330 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		29DF7DD22677AD880068C330 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		2C87DA86266A0A5A007F783E /* BoardIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C87DA89266A0A5A007F783E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,7 +216,12 @@
 		023BAA75266F4F6F00B3BB09 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				29DF7DC82677ABBF0068C330 /* Table Cell */,
+				29DF7DC32677ABB90068C330 /* Collection Cell */,
 				023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */,
+				29DF7DBC2677AB0B0068C330 /* NewProjectTableViewCell.swift */,
+				29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */,
+				29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +272,7 @@
 		023BAA86266F534400B3BB09 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				29DF7DCD2677AC0B0068C330 /* EditModalTypeController.swift */,
 				023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */,
 			);
 			path = Controller;
@@ -347,6 +375,35 @@
 			);
 			path = DataStore;
 			sourceTree = "<group>";
+		};
+		29DF7DC32677ABB90068C330 /* Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				29DF7DC42677ABB90068C330 /* MyCollectionViewCell.xib */,
+				29DF7DC52677ABB90068C330 /* MyCollectionViewCell.swift */,
+			);
+			path = "Collection Cell";
+			sourceTree = "<group>";
+		};
+		29DF7DC82677ABBF0068C330 /* Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				29DF7DC92677ABBF0068C330 /* CollectionTableViewCell.swift */,
+				29DF7DCA2677ABBF0068C330 /* CollectionTableViewCell.xib */,
+			);
+			path = "Table Cell";
+			sourceTree = "<group>";
+		};
+		29DF7DCF2677AD880068C330 /* Subscene Type */ = {
+			isa = PBXGroup;
+			children = (
+				29DF7DD02677AD880068C330 /* ShotSize.swift */,
+				29DF7DD12677AD880068C330 /* Movement.swift */,
+				29DF7DD22677AD880068C330 /* Angle.swift */,
+			);
+			name = "Subscene Type";
+			path = "MVC-Template/Utilities/Subscene Type";
+			sourceTree = SOURCE_ROOT;
 		};
 		2C87DA7D266A0A5A007F783E = {
 			isa = PBXGroup;
@@ -458,6 +515,7 @@
 		2C87DAB0266A2882007F783E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				29DF7DCF2677AD880068C330 /* Subscene Type */,
 				2C87DAB1266A31EF007F783E /* Model */,
 			);
 			path = "Core Data";
@@ -595,15 +653,18 @@
 				5EE46CA82671B1D50080242C /* Poppins-BoldItalic.ttf in Resources */,
 				5EE46CA72671B1D50080242C /* Poppins-MediumItalic.ttf in Resources */,
 				5EE46CA92671B1D50080242C /* Poppins-SemiBoldItalic.ttf in Resources */,
+				29DF7DC02677AB0B0068C330 /* NewProjectTableViewCell.xib in Resources */,
 				023BAA7D266F505900B3BB09 /* Main.storyboard in Resources */,
 				2C87DA93266A0A5B007F783E /* Assets.xcassets in Resources */,
 				2C87DA91266A0A5A007F783E /* Main.storyboard in Resources */,
 				5EE46CA02671B1D50080242C /* Poppins-Bold.ttf in Resources */,
 				5EE46CAE2671B1D50080242C /* Poppins-BlackItalic.ttf in Resources */,
 				5EE46CA12671B1D50080242C /* Poppins-LightItalic.ttf in Resources */,
+				29DF7DC62677ABB90068C330 /* MyCollectionViewCell.xib in Resources */,
 				023BAA89266F536A00B3BB09 /* EditSubcenePage.storyboard in Resources */,
 				5EE46CAD2671B1D50080242C /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				023BAA79266F4FEA00B3BB09 /* AllScenePage.storyboard in Resources */,
+				29DF7DCC2677ABBF0068C330 /* CollectionTableViewCell.xib in Resources */,
 				5EE46C9E2671B1D50080242C /* Poppins-Light.ttf in Resources */,
 				2C87DAB7266A60EC007F783E /* SF-Compact-Rounded-Bold.otf in Resources */,
 				5EE46CAB2671B1D50080242C /* Poppins-Medium.ttf in Resources */,
@@ -662,24 +723,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */,
 				2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */,
+				29DF7DD32677AD880068C330 /* ShotSize.swift in Sources */,
 				023BAA6B266F4EAD00B3BB09 /* DrawingPageViewController.swift in Sources */,
 				2C87DAB3266A3203007F783E /* ModelName.swift in Sources */,
 				5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */,
 				2C87DABC266A667C007F783E /* ExampleTableViewCell.swift in Sources */,
 				023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */,
 				5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */,
+				29DF7DC72677ABB90068C330 /* MyCollectionViewCell.swift in Sources */,
 				023BAA7B266F500400B3BB09 /* AllScenePageViewController.swift in Sources */,
 				023BAA8B266F538900B3BB09 /* EditSubscenePageViewController.swift in Sources */,
 				023BAA97266F57B200B3BB09 /* PresentationPageViewController.swift in Sources */,
 				2C87DA8E266A0A5A007F783E /* ViewController.swift in Sources */,
+				29DF7DC12677AB0B0068C330 /* NewProjectTableViewCell.swift in Sources */,
 				2C87DADC266A7233007F783E /* ReusableFunctionsOne.swift in Sources */,
 				2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */,
 				023BAA7F266F507300B3BB09 /* AllProjectPageViewController.swift in Sources */,
+				29DF7DD42677AD880068C330 /* Movement.swift in Sources */,
+				29DF7DCB2677ABBF0068C330 /* CollectionTableViewCell.swift in Sources */,
 				023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */,
+				29DF7DD52677AD880068C330 /* Angle.swift in Sources */,
 				2C87DA8C266A0A5A007F783E /* SceneDelegate.swift in Sources */,
 				2C87DAC2266A686F007F783E /* AppNameColor.swift in Sources */,
 				023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */,
+				29DF7DCE2677AC0B0068C330 /* EditModalTypeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
