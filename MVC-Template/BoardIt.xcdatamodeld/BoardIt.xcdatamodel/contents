@@ -5,6 +5,7 @@
         <attribute name="lastModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ratio" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="projecttoscene" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Scene" inverseName="scenetoproject" inverseEntity="Scene"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -30,7 +31,7 @@
         <relationship name="subtoscene" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Scene" inverseName="scenetosub" inverseEntity="Scene"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="Scene" positionX="-54" positionY="-9" width="128" height="89"/>
         <element name="SubScene" positionX="-36" positionY="9" width="128" height="164"/>
     </elements>

@@ -14,21 +14,23 @@ class CoreDataManager {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //Create Function
-    func createProject(name:String) {
+    func createProject(name:String, ratio:Int64) {
         
         var tempProjectList:[Project]=[]
         
         tempProjectList = getAllData(entity: Project.self)
         
+        var newProject = Project(context: self.context)
+        newProject.name = name
+        newProject.dateCreated = Date()
+        newProject.ratio = ratio
+        
         if (tempProjectList.count == 0){
-            var newProject = Project(context: self.context)
-            newProject.name = name
-            newProject.dateCreated = Date()
+            
             newProject.number = 1
+            
         } else {
-            var newProject = Project(context: self.context)
-            newProject.name = name
-            newProject.dateCreated = Date()
+            
             newProject.number = (tempProjectList.last!.number) + 1
         }
         save()
@@ -40,16 +42,14 @@ class CoreDataManager {
     
         tempSceneList=getAllProjectScene(project: project)
         
+        var newScene = Scene(context: self.context)
+        newScene.scenetoproject = project
+        newScene.dateCreated = Date()
+        
         if (tempSceneList.count == 0) {
-            var newScene = Scene(context: self.context)
-            newScene.scenetoproject = project
-            newScene.dateCreated = Date()
             newScene.number=1
         } else {
-            var newScene = Scene(context: self.context)
-            newScene.scenetoproject = project
-            newScene.dateCreated = Date()
-            newScene.number = Int64(tempSceneList.count) + 1
+            newScene.number = Int64(tempSceneList.last!.number) + 1
         }
 
         save()

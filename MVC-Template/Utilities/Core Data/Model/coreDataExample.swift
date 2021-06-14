@@ -22,8 +22,8 @@ class CoreDataExample: UIViewController {
         super.viewDidLoad()
         
         //Buat project baru input nama dan ratio
-        coreData.createProject(name: "Andy pergi ke pasar")
-        coreData.createProject(name: "Memasak rendang pagi hari")
+        coreData.createProject(name: "Andy pergi ke pasar", ratio: 1)
+        coreData.createProject(name: "Memasak rendang pagi hari", ratio: 2)
         
         //Fetch semua Project yang ada
         listProject = coreData.getAllData(entity: Project.self)
@@ -35,51 +35,24 @@ class CoreDataExample: UIViewController {
         //Fetch semua scene berdasarkan project (disortir dari scene number ascending)
         listScene = coreData.getAllProjectScene(project: listProject[0])
         
-        //Testing 
+        //Testing buat image baru
         var testImage = #imageLiteral(resourceName: "shotSize-closeUp")
         var imageData = testImage.pngData()
         
-        print(imageData)
-        
-//        print(listScene[1].number)
-        
+        //createNewSubscene
         coreData.createSubScene(scene: listScene[0], description: "Ayam Bakar 2", angle: "Eye Level", shotSize: "Long Shot", movement: "Push In", storyboard: imageData)
         coreData.createSubScene(scene: listScene[0], description: "Ayam Bakar 2", angle: "Eye Level", shotSize: "Long Shot", movement: "Push In", storyboard: imageData)
-//
+        
+        //Fetch smua subscene tanpa filter
         listSubScene = coreData.getAllData(entity: SubScene.self)
+        
+        //Fetch semua subscene dengan filter scene
         listSubScene = coreData.getAllSubScene(scene: listScene[0])
-//
-        print(listSubScene.count)
         
+        //Hapus scene, subscene, dan project. Hapus scene akan hapus semua subscene didalamnya. Hapua project akan hapus semua scene dan subscene di dalamnya
         coreData.removeSubScene(subScene: listSubScene[0])
-        coreData.removeScene(scene: <#T##Scene#>)
-        coreData.removeProject(project: <#T##Project#>)
-        
-//        for item in listSubScene{
-//            coreData.removeSubScene(subScene: item)
-//        }
-        
-//        print(listSubScene.count)
-        
-        for item in listSubScene{
-            
-//            coreData.removeSubScene(subScene: item)
-//            coreData.updateSubScene(subScene: item, description: "Mcd Enak")
-            print(item.number)
-//            print(item.sceneDescription)
-            print(item.storyboard)
-//            print(item.subtoscene!.number)
-//            print(item.subtoscene!.scenetoproject!.number)
-//            print(item.dateCreated)
-        }
-        
-//        print(listProject[1].dateCreated)
-//        print(listProject[1].name)
-//        print(listProject[1].number)
-        
-//        for item in listProject{
-//            coreData.removeProject(project: item)
-//        }
+        coreData.removeScene(scene: listScene[0])
+        coreData.removeProject(project: listProject[0])
         
     }
     
