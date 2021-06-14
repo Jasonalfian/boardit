@@ -57,18 +57,20 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
         counterSceneText.text = named
     }
     
-    func ChangeImageText(named: UIImage) {
+    func ChangeImage(named: UIImage) {
         thumbnailImage.image = named
     }
 }
 
 protocol SceneListControllerDelegate{
+    
+//    func ChangeAll(desc : String, angle : String, shot : String, movement : String, counter : String, image : UIImage)
     func ChangeDescriptionText(named: String)
     func ChangeAngleText(named: String)
     func ChangeShotText(named: String)
     func ChangeMovementText(named: String)
     func ChangeCounterText(named: String)
-    func ChangeImageText(named: UIImage)
+    func ChangeImage(named: UIImage)
 }
 
 class SceneListController : UITableViewController{
@@ -98,13 +100,34 @@ class SceneListController : UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Scene \(section)"
+        return "Scene \(section+1)"
     }
     
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let myLabel = UILabel()
+//        myLabel.frame = CGRect(x: 16, y: 8, width: 320, height: 30)
+//        myLabel.font = UIFont(name: "Poppins-Regular", size: 24)
+//        myLabel.textColor = .white
+//        myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+//
+//        let headerView = UIView()
+//        headerView.addSubview(myLabel)
+//
+//        return headerView
+//    }
+    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 40
+//    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = "Scene \(indexPath.section+1).\(indexPath.row+1)"
         cell.textLabel?.textColor = .white
+        cell.textLabel?.font = UIFont(name: "Poppins-Regular", size: 18)
         cell.backgroundColor = darkColour
         return cell
     }
@@ -114,10 +137,11 @@ class SceneListController : UITableViewController{
         delegateController?.ChangeCounterText(named: "\(indexPath.row+1)/\(tableView.numberOfRows(inSection: indexPath.section))")
         
         delegateController?.ChangeDescriptionText(named: "Description \(indexPath.section+1).\(indexPath.row+1)")
-        delegateController?.ChangeShotText(named: "Shot \(indexPath.section+1).\(indexPath.row+1)/")
+        delegateController?.ChangeShotText(named: "Shot \(indexPath.section+1).\(indexPath.row+1)")
         delegateController?.ChangeAngleText(named: "Angle \(indexPath.section+1).\(indexPath.row+1)")
         delegateController?.ChangeMovementText(named: "Movement \(indexPath.section+1).\(indexPath.row+1)")
+        
+//        delegateController?ChangeImage()
 //        otherScript.counterSceneText?.text = "\(indexPath.row)/\(indexPath.section)"
-        //Change right side content
     }
 }
