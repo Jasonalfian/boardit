@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ratio" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="projecttoscene" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Scene" inverseName="scenetoproject" inverseEntity="Scene"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Scene" representedClassName="Scene" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="scenetoproject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projecttoscene" inverseEntity="Project"/>
+        <relationship name="scenetosub" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubScene" inverseName="subtoscene" inverseEntity="SubScene"/>
+    </entity>
+    <entity name="SubScene" representedClassName="SubScene" syncable="YES" codeGenerationType="class">
+        <attribute name="angle" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="movement" optional="YES" attributeType="String"/>
+        <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pencilKitData" optional="YES" attributeType="Binary"/>
+        <attribute name="sceneDescription" optional="YES" attributeType="String"/>
+        <attribute name="shotSize" optional="YES" attributeType="String"/>
+        <attribute name="storyboard" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="subtoscene" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Scene" inverseName="scenetosub" inverseEntity="Scene"/>
+    </entity>
+    <elements>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Scene" positionX="-54" positionY="-9" width="128" height="89"/>
+        <element name="SubScene" positionX="-36" positionY="9" width="128" height="164"/>
+    </elements>
 </model>
