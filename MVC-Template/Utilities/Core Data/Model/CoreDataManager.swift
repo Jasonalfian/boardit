@@ -16,58 +16,70 @@ class CoreDataManager {
     //Create Function
     func createProject(name:String) {
         
-        var newProject = Project(context: self.context)
         var tempProjectList:[Project]=[]
         
         tempProjectList = getAllData(entity: Project.self)
         
-        newProject.name = name
-        newProject.dateCreated = Date()
-        
         if (tempProjectList.count == 0){
+            var newProject = Project(context: self.context)
+            newProject.name = name
+            newProject.dateCreated = Date()
             newProject.number = 1
         } else {
+            var newProject = Project(context: self.context)
+            newProject.name = name
+            newProject.dateCreated = Date()
             newProject.number = (tempProjectList.last!.number) + 1
         }
         save()
     }
     
     func createScene(project: Project) {
-        var newScene = Scene(context: self.context)
         
         var tempSceneList:[Scene]=[]
-        
-        newScene.scenetoproject = project
-        newScene.dateCreated = Date()
-        
+    
         tempSceneList=getAllProjectScene(project: project)
         
-        if (tempSceneList.count==0) {
+        if (tempSceneList.count == 0) {
+            var newScene = Scene(context: self.context)
+            newScene.scenetoproject = project
+            newScene.dateCreated = Date()
             newScene.number=1
         } else {
+            var newScene = Scene(context: self.context)
+            newScene.scenetoproject = project
+            newScene.dateCreated = Date()
             newScene.number = Int64(tempSceneList.count) + 1
         }
 
         save()
     }
     
-    func createSubScene(scene: Scene!, description: String?, angle: String?, shotSize: String?, movement: String?, storyboard: Data?){
-        
-        var newSubScene = SubScene(context: self.context)
+    func createSubScene(scene: Scene!, description: String? = nil, angle: String? = nil, shotSize: String? = nil, movement: String? = nil, storyboard: Data? = nil){
+    
         var tempSubSceneList: [SubScene] = []
-        
-        newSubScene.subtoscene = scene
-        newSubScene.sceneDescription = description ?? nil
-        newSubScene.angle = angle ?? nil
-        newSubScene.shotSize = shotSize ?? nil
-        newSubScene.movement = movement ?? nil
-        newSubScene.storyboard = storyboard ?? nil
         
         tempSubSceneList=getAllSubScene(scene: scene)
         
-        if (tempSubSceneList.count==0) {
-            newSubScene.number=1
+        var newSubScene = SubScene(context: self.context)
+        newSubScene.subtoscene = scene
+        newSubScene.sceneDescription = description
+        newSubScene.angle = angle
+        newSubScene.shotSize = shotSize
+        newSubScene.movement = movement
+        newSubScene.storyboard = storyboard
+        
+        print(storyboard)
+        print(newSubScene.storyboard)
+        
+        newSubScene.dateCreated = Date()
+        
+        if (tempSubSceneList.count == 0) {
+            
+            newSubScene.number = 1
+            
         } else {
+    
             newSubScene.number = (tempSubSceneList.last!.number) + 1
         }
         
@@ -106,7 +118,7 @@ class CoreDataManager {
             let request = Scene.fetchRequest() as NSFetchRequest<Scene>
             
             request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending: true)]
-            let pred = NSPredicate(format:"scenetoproject  == %@", project as Project)
+            let pred = NSPredicate(format:"scenetoproject == %@", project as Project)
             request.predicate = pred
             
             tempScene = try context.fetch(request)
@@ -125,8 +137,8 @@ class CoreDataManager {
         do {
             let request = SubScene.fetchRequest() as NSFetchRequest<SubScene>
             
-            request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending: true)]
-            let pred = NSPredicate(format:"subtoscene  == %@", scene as Scene)
+            request.sortDescriptors = [NSSortDescriptor(key:"number",ascending: true)]
+            let pred = NSPredicate(format:"subtoscene == %@", scene as Scene)
             request.predicate = pred
             
             tempSubScene = try context.fetch(request)
@@ -139,7 +151,7 @@ class CoreDataManager {
     }
     
     //Update Data
-    func updateProject(project: Project!, name:String?, modifiedDate:Date?) {
+    func updateProject(project: Project!, name:String?, modifiedDate:Date? ) {
         
         project.name = name ?? project.name
         project.lastModified = modifiedDate ?? project.lastModified
@@ -147,13 +159,13 @@ class CoreDataManager {
         save()
     }
     
-    func updateSubScene(subScene: SubScene!, description: String?, angle: String?, shotSize: String?, movement: String?, storyboard: Data?){
+    func updateSubScene(subScene: SubScene!, description: String? = nil, angle: String? = nil, shotSize: String? = nil, movement: String? = nil, storyboard: Data? = nil){
     
-        subScene.sceneDescription = description ?? nil
-        subScene.angle = angle ?? nil
-        subScene.shotSize = shotSize ?? nil
-        subScene.movement = movement ?? nil
-        subScene.storyboard = storyboard ?? nil
+        subScene.sceneDescription = description
+        subScene.angle = angle
+        subScene.shotSize = shotSize
+        subScene.movement = movement
+        subScene.storyboard = storyboard
         
         save()
     }

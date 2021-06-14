@@ -38,6 +38,8 @@
 		5E5849942672564C00874CE4 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5849932672564C00874CE4 /* Angle.swift */; };
 		5E58499926725DF700874CE4 /* ShotSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58499826725DF700874CE4 /* ShotSize.swift */; };
 		5E58499C26725E7900874CE4 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58499B26725E7900874CE4 /* Movement.swift */; };
+		5E5849A52674785E00874CE4 /* EditModalTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5849A42674785E00874CE4 /* EditModalTypeController.swift */; };
+		5E9FB1F3267711AA00F929A5 /* coreDataExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9FB1F2267711AA00F929A5 /* coreDataExample.swift */; };
 		5EE46C9E2671B1D50080242C /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */; };
 		5EE46C9F2671B1D50080242C /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */; };
 		5EE46CA02671B1D50080242C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8E2671B1D40080242C /* Poppins-Bold.ttf */; };
@@ -92,6 +94,8 @@
 		5E5849932672564C00874CE4 /* Angle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		5E58499826725DF700874CE4 /* ShotSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotSize.swift; sourceTree = "<group>"; };
 		5E58499B26725E7900874CE4 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		5E5849A42674785E00874CE4 /* EditModalTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditModalTypeController.swift; sourceTree = "<group>"; };
+		5E9FB1F2267711AA00F929A5 /* coreDataExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coreDataExample.swift; sourceTree = "<group>"; };
 		5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		5EE46C8E2671B1D40080242C /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */,
+				5E5849A42674785E00874CE4 /* EditModalTypeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 			children = (
 				2C87DAB2266A3203007F783E /* ModelName.swift */,
 				5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */,
+				5E9FB1F2267711AA00F929A5 /* coreDataExample.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */,
 				023BAA6B266F4EAD00B3BB09 /* DrawingPageViewController.swift in Sources */,
 				2C87DAB3266A3203007F783E /* ModelName.swift in Sources */,
+				5E5849A52674785E00874CE4 /* EditModalTypeController.swift in Sources */,
 				5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */,
 				2C87DABC266A667C007F783E /* ExampleTableViewCell.swift in Sources */,
 				023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */,
@@ -629,6 +636,7 @@
 				2C87DA8C266A0A5A007F783E /* SceneDelegate.swift in Sources */,
 				2C87DAC2266A686F007F783E /* AppNameColor.swift in Sources */,
 				5E58499C26725E7900874CE4 /* Movement.swift in Sources */,
+				5E9FB1F3267711AA00F929A5 /* coreDataExample.swift in Sources */,
 				5E5849942672564C00874CE4 /* Angle.swift in Sources */,
 				5E58499926725DF700874CE4 /* ShotSize.swift in Sources */,
 				023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */,

@@ -16,7 +16,7 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="scenetoproject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="projecttoscene" inverseEntity="Project"/>
-        <relationship name="scenetosub" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubScene" inverseName="subtoscene" inverseEntity="SubScene"/>
+        <relationship name="scenetosub" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubScene" inverseName="subtoscene" inverseEntity="SubScene"/>
     </entity>
     <entity name="SubScene" representedClassName="SubScene" syncable="YES" codeGenerationType="class">
         <attribute name="angle" optional="YES" attributeType="String"/>
