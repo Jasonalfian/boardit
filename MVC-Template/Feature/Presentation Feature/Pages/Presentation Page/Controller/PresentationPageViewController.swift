@@ -8,7 +8,7 @@
 import UIKit
 import SideMenu
 
-class PresentationPageViewController: UIViewController {
+class PresentationPageViewController: UIViewController, SceneListControllerDelegate {
 
     var sceneMenu : SideMenuNavigationController?
     
@@ -23,13 +23,12 @@ class PresentationPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sceneMenu = SideMenuNavigationController(rootViewController: SceneListController())
+        let SLC = SceneListController()
+        SLC.delegateController = self
+        sceneMenu = SideMenuNavigationController(rootViewController: SLC)
         sceneMenu?.leftSide = true
         sceneMenu?.title = "Scenes"
-//        sceneMenu?.navigationItem.title = "SKIP"
         sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
-//        sceneMenu?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.orange]
-        
         
         // Do any additional setup after loading the view.
     }
@@ -37,16 +36,51 @@ class PresentationPageViewController: UIViewController {
     @IBAction func tapSceneMenu(_ sender: UIButton) {
         present(sceneMenu!, animated: true)
     }
+    
+    func ChangeDescriptionText(named: String) {
+        descriptionText.text = named
+    }
+    
+    func ChangeAngleText(named: String) {
+        angleText.text = named
+    }
+    
+    func ChangeShotText(named: String) {
+        shotText.text = named
+    }
+    
+    func ChangeMovementText(named: String) {
+        movementText.text = named
+    }
+    
+    func ChangeCounterText(named: String) {
+        counterSceneText.text = named
+    }
+    
+    func ChangeImageText(named: UIImage) {
+        thumbnailImage.image = named
+    }
+}
+
+protocol SceneListControllerDelegate{
+    func ChangeDescriptionText(named: String)
+    func ChangeAngleText(named: String)
+    func ChangeShotText(named: String)
+    func ChangeMovementText(named: String)
+    func ChangeCounterText(named: String)
+    func ChangeImageText(named: UIImage)
 }
 
 class SceneListController : UITableViewController{
     
     var totalScenes = [ [1,2,3], [1,2,3,4], [1,2] ]
-    let otherScript = PresentationPageViewController()
+    
+    public var delegateController: SceneListControllerDelegate?
     
     let darkColour = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView = UITableView.init(frame: .zero, style: .grouped)
         tableView.backgroundColor = darkColour
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -77,7 +111,12 @@ class SceneListController : UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        otherScript.counterSceneText?.text = "A"
+        delegateController?.ChangeCounterText(named: "\(indexPath.row+1)/\(tableView.numberOfRows(inSection: indexPath.section))")
+        
+        delegateController?.ChangeDescriptionText(named: "Description \(indexPath.section+1).\(indexPath.row+1)")
+        delegateController?.ChangeShotText(named: "Shot \(indexPath.section+1).\(indexPath.row+1)/")
+        delegateController?.ChangeAngleText(named: "Angle \(indexPath.section+1).\(indexPath.row+1)")
+        delegateController?.ChangeMovementText(named: "Movement \(indexPath.section+1).\(indexPath.row+1)")
 //        otherScript.counterSceneText?.text = "\(indexPath.row)/\(indexPath.section)"
         //Change right side content
     }
