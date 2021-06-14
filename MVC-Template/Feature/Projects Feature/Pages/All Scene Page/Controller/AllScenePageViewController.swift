@@ -10,13 +10,13 @@ import UIKit
 class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet var table: UITableView!
+//    @IBAction func sideBar(_ sender: Any) {
+//
+//    didTapButton()
+//        
+//    }
     
-//    private let sectionInsets = UIEdgeInsets(
-//      top: 50.0,
-//      left: 100.0,
-//      bottom: 100.0,
-//      right: 50.0)
-    
+
     var models = [Model]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,24 +26,24 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         table.dataSource = self
     
         
-        models.append(Model(title: "Halo bandung ku", tanggal: "Last Edited on 13/12/2021", imageName: "Eye Level"))
+        models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
        
-        models.append(Model(title: "Jakarta Hujan", tanggal: "Last Edited on 12/01/2021", imageName: "Ground Level"))
+        models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
         
-        models.append(Model(title: "Keseleo Kaki nih", tanggal: "Last Edited on 02/01/2020", imageName: "Eye Level"))
-        
-        models.append(Model(title: "Halo bandung ku", tanggal: "Last Edited on 13/12/2021", imageName: "Eye Level"))
-        
-        models.append(Model(title: "Jakarta Hujan", tanggal: "Last Edited on 12/01/2021", imageName: "Ground Level"))
-        
-        models.append(Model(title: "Keseleo Kaki nih", tanggal: "Last Edited on 02/01/2020", imageName: "Eye Level"))
+        models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
+       
+        models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
+        models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
+       
+        models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
+       
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
     
-        cell.textLabel?.text = "              Scene 1"
+        cell.textLabel?.text = "      Scene 1"
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
 
@@ -68,21 +68,38 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 305
+        return 380
     }
+    
+//    @objc private func didTapButton() {
+//        let splitVC = UISplitViewController(style: .doubleColumn)
+//
+//        splitVC.viewControllers = []
+//
+//        present(splitVC, animated: true)
+//    }
     
     }
 
 
 struct Model {
-    let title: String
-    let tanggal: String
+    let desc: String
+    let size: String
+    let angle: String
+    let movement: String
+    
     let imageName: String
     
-    init(title: String, tanggal: String, imageName: String ) {
-        self.title = title
-        self.tanggal = tanggal
+    init(desc: String, size: String, angle: String, movement: String, imageName: String ) {
+        self.desc = desc
+        self.size = size
+        self.angle = angle
+        self.movement = movement
         self.imageName = imageName
     }
     
+    
 }
+
+
+

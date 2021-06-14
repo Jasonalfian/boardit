@@ -57,6 +57,9 @@
 		EB169FAC2674A472005918DC /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB169FAA2674A472005918DC /* CollectionTableViewCell.xib */; };
 		EB169FAF2674A496005918DC /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169FAD2674A496005918DC /* MyCollectionViewCell.swift */; };
 		EB169FB02674A496005918DC /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB169FAE2674A496005918DC /* MyCollectionViewCell.xib */; };
+		EBE796492676F769001EFFA3 /* NewProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE796472676F769001EFFA3 /* NewProjectTableViewCell.swift */; };
+		EBE7964A2676F769001EFFA3 /* NewProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBE796482676F769001EFFA3 /* NewProjectTableViewCell.xib */; };
+		EBF55A1826764976001B4220 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF55A1726764976001B4220 /* NewProjectTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +115,9 @@
 		EB169FAA2674A472005918DC /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
 		EB169FAD2674A496005918DC /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB169FAE2674A496005918DC /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		EBE796472676F769001EFFA3 /* NewProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewCell.swift; sourceTree = "<group>"; };
+		EBE796482676F769001EFFA3 /* NewProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewProjectTableViewCell.xib; sourceTree = "<group>"; };
+		EBF55A1726764976001B4220 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +206,9 @@
 				EB169FA82674A42C005918DC /* Collection Cell */,
 				EB169FA72674A427005918DC /* Table Cell */,
 				023BAA78266F4FEA00B3BB09 /* AllScenePage.storyboard */,
+				EBF55A1726764976001B4220 /* NewProjectTableViewController.swift */,
+				EBE796472676F769001EFFA3 /* NewProjectTableViewCell.swift */,
+				EBE796482676F769001EFFA3 /* NewProjectTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -598,6 +607,7 @@
 				5EE46CA72671B1D50080242C /* Poppins-MediumItalic.ttf in Resources */,
 				5EE46CA92671B1D50080242C /* Poppins-SemiBoldItalic.ttf in Resources */,
 				023BAA7D266F505900B3BB09 /* Main.storyboard in Resources */,
+				EBE7964A2676F769001EFFA3 /* NewProjectTableViewCell.xib in Resources */,
 				2C87DA93266A0A5B007F783E /* Assets.xcassets in Resources */,
 				2C87DA91266A0A5A007F783E /* Main.storyboard in Resources */,
 				5EE46CA02671B1D50080242C /* Poppins-Bold.ttf in Resources */,
@@ -636,7 +646,9 @@
 				023BAA8B266F538900B3BB09 /* EditSubscenePageViewController.swift in Sources */,
 				023BAA97266F57B200B3BB09 /* PresentationPageViewController.swift in Sources */,
 				2C87DA8E266A0A5A007F783E /* ViewController.swift in Sources */,
+				EBE796492676F769001EFFA3 /* NewProjectTableViewCell.swift in Sources */,
 				2C87DADC266A7233007F783E /* ReusableFunctionsOne.swift in Sources */,
+				EBF55A1826764976001B4220 /* NewProjectTableViewController.swift in Sources */,
 				2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */,
 				023BAA7F266F507300B3BB09 /* AllProjectPageViewController.swift in Sources */,
 				023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */,
