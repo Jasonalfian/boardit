@@ -14,6 +14,27 @@ class CoreDataManager {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //Create Function
+    func createSaveState(){
+        var newSave = Save(context: self.context)
+        
+        newSave.state = true
+        save()
+    }
+    
+    func changeSaveState(saving: Save){
+        
+        if (saving.state == true) {
+            saving.state = false
+            print(saving.state)
+        }
+        else if (saving.state == false){
+            saving.state = true
+        }
+        
+        save()
+        print("State has been changed")
+    }
+    
     func createProject(name:String, ratio:Int64) {
         
         var tempProjectList:[Project]=[]
@@ -34,6 +55,7 @@ class CoreDataManager {
             newProject.number = (tempProjectList.last!.number) + 1
         }
         save()
+        print("Project Created")
     }
     
     func createScene(project: Project) {
@@ -53,9 +75,10 @@ class CoreDataManager {
         }
 
         save()
+        print("Scene Created")
     }
     
-    func createSubScene(scene: Scene!, description: String? = nil, angle: String? = nil, shotSize: String? = nil, movement: String? = nil, storyboard: Data? = nil){
+    func createSubScene(scene: Scene!, description: String? = nil, angle: String? = nil, shotSize: String? = nil, movement: String? = nil, storyboard: Data? = nil, rawImage: Data? = nil, pencilKitData: Data? = nil){
     
         var tempSubSceneList: [SubScene] = []
         
@@ -68,9 +91,8 @@ class CoreDataManager {
         newSubScene.shotSize = shotSize
         newSubScene.movement = movement
         newSubScene.storyboard = storyboard
-        
-        print(storyboard)
-        print(newSubScene.storyboard)
+        newSubScene.rawImage = rawImage
+        newSubScene.pencilKitData = pencilKitData
         
         newSubScene.dateCreated = Date()
         
@@ -84,6 +106,7 @@ class CoreDataManager {
         }
         
         save()
+        print("Subscene Created")
     }
     
     //Read Function
@@ -157,17 +180,22 @@ class CoreDataManager {
         project.lastModified = modifiedDate ?? project.lastModified
         
         save()
+        print("Project has been saved")
     }
     
-    func updateSubScene(subScene: SubScene!, description: String? = nil, angle: String? = nil, shotSize: String? = nil, movement: String? = nil, storyboard: Data? = nil){
+    func updateSubScene(subScene: SubScene!, description: String? = nil, angle: String? = nil, shotSize: String? = nil, movement: String? = nil, storyboard: Data? = nil, rawImage: Data? = nil, pencilKitData: Data? = nil){
     
         subScene.sceneDescription = description
         subScene.angle = angle
         subScene.shotSize = shotSize
         subScene.movement = movement
         subScene.storyboard = storyboard
+        subScene.rawImage = rawImage
+        subScene.pencilKitData = pencilKitData
         
         save()
+        print("Subscene has been saved")
+        
     }
     
     //Remove Data
