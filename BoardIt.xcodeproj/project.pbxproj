@@ -20,6 +20,7 @@
 		023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */; };
 		023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */; };
 		023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */; };
+		295B2D1F26784ED700C05322 /* coreDataExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B2D1E26784ED700C05322 /* coreDataExample.swift */; };
 		29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */; };
 		29DF7DC02677AB0B0068C330 /* NewProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */; };
 		29DF7DC12677AB0B0068C330 /* NewProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DBC2677AB0B0068C330 /* NewProjectTableViewCell.swift */; };
@@ -82,6 +83,7 @@
 		023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelEdit.swift; sourceTree = "<group>"; };
 		023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProjects.swift; sourceTree = "<group>"; };
 		19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.debug.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.debug.xcconfig"; sourceTree = "<group>"; };
+		295B2D1E26784ED700C05322 /* coreDataExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coreDataExample.swift; sourceTree = "<group>"; };
 		29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
 		29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTableViewCell.xib; sourceTree = "<group>"; };
 		29DF7DBC2677AB0B0068C330 /* NewProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 		2C87DAA1266A0C7D007F783E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				29DF7DCF2677AD880068C330 /* Subscene Type */,
 				2C87DAAF266A287D007F783E /* Networking */,
 				2C87DAB0266A2882007F783E /* Core Data */,
 			);
@@ -515,7 +518,6 @@
 		2C87DAB0266A2882007F783E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				29DF7DCF2677AD880068C330 /* Subscene Type */,
 				2C87DAB1266A31EF007F783E /* Model */,
 			);
 			path = "Core Data";
@@ -524,6 +526,7 @@
 		2C87DAB1266A31EF007F783E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				295B2D1E26784ED700C05322 /* coreDataExample.swift */,
 				2C87DAB2266A3203007F783E /* ModelName.swift */,
 				5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */,
 			);
@@ -733,6 +736,7 @@
 				023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */,
 				5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */,
 				29DF7DC72677ABB90068C330 /* MyCollectionViewCell.swift in Sources */,
+				295B2D1F26784ED700C05322 /* coreDataExample.swift in Sources */,
 				023BAA7B266F500400B3BB09 /* AllScenePageViewController.swift in Sources */,
 				023BAA8B266F538900B3BB09 /* EditSubscenePageViewController.swift in Sources */,
 				023BAA97266F57B200B3BB09 /* PresentationPageViewController.swift in Sources */,

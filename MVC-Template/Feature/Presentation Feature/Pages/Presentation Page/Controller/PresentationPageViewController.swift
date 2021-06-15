@@ -1,10 +1,3 @@
-//
-//  PresentationPageViewController.swift
-//  BoardIt
-//
-//  Created by Gilbert Nicholas on 08/06/21.
-//
-
 import UIKit
 import SideMenu
 
@@ -29,53 +22,35 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
         sceneMenu?.leftSide = true
         sceneMenu?.title = "Scenes"
         sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func tapSceneMenu(_ sender: UIButton) {
         present(sceneMenu!, animated: true)
     }
     
-    func ChangeDescriptionText(named: String) {
-        descriptionText.text = named
-    }
-    
-    func ChangeAngleText(named: String) {
-        angleText.text = named
-    }
-    
-    func ChangeShotText(named: String) {
-        shotText.text = named
-    }
-    
-    func ChangeMovementText(named: String) {
-        movementText.text = named
-    }
-    
-    func ChangeCounterText(named: String) {
-        counterSceneText.text = named
-    }
-    
-    func ChangeImage(named: UIImage) {
-        thumbnailImage.image = named
+    func ChangeSubScene(scene: SubScene, counter : String) {
+        descriptionText.text = scene.sceneDescription
+        angleText.text = scene.angle
+        shotText.text = scene.shotSize
+        movementText.text = scene.movement
+        
+        counterSceneText.text = counter
+//        thumbnailImage.image = image
     }
 }
 
 protocol SceneListControllerDelegate{
     
-//    func ChangeAll(desc : String, angle : String, shot : String, movement : String, counter : String, image : UIImage)
-    func ChangeDescriptionText(named: String)
-    func ChangeAngleText(named: String)
-    func ChangeShotText(named: String)
-    func ChangeMovementText(named: String)
-    func ChangeCounterText(named: String)
-    func ChangeImage(named: UIImage)
+    func ChangeSubScene(scene : SubScene, counter : String)
+    
 }
 
 class SceneListController : UITableViewController{
     
-    var totalScenes = [ [1,2,3], [1,2,3,4], [1,2] ]
+    var coreData = CoreDataManager()
+    var currentProject : Project? = nil
+    var allScenez: [Scene: [SubScene]] = [:]
+    var allSubsScenez : [ [SubScene] ] = []
     
     public var delegateController: SceneListControllerDelegate?
     
@@ -88,15 +63,33 @@ class SceneListController : UITableViewController{
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         //Get Core Data
-        totalScenes = [ [1,2,3], [1,2,3,4], [1,2] ]
+        var listProject : [Project] = []
+        listProject = coreData.getAllData(entity: Project.self)
+        //GET currentProject
+        
+        //Harusnya disini dapet dari page sebelum
+        let listScene = coreData.getAllProjectScene(project: listProject[0])
+        //Cara ribet
+//        if let z = listScene[0].scenetosub?.allObjects as? [SubScene] {
+//            for i in z {
+//                print(i.angle! as String)
+//            }
+//        }
+        
+        for i in listScene {
+            allSubsScenez.append(coreData.getAllSubScene(scene: i))
+        }
+        
+        //Harusnya disini tergantung saat clicknya
+        delegateController?.ChangeSubScene(scene: allSubsScenez[0][0], counter : "\(1)/\(allSubsScenez[0].count)")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return totalScenes.count
+        return allSubsScenez.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return totalScenes[section].count
+        return allSubsScenez[section].count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -134,14 +127,8 @@ class SceneListController : UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegateController?.ChangeCounterText(named: "\(indexPath.row+1)/\(tableView.numberOfRows(inSection: indexPath.section))")
         
-        delegateController?.ChangeDescriptionText(named: "Description \(indexPath.section+1).\(indexPath.row+1)")
-        delegateController?.ChangeShotText(named: "Shot \(indexPath.section+1).\(indexPath.row+1)")
-        delegateController?.ChangeAngleText(named: "Angle \(indexPath.section+1).\(indexPath.row+1)")
-        delegateController?.ChangeMovementText(named: "Movement \(indexPath.section+1).\(indexPath.row+1)")
+        delegateController?.ChangeSubScene(scene: allSubsScenez[indexPath.section][indexPath.row], counter : "\(indexPath.row+1)/\(allSubsScenez[indexPath.section].count)")
         
-//        delegateController?ChangeImage()
-//        otherScript.counterSceneText?.text = "\(indexPath.row)/\(indexPath.section)"
     }
 }
