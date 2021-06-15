@@ -94,11 +94,11 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     //connect with pencil kit page
     @objc func changeImagePencil(_ data: Notification) {
         
-        let arrayData = data.object as! [Data]
+        let arrayData = data.object as! passData
         
-        storyboardImage.image = UIImage(data: arrayData[0])
-        pencilKitData = arrayData[1]
-        rawImage = arrayData[2]
+        storyboardImage.image = arrayData.thumbnail
+        pencilKitData = arrayData.drawStroke.dataRepresentation()
+        rawImage = arrayData.imagePlain.pngData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,6 +132,13 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         
         saveButton.layer.cornerRadius = 15
         
+        let gestureRecog = UITapGestureRecognizer(target: self, action: #selector(goToDrawingPage(_:)))
+        gestureRecog.numberOfTapsRequired = 1
+        gestureRecog.numberOfTouchesRequired = 1
+        
+        storyboardImage.addGestureRecognizer(gestureRecog)
+        storyboardImage.isUserInteractionEnabled = true
+        
         //Keyboard setting for text Field
         self.descriptionEditor.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         
@@ -161,6 +168,9 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             angle = subScene.angle ?? "- Select -"
             shotSize = subScene.shotSize ?? "- Select -"
             movement = subScene.movement ?? "- Select -"
+            
+            pencilKitData = subScene.pencilKitData ?? Data()
+            rawImage = subScene.rawImage ?? UIImage().pngData()
             
             if (subScene.storyboard != nil){
                 initStoryboardImage = UIImage(data: subScene.storyboard!)
@@ -197,6 +207,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    @objc func goToDrawingPage(_ gesture: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "drawingSegue", sender: self)
+    }
+    
     @objc func tapDone(sender: Any) {
             self.view.endEditing(true)
         }
@@ -206,6 +220,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         let newVC = segue.destination as? EditModalTypeController
 
         let newVC2 = segue.destination as? EditSaveModalViewController
+        
+        let destVC = segue.destination as? DrawingPageViewController
         
         if (segue.identifier == "angleSegue"){
             newVC!.titleSegue = "Angle Type"
@@ -234,6 +250,12 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             newVC2!.segueSender = "saveOnlySegue"
             newVC2!.haveSavedSegue = haveSaved
             newVC2!.anyDifference = anyDifference
+        }
+        
+        if(segue.identifier == "drawingSegue") {
+            destVC?.drawing = pencilKitData
+            destVC?.imagePlain = rawImage
+            destVC?.screenType = 16
         }
     }
     
