@@ -47,6 +47,7 @@
 		2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DADF266A7256007F783E /* NetworkManager.swift */; };
 		5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */; };
 		5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C6457266DF384002F89CD /* BoardIt.xcdatamodeld */; };
+		5E9FB21B2678FE6F00F929A5 /* EditSaveModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */; };
 		5EE46C9E2671B1D50080242C /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */; };
 		5EE46C9F2671B1D50080242C /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */; };
 		5EE46CA02671B1D50080242C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8E2671B1D40080242C /* Poppins-Bold.ttf */; };
@@ -113,6 +114,7 @@
 		46574E55D652F5C2B5F1868E /* Pods-BoardIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.release.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.release.xcconfig"; sourceTree = "<group>"; };
 		5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E4C6458266DF384002F89CD /* BoardIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoardIt.xcdatamodel; sourceTree = "<group>"; };
+		5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSaveModalViewController.swift; sourceTree = "<group>"; };
 		5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		5EE46C8E2671B1D40080242C /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		023BAA86266F534400B3BB09 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */,
 				29DF7DCD2677AC0B0068C330 /* EditModalTypeController.swift */,
 				023BAA8A266F538900B3BB09 /* EditSubscenePageViewController.swift */,
 			);
@@ -745,6 +748,7 @@
 				2C87DADC266A7233007F783E /* ReusableFunctionsOne.swift in Sources */,
 				2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */,
 				023BAA7F266F507300B3BB09 /* AllProjectPageViewController.swift in Sources */,
+				5E9FB21B2678FE6F00F929A5 /* EditSaveModalViewController.swift in Sources */,
 				29DF7DD42677AD880068C330 /* Movement.swift in Sources */,
 				29DF7DCB2677ABBF0068C330 /* CollectionTableViewCell.swift in Sources */,
 				023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */,

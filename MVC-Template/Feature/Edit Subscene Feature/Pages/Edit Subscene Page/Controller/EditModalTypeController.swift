@@ -77,7 +77,7 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
             
             if startingIndex == 99 {
                 
-            listType.selectRow(at: IndexPath(row: startingIndex, section: 0), animated: true, scrollPosition: .top)
+            listType.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
                 
                 typeName.text = listShotSize[0].name
                 typeImage.image = listShotSize[0].gambar
