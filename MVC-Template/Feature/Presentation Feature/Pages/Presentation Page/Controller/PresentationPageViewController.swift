@@ -5,6 +5,9 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
 
     var sceneMenu : SideMenuNavigationController?
     
+    var projectTitlePassingBro : String?
+    @IBOutlet weak var navTitle: UINavigationItem!
+    
     @IBOutlet weak var descriptionText : UILabel!
     @IBOutlet weak var angleText : UILabel!
     @IBOutlet weak var shotText : UILabel!
@@ -16,6 +19,8 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navTitle.title = projectTitlePassingBro
+        
         let SLC = SceneListController()
         SLC.delegateController = self
         sceneMenu = SideMenuNavigationController(rootViewController: SLC)
@@ -26,6 +31,10 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     
     @IBAction func tapSceneMenu(_ sender: UIButton) {
         present(sceneMenu!, animated: true)
+    }
+    
+    @IBAction func tapCancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func ChangeSubScene(scene: SubScene, counter : String) {
