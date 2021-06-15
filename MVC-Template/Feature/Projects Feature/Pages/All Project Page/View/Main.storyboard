@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="820.1005025125628" y="101.43884892086332"/>
         </scene>
-        <!--EditSubcenePage-->
+        <!--AllScenePage-->
         <scene sceneID="5i5-Pu-nMF">
             <objects>
-                <viewControllerPlaceholder storyboardName="EditSubcenePage" id="HCc-TT-PKY" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="AllScenePage" id="HCc-TT-PKY" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="4bL-i1-WSK"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GP-xx-tky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

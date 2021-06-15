@@ -12,6 +12,7 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
     var listAngle = Angle.generateAngle()
     var listShotSize = ShotSize.generateShotSize()
     var listMovement = Movement.generateMovement()
+    var startingIndex:Int!
     
     var prevVC = EditSubscenePageViewController()
     
@@ -54,22 +55,72 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
         //Initial value for description
         
         if titleSegue == "Angle Type"{
-            typeName.text = listAngle[0].name
-            typeImage.image = listAngle[0].gambar
-            typeDescriptionTV.text = listAngle[0].description
-        } else if (titleSegue == "Shot Type") {
-            typeName.text = listShotSize[0].name
-            typeImage.image = listShotSize[0].gambar
-            typeDescriptionTV.text = listShotSize[0].description
-        } else if (titleSegue == "Movement Type") {
             
-            typeName.text = listMovement[0].name
-            typeDescriptionTV.text = listMovement[0].description
+            if startingIndex == 99 {
+                
+            listType.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+                
+                typeName.text = listAngle[0].name
+                typeImage.image = listAngle[0].gambar
+                typeDescriptionTV.text = listAngle[0].description
             
-            typeImage.animationImages = [listMovement[0].gambar, listMovement[0].gambar2,
-                                         listMovement[0].gambar3, listMovement[0].gambar2 ,listMovement[0].gambar]
+            } else {
+                
+            listType.selectRow(at: IndexPath(row: startingIndex, section: 0), animated: true, scrollPosition: .top)
+                typeName.text = listAngle[startingIndex].name
+                typeImage.image = listAngle[startingIndex].gambar
+                typeDescriptionTV.text = listAngle[startingIndex].description
+            }
+            
+        }
+        else if (titleSegue == "Shot Type") {
+            
+            if startingIndex == 99 {
+                
+            listType.selectRow(at: IndexPath(row: startingIndex, section: 0), animated: true, scrollPosition: .top)
+                
+                typeName.text = listShotSize[0].name
+                typeImage.image = listShotSize[0].gambar
+                typeDescriptionTV.text = listShotSize[0].description
+            
+            } else {
+                
+            listType.selectRow(at: IndexPath(row: startingIndex, section: 0), animated: true, scrollPosition: .top)
+                
+                typeName.text = listShotSize[startingIndex].name
+                typeImage.image = listShotSize[startingIndex].gambar
+                typeDescriptionTV.text = listShotSize[startingIndex].description
+                
+            }
+            
+        }
+        else if (titleSegue == "Movement Type") {
+            
+            
+            if startingIndex == 99 {
+                
+            listType.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+            
+                typeName.text = listMovement[0].name
+                typeDescriptionTV.text = listMovement[0].description
+                
+                typeImage.animationImages = [listMovement[0].gambar, listMovement[0].gambar2,
+                                             listMovement[0].gambar3, listMovement[0].gambar2 ,listMovement[0].gambar]
+            
+            } else {
+                
+            listType.selectRow(at: IndexPath(row: startingIndex, section: 0), animated: true, scrollPosition: .top)
+                
+                typeName.text = listMovement[startingIndex].name
+                typeDescriptionTV.text = listMovement[startingIndex].description
+                
+                typeImage.animationImages = [listMovement[startingIndex].gambar, listMovement[startingIndex].gambar2,
+                                             listMovement[startingIndex].gambar3, listMovement[startingIndex].gambar2 ,listMovement[startingIndex].gambar]
+            }
+            
+            
+            
             typeImage.animationDuration = 5
-            
             
             typeImage.animationRepeatCount = 0
             typeImage.startAnimating()
