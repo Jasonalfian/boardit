@@ -49,6 +49,9 @@
                         <rightBarButtonItems>
                             <barButtonItem image="play.fill" catalog="system" id="LBe-pN-ZDT">
                                 <color key="tintColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="dk8-CK-fFC" kind="presentation" modalPresentationStyle="fullScreen" id="yiM-Pr-e4U"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem id="JWq-Hl-Czk"/>
                             <barButtonItem image="line.horizontal.3.decrease.circle.fill" catalog="system" id="bnO-ey-D5F">
@@ -75,7 +78,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EK2-jD-7yi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2136.43216080402" y="-83.453237410071949"/>
+            <point key="canvasLocation" x="2032" y="47"/>
         </scene>
         <!--PresentationPage-->
         <scene sceneID="EvH-ia-ArE">
@@ -85,7 +88,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0R-8f-T5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2136.1809045226132" y="198.56115107913669"/>
+            <point key="canvasLocation" x="2032" y="329"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TDR-rz-rhM">
@@ -165,6 +168,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e0v-gg-5dg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1247" y="942"/>
+        </scene>
+        <!--PresentationPage-->
+        <scene sceneID="QEU-XY-9Ei">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PresentationPage" id="dk8-CK-fFC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kus-8C-Tly"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gve-SR-1TO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="-301"/>
         </scene>
     </scenes>
     <resources>
