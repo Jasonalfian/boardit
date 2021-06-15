@@ -102,9 +102,9 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             angleTypeSelector.setTitle(movement, for: .normal)
         }
         
-        listSubScene = coreData.getAllData(entity: SubScene.self)
+//        listSubScene = coreData.getAllData(entity: SubScene.self)
         
-        storyboardImage.image = UIImage(data: listSubScene[0].storyboard!)
+//        storyboardImage.image = UIImage(data: listSubScene[0].storyboard!)
 //
     }
     
