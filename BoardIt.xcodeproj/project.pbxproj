@@ -20,6 +20,7 @@
 		023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */; };
 		023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */; };
 		023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */; };
+		0C6413DE26790532004796EC /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6413DD26790532004796EC /* Tutorial.swift */; };
 		2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA89266A0A5A007F783E /* AppDelegate.swift */; };
 		2C87DA8C266A0A5A007F783E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */; };
 		2C87DA8E266A0A5A007F783E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DA8D266A0A5A007F783E /* ViewController.swift */; };
@@ -81,6 +82,7 @@
 		023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelPresentation.swift; sourceTree = "<group>"; };
 		023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelEdit.swift; sourceTree = "<group>"; };
 		023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProjects.swift; sourceTree = "<group>"; };
+		0C6413DD26790532004796EC /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		2C87DA86266A0A5A007F783E /* BoardIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C87DA89266A0A5A007F783E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C87DA8B266A0A5A007F783E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -373,6 +375,14 @@
 			path = DataStore;
 			sourceTree = "<group>";
 		};
+		0C6413D82678DAE1004796EC /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				0C6413DD26790532004796EC /* Tutorial.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		2C87DA7D266A0A5A007F783E = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +449,7 @@
 		2C87DAA1266A0C7D007F783E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0C6413D82678DAE1004796EC /* Tutorial */,
 				5E584992267255BE00874CE4 /* Subscene Type */,
 				2C87DAAF266A287D007F783E /* Networking */,
 				2C87DAB0266A2882007F783E /* Core Data */,
@@ -662,6 +673,7 @@
 				2C87DAB3266A3203007F783E /* ModelName.swift in Sources */,
 				5E5849A52674785E00874CE4 /* EditModalTypeController.swift in Sources */,
 				5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */,
+				0C6413DE26790532004796EC /* Tutorial.swift in Sources */,
 				2C87DABC266A667C007F783E /* ExampleTableViewCell.swift in Sources */,
 				023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */,
 				EB169FAF2674A496005918DC /* MyCollectionViewCell.swift in Sources */,
