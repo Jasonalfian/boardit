@@ -7,8 +7,12 @@
 
 import UIKit
 
-class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
    
+    var aspectRatio = 0
+    var coreData = CoreDataManager()
+    var listProject:[Project] = []
+    
     @IBOutlet var table: UITableView!
 //    @IBAction func sideBar(_ sender: Any) {
 //
@@ -16,25 +20,32 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        
 //    }
     
-
     var models = [Model]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        listProject = coreData.getAllData(entity: Project.self)
+//        print("jumlah data",listProject.count)
+//        for item in listProject {
+//            print(item.name,item.ratio,item.number)
+//        }
 
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
-    
-        
+
+
         models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
-       
+
         models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
-        
+
         models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
-       
+
         models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
         models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
-       
+
         models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
        
         

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastModified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="ratio" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="ratio" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
         <relationship name="projecttoscene" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Scene" inverseName="scenetoproject" inverseEntity="Scene"/>
         <uniquenessConstraints>
             <uniquenessConstraint>

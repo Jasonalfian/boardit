@@ -15,10 +15,10 @@ class NewProjectTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        Bulet.layer.cornerRadius = 9
-        Bulet.layer.borderWidth = 1
-        Bulet.layer.borderColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
+//         Initialization code
+//        Bulet.layer.cornerRadius = 9
+//        Bulet.layer.borderWidth = 1
+//        Bulet.layer.borderColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
