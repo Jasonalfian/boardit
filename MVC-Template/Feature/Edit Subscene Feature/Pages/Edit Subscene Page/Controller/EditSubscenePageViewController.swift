@@ -255,7 +255,13 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if(segue.identifier == "drawingSegue") {
             destVC?.drawing = pencilKitData
             destVC?.imagePlain = rawImage
-            destVC?.screenType = 16
+            destVC?.usedTitle = self.title!
+            
+            if subScene != nil {
+                destVC?.screenType = Int(subScene.subtoscene!.scenetoproject!.ratio)
+            } else {
+                destVC?.screenType = 16
+            }
         }
     }
     
