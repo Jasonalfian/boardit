@@ -37,6 +37,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Kalo" largeTitleDisplayMode="always" id="IHw-zV-Gy1">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="6PA-Ig-FS9"/>
                         <rightBarButtonItems>
                             <barButtonItem title="ClearCanvas" image="trash" catalog="system" id="dzW-oh-If5">
                                 <connections>
