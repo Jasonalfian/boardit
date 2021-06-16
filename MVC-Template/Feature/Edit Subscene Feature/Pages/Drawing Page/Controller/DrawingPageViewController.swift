@@ -26,6 +26,7 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     var drawing: Data? = Data()
     var imagePlain: Data? = Data()
     var screenType: Int? = 0
+    var usedTitle: String = "Drawing Page"
     
     var dataModelController: CoreDataManager!
     
@@ -35,7 +36,7 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Drawing Page"
+        self.title = usedTitle
         
         setCanvas()
         setPicker()
