@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Drawing Page View Controller-->
+        <!--Kalo-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="DrawingPageViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,24 +16,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="draw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnC-V9-suQ">
-                                <rect key="frame" x="578" y="407" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPF-MN-DFp" customClass="PKCanvasView">
+                                <rect key="frame" x="50" y="100" width="1094" height="584"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PYk-6N-evf">
+                                        <rect key="frame" x="156" y="81" width="783" height="422"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YPF-MN-DFp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="6aG-Tm-y2q"/>
+                            <constraint firstAttribute="bottom" secondItem="YPF-MN-DFp" secondAttribute="bottom" constant="150" id="JY3-Ci-ssz"/>
+                            <constraint firstItem="YPF-MN-DFp" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" constant="-50" id="jWb-x0-CBd"/>
+                            <constraint firstItem="YPF-MN-DFp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="puQ-kM-s92"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Kalo" largeTitleDisplayMode="always" id="IHw-zV-Gy1">
+                        <rightBarButtonItems>
+                            <barButtonItem title="ClearCanvas" image="trash" catalog="system" id="dzW-oh-If5">
+                                <connections>
+                                    <action selector="clearCanvasButtonTapped:" destination="Y6W-OH-hqX" id="joW-0D-Hvj"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="camera" catalog="system" id="j2P-Rw-jNK">
+                                <connections>
+                                    <action selector="captureCanvasButtonTapped:" destination="Y6W-OH-hqX" id="C6j-Md-AeZ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="photo" catalog="system" id="flp-ip-nS7">
+                                <connections>
+                                    <action selector="uploadCanvasButtonTapped:" destination="Y6W-OH-hqX" id="9eW-fz-KaP"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="botConst" destination="JY3-Ci-ssz" id="JMv-Ea-3yq"/>
+                        <outlet property="canvasView" destination="YPF-MN-DFp" id="iP4-kc-EjV"/>
+                        <outlet property="leftConst" destination="6aG-Tm-y2q" id="526-d4-q2c"/>
+                        <outlet property="rightConst" destination="jWb-x0-CBd" id="8xL-Mx-vvU"/>
+                        <outlet property="topConst" destination="puQ-kM-s92" id="hVC-Rt-MCG"/>
+                        <outlet property="uploadedImageView" destination="PYk-6N-evf" id="5gc-cT-AEj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="102"/>
+            <point key="canvasLocation" x="2942.713567839196" y="101.43884892086332"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q2Z-8C-Pf4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BY1-h9-rHo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F9A-DF-iSG">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="dH1-br-Dhg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWP-OR-J7Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2235.1758793969848" y="101.43884892086332"/>
         </scene>
     </scenes>
     <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

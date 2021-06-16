@@ -49,6 +49,7 @@ class CoreDataExample: UIViewController {
         //Fetch semua subscene dengan filter scene
         listSubScene = coreData.getAllSubScene(scene: listScene[0])
         
+        
         //Hapus scene, subscene, dan project. Hapus scene akan hapus semua subscene didalamnya. Hapua project akan hapus semua scene dan subscene di dalamnya
         coreData.removeSubScene(subScene: listSubScene[0])
         coreData.removeScene(scene: listScene[0])
