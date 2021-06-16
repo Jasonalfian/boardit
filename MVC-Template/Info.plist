@@ -40,7 +40,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>AllScenePage</string>
+					<string>Main</string>
 				</dict>
 			</array>
 		</dict>
@@ -49,6 +49,10 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>App want to access camera to take picture for storyboard</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App will only upload or save image you choose</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

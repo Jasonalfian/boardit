@@ -20,7 +20,7 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     @IBOutlet weak var botConst: NSLayoutConstraint!
     @IBOutlet weak var rightConst: NSLayoutConstraint!
     @IBOutlet weak var topConst: NSLayoutConstraint!
-    
+
     let toolPicker: PKToolPicker! = PKToolPicker()
     
     var drawing: Data? = Data()
@@ -30,6 +30,8 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     var dataModelController: CoreDataManager!
     
     var hasModifiedDrawing = false
+    
+    var thumbnailImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,20 +94,18 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        
-        UIGraphicsBeginImageContextWithOptions(canvasView.bounds.size, false, UIScreen.main.scale)
-        
-        canvasView.drawHierarchy(in: canvasView.bounds, afterScreenUpdates: true)
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        NotificationCenter.default.post(name: Notification.Name("updateImage"), object: passData(thumb: image, image: uploadedImageView.image ?? UIImage(), stroke: canvasView.drawing))
 
+        NotificationCenter.default.post(name: Notification.Name("updateImage"), object: passData(thumb: thumbnailImage, image: uploadedImageView.image ?? UIImage(), stroke: canvasView.drawing))
     }
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         hasModifiedDrawing = true
+    }
+    
+    @IBAction func backButton(_ sender: UIBarButtonItem) {
+        generateThumbnail()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func clearCanvasButtonTapped(_ sender: UIBarButtonItem) {
@@ -114,7 +114,10 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     }
     
     @IBAction func captureCanvasButtonTapped(_ sender: UIBarButtonItem) {
-//        setImagePicker(1)
+        setImagePicker(1)
+    }
+    
+    func generateThumbnail() {
         UIGraphicsBeginImageContextWithOptions(canvasView.bounds.size, false, UIScreen.main.scale)
         
         canvasView.drawHierarchy(in: canvasView.bounds, afterScreenUpdates: true)
@@ -123,11 +126,7 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
         UIGraphicsEndImageContext()
         
         if image != nil {
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAsset(from: image!)
-            }, completionHandler: { success, error in
-//                DEAL WITH SUCCESS OR ERROR
-            })
+            thumbnailImage = image
         }
     }
     

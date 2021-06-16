@@ -37,6 +37,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Kalo" largeTitleDisplayMode="always" id="IHw-zV-Gy1">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="x3R-TQ-yXh">
+                            <connections>
+                                <action selector="backButton:" destination="Y6W-OH-hqX" id="hc1-lm-OXc"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="ClearCanvas" image="trash" catalog="system" id="dzW-oh-If5">
                                 <connections>
@@ -62,11 +67,22 @@
                         <outlet property="rightConst" destination="jWb-x0-CBd" id="8xL-Mx-vvU"/>
                         <outlet property="topConst" destination="puQ-kM-s92" id="hVC-Rt-MCG"/>
                         <outlet property="uploadedImageView" destination="PYk-6N-evf" id="5gc-cT-AEj"/>
+                        <segue destination="kAS-HT-Afg" kind="show" identifier="backEditSegue" id="cpk-Kj-zcS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2942.713567839196" y="101.43884892086332"/>
+        </scene>
+        <!--EditSubcenePage-->
+        <scene sceneID="7qA-4h-06V">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditSubcenePage" id="kAS-HT-Afg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TfB-he-C0S"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rvx-2t-hyR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3393" y="77"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q2Z-8C-Pf4">
@@ -89,6 +105,7 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
