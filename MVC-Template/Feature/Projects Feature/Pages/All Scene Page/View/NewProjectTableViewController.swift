@@ -9,9 +9,32 @@ import UIKit
 
 class NewProjectTableViewController: UITableViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let button = UIButton(type: UIButton.ButtonType.system) as UIButton
+//        button.frame.size.height = 100
+//        button.backgroundColor = UIColor.blue
+//        button.setTitle("Add Project", for: UIControl.State.normal)
+//        button.addTarget(self, action: Selector(("tapped")), for: .touchUpInside)
+//
+//        self.tableView.tableFooterView = button
+//        //set constrains
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        if #available(iOS 11.0, *) {
+//             button.rightAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
+//             button.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+//        } else {
+//             button.rightAnchor.constraint(equalTo: tableView.layoutMarginsGuide.rightAnchor, constant: 0).isActive = true
+//             button.bottomAnchor.constraint(equalTo: tableView.layoutMarginsGuide.bottomAnchor, constant: -10).isActive = true
+//        }
+        
 
+        
+        
+
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

@@ -20,6 +20,9 @@
 		023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */; };
 		023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */; };
 		023BAAA5266FDC1000B3BB09 /* DataModelProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */; };
+		0692288A2679BB3500464037 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069228872679BB3500464037 /* ProjectViewController.swift */; };
+		0692288B2679BB3500464037 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069228882679BB3500464037 /* NewProjectViewController.swift */; };
+		0692288C2679BB3500464037 /* AllSceneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069228892679BB3500464037 /* AllSceneCollectionViewCell.swift */; };
 		295B2D1F26784ED700C05322 /* coreDataExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B2D1E26784ED700C05322 /* coreDataExample.swift */; };
 		29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */; };
 		29DF7DC02677AB0B0068C330 /* NewProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */; };
@@ -83,6 +86,9 @@
 		023BAAA0266FDBF000B3BB09 /* DataModelPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelPresentation.swift; sourceTree = "<group>"; };
 		023BAAA2266FDBFF00B3BB09 /* DataModelEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelEdit.swift; sourceTree = "<group>"; };
 		023BAAA4266FDC1000B3BB09 /* DataModelProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelProjects.swift; sourceTree = "<group>"; };
+		069228872679BB3500464037 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		069228882679BB3500464037 /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
+		069228892679BB3500464037 /* AllSceneCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSceneCollectionViewCell.swift; sourceTree = "<group>"; };
 		19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.debug.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.debug.xcconfig"; sourceTree = "<group>"; };
 		295B2D1E26784ED700C05322 /* coreDataExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coreDataExample.swift; sourceTree = "<group>"; };
 		29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 		023BAA74266F4F6400B3BB09 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				069228892679BB3500464037 /* AllSceneCollectionViewCell.swift */,
+				069228882679BB3500464037 /* NewProjectViewController.swift */,
+				069228872679BB3500464037 /* ProjectViewController.swift */,
 				023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */,
 			);
 			path = Controller;
@@ -733,6 +742,7 @@
 				2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */,
 				29DF7DD32677AD880068C330 /* ShotSize.swift in Sources */,
 				023BAA6B266F4EAD00B3BB09 /* DrawingPageViewController.swift in Sources */,
+				0692288C2679BB3500464037 /* AllSceneCollectionViewCell.swift in Sources */,
 				2C87DAB3266A3203007F783E /* ModelName.swift in Sources */,
 				5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */,
 				2C87DABC266A667C007F783E /* ExampleTableViewCell.swift in Sources */,
@@ -748,7 +758,9 @@
 				2C87DADC266A7233007F783E /* ReusableFunctionsOne.swift in Sources */,
 				2C87DA8A266A0A5A007F783E /* AppDelegate.swift in Sources */,
 				023BAA7F266F507300B3BB09 /* AllProjectPageViewController.swift in Sources */,
+				0692288B2679BB3500464037 /* NewProjectViewController.swift in Sources */,
 				5E9FB21B2678FE6F00F929A5 /* EditSaveModalViewController.swift in Sources */,
+				0692288A2679BB3500464037 /* ProjectViewController.swift in Sources */,
 				29DF7DD42677AD880068C330 /* Movement.swift in Sources */,
 				29DF7DCB2677ABBF0068C330 /* CollectionTableViewCell.swift in Sources */,
 				023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */,
