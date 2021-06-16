@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fZI-JN-Fpx">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -7,8 +7,146 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Italic.ttf">
+            <string>Poppins-Italic</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Edit Subscene Page View Controller-->
+        <!--Edit Save Modal View Controller-->
+        <scene sceneID="Gwi-N1-X1x">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="TiJ-s6-pM8" customClass="EditSaveModalViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="577-wb-RSp">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YD8-9o-PRy">
+                                <rect key="frame" x="375" y="339.5" width="444" height="155"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0wx-IX-gdm" userLabel="Warning View">
+                                        <rect key="frame" x="0.0" y="-0.5" width="444" height="155"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You haven't filled all part, keep Saving?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svH-TB-PDz">
+                                                <rect key="frame" x="32" y="27" width="381" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wer-QK-HpR">
+                                                <rect key="frame" x="32" y="64" width="20" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" image="square" catalog="system">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected" image="checkmark.square" catalog="system"/>
+                                                <connections>
+                                                    <action selector="changeCheckBox:" destination="TiJ-s6-pM8" eventType="touchUpInside" id="LDH-3G-hlc"/>
+                                                    <action selector="saveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Psm-Wo-OOk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMR-cj-W45">
+                                                <rect key="frame" x="256" y="101" width="111" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                <state key="normal" title="No">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="noButtonAction:" destination="TiJ-s6-pM8" eventType="touchUpInside" id="h7S-dw-LVJ"/>
+                                                    <action selector="saveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bbe-Tr-hcu"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't ask me again" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0Z-bc-RUY">
+                                                <rect key="frame" x="60" y="67" width="116" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S7-Gq-BZP">
+                                                <rect key="frame" x="93" y="101" width="111" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                <state key="normal" title="Yes">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wfs-R9-iJx"/>
+                                                    <action selector="yesButtonAction:" destination="TiJ-s6-pM8" eventType="touchUpInside" id="7p7-1p-X0J"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AGZ-kE-yQO">
+                                        <rect key="frame" x="85" y="13.5" width="273" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugd-Ji-WyF">
+                                                <rect key="frame" x="81" y="76" width="111" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                <state key="normal" title="Ok">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="viz-Wp-i6q"/>
+                                                    <action selector="saveOnly:" destination="TiJ-s6-pM8" eventType="touchUpInside" id="uaK-3b-55J"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your changes have been saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTz-8M-7wo">
+                                                <rect key="frame" x="3" y="23" width="267" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="155" id="KLa-Af-ReH"/>
+                                    <constraint firstAttribute="width" constant="444" id="dcZ-ND-aHn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kB7-QT-Hfe"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.39693971343387829" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YD8-9o-PRy" firstAttribute="centerY" secondItem="577-wb-RSp" secondAttribute="centerY" id="iHG-MT-v1N"/>
+                            <constraint firstItem="YD8-9o-PRy" firstAttribute="centerX" secondItem="577-wb-RSp" secondAttribute="centerX" id="k70-mY-fit"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chechBox" destination="wer-QK-HpR" id="ohn-bw-KPm"/>
+                        <outlet property="noButton" destination="wMR-cj-W45" id="0wi-wF-GD2"/>
+                        <outlet property="saveOnly" destination="Ugd-Ji-WyF" id="Jna-9Z-oCP"/>
+                        <outlet property="saveOnlyLabel" destination="TTz-8M-7wo" id="U9F-ux-b6U"/>
+                        <outlet property="saveOnlyView" destination="AGZ-kE-yQO" id="utI-yG-9Mg"/>
+                        <outlet property="viewHolder" destination="YD8-9o-PRy" id="BhA-Bg-anU"/>
+                        <outlet property="warningLabel" destination="svH-TB-PDz" id="YPi-SS-cCd"/>
+                        <outlet property="warningView" destination="0wx-IX-gdm" id="HLB-dZ-fIj"/>
+                        <outlet property="yesButton" destination="3S7-Gq-BZP" id="pAA-mn-SRu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6c-2S-tQo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809.54773869346729" y="-597.12230215827344"/>
+        </scene>
+        <!--Scene 1.1-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="EditSubscenePageViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,25 +154,315 @@
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yd-eZ-CDO">
-                                <rect key="frame" x="583" y="407" width="29" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUe-iP-6JO">
+                                <rect key="frame" x="537" y="100" width="120" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="CbW-PR-VCT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBv-94-JE1">
+                                <rect key="frame" x="325" y="268" width="52" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="2vf-ug-kvE"/>
+                                    <constraint firstAttribute="width" constant="52" id="oYm-ZS-daN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shot Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPF-Qe-AZx">
+                                <rect key="frame" x="547" y="268" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DqK-Cz-fk7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBt-hr-hA7">
+                                <rect key="frame" x="771" y="268" width="98" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="1cm-Kb-mve"/>
+                                    <constraint firstAttribute="width" constant="98" id="ydf-ib-P1W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IiQ-cB-Ij4">
+                                <rect key="frame" x="325" y="390" width="544" height="306"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IiQ-cB-Ij4" secondAttribute="height" multiplier="16:9" id="GKS-Ik-HQB"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVb-ia-sU3">
+                                <rect key="frame" x="325" y="304" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="ZFg-JN-LiC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <state key="normal" title="- Select -">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sAl-LS-bEX" kind="presentation" identifier="angleSegue" id="pLI-ke-jhV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-tL-PB1">
+                                <rect key="frame" x="507" y="299" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="qri-ID-09i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <state key="normal" title="- Select -">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sAl-LS-bEX" kind="presentation" identifier="shotSegue" id="5zw-EM-dn3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHF-Ce-HyN">
+                                <rect key="frame" x="522" y="754" width="150" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1GR-VP-HB5"/>
+                                    <constraint firstAttribute="width" constant="150" id="V5z-5p-Yuk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7R4-Xo-qz3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storyboard:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glY-zl-LRC">
+                                <rect key="frame" x="542" y="354" width="110" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="MzR-UP-ae9"/>
+                                    <constraint firstAttribute="width" constant="110" id="N2H-33-0it"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ke1-Xd-3yF">
+                                <rect key="frame" x="325" y="131" width="544" height="117"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1h-Ca-3vt">
+                                <rect key="frame" x="689" y="306" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="kY3-4Z-Hwh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <state key="normal" title="- Select -">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sAl-LS-bEX" kind="presentation" identifier="movementSegue" id="ZKg-HM-q4m"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gBt-hr-hA7" firstAttribute="top" secondItem="ke1-Xd-3yF" secondAttribute="bottom" constant="20" id="1XD-hE-gzj"/>
+                            <constraint firstItem="BVb-ia-sU3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="325" id="2DW-UW-1W4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lHF-Ce-HyN" secondAttribute="bottom" constant="20" id="3SR-5c-7Ta"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IiQ-cB-Ij4" secondAttribute="trailing" constant="325" id="4gq-hp-0Vi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gBt-hr-hA7" secondAttribute="trailing" constant="325" id="4kf-59-w97"/>
+                            <constraint firstItem="uBv-94-JE1" firstAttribute="top" secondItem="ke1-Xd-3yF" secondAttribute="bottom" constant="20" id="ADp-CV-Yvu"/>
+                            <constraint firstItem="ke1-Xd-3yF" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.14" id="Dm8-bh-CPO"/>
+                            <constraint firstItem="oPF-Qe-AZx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Gch-fd-Xz8"/>
+                            <constraint firstItem="glY-zl-LRC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="M1a-sx-6o7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n1h-Ca-3vt" secondAttribute="trailing" constant="325" id="PFM-BI-nBf"/>
+                            <constraint firstItem="IiQ-cB-Ij4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="325" id="XN0-XZ-wqm"/>
+                            <constraint firstItem="ke1-Xd-3yF" firstAttribute="top" secondItem="XUe-iP-6JO" secondAttribute="bottom" constant="10" id="XcQ-Ky-T7i"/>
+                            <constraint firstItem="ke1-Xd-3yF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="325" id="Zdu-eI-h0H"/>
+                            <constraint firstItem="n5F-tL-PB1" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="aFB-b9-BXM"/>
+                            <constraint firstItem="ke1-Xd-3yF" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="cvX-dN-xzK"/>
+                            <constraint firstItem="XUe-iP-6JO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="dfe-xe-r2d"/>
+                            <constraint firstItem="lHF-Ce-HyN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hGx-aj-8br"/>
+                            <constraint firstItem="oPF-Qe-AZx" firstAttribute="top" secondItem="ke1-Xd-3yF" secondAttribute="bottom" constant="20" id="irF-VR-d8c"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ke1-Xd-3yF" secondAttribute="trailing" constant="325" id="jgC-bd-nIb"/>
+                            <constraint firstItem="glY-zl-LRC" firstAttribute="top" secondItem="n5F-tL-PB1" secondAttribute="bottom" constant="25" id="lcz-P8-pWm"/>
+                            <constraint firstItem="uBv-94-JE1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="325" id="obF-w4-MYZ"/>
+                            <constraint firstItem="XUe-iP-6JO" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pYd-uZ-bPy"/>
+                            <constraint firstItem="IiQ-cB-Ij4" firstAttribute="top" secondItem="glY-zl-LRC" secondAttribute="bottom" constant="8" id="q9K-LS-nX4"/>
+                            <constraint firstItem="BVb-ia-sU3" firstAttribute="top" secondItem="uBv-94-JE1" secondAttribute="bottom" constant="10" id="qoW-iC-8ft"/>
+                            <constraint firstItem="n1h-Ca-3vt" firstAttribute="top" secondItem="gBt-hr-hA7" secondAttribute="bottom" constant="10" id="sdT-ac-Az3"/>
+                            <constraint firstItem="n5F-tL-PB1" firstAttribute="top" secondItem="oPF-Qe-AZx" secondAttribute="bottom" constant="10" id="u7D-ot-z9s"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Scene 1.1" id="T7q-cl-xjs">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="z5z-wu-dR2">
+                            <connections>
+                                <action selector="backButton:" destination="Y6W-OH-hqX" id="jbX-Uh-GmU"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="questionmark.circle.fill" catalog="system" id="Ovg-HP-EuL">
+                                <connections>
+                                    <action selector="reDoTutorial:" destination="Y6W-OH-hqX" id="bNS-30-kjL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="play.fill" catalog="system" id="asb-Fc-VfI">
+                                <connections>
+                                    <action selector="goToPresentationPage:" destination="Y6W-OH-hqX" id="nRu-hC-SrJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="angleTypeSelector" destination="BVb-ia-sU3" id="kmS-Of-cUc"/>
+                        <outlet property="backButton" destination="z5z-wu-dR2" id="VpR-v5-Ln0"/>
+                        <outlet property="descriptionEditor" destination="ke1-Xd-3yF" id="kLP-Kz-V5k"/>
+                        <outlet property="movementTypeSelector" destination="n1h-Ca-3vt" id="cvF-ka-pHF"/>
+                        <outlet property="playButton" destination="asb-Fc-VfI" id="blO-KZ-0Q0"/>
+                        <outlet property="redoTutorial" destination="Ovg-HP-EuL" id="Yjq-LX-fxY"/>
+                        <outlet property="saveButton" destination="lHF-Ce-HyN" id="qFK-5W-xJ6"/>
+                        <outlet property="shotSizeSelector" destination="n5F-tL-PB1" id="NWU-0Q-6Yf"/>
+                        <outlet property="storyboardImage" destination="IiQ-cB-Ij4" id="vXw-Lb-sUg"/>
                         <segue destination="yWe-e8-8bc" kind="show" identifier="drawingSegue" id="SfN-6v-426"/>
                         <segue destination="bPH-Vu-9ea" kind="show" id="2cW-15-dTh"/>
+                        <segue destination="TiJ-s6-pM8" kind="presentation" identifier="saveSegue" id="zvc-Oo-22z"/>
+                        <segue destination="TiJ-s6-pM8" kind="presentation" identifier="backSaveSegue" id="Mde-nt-4YX"/>
+                        <segue destination="TiJ-s6-pM8" kind="presentation" identifier="saveOnlySegue" id="G4f-Ks-dmY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103" y="106"/>
+            <point key="canvasLocation" x="810.0502512562814" y="105.75539568345324"/>
+        </scene>
+        <!--Edit Modal Type Controller-->
+        <scene sceneID="WuT-4F-ray">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="sAl-LS-bEX" customClass="EditModalTypeController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kgw-Px-mtI">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhT-Ui-QQB">
+                                <rect key="frame" x="260" y="189" width="674" height="456"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1ch-mN-GM9">
+                                        <rect key="frame" x="-8" y="34" width="249" height="436"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="9p6-hs-8j2" detailTextLabel="hnc-Ow-ZgT" style="IBUITableViewCellStyleValue1" id="EaY-bX-Oit">
+                                                <rect key="frame" x="0.0" y="24.5" width="249" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EaY-bX-Oit" id="lMQ-Ka-1ME">
+                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9p6-hs-8j2">
+                                                            <rect key="frame" x="16" y="12" width="33" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hnc-Ow-ZgT">
+                                                            <rect key="frame" x="189" y="12" width="44" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iat-0o-VVP">
+                                        <rect key="frame" x="0.0" y="0.0" width="674" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntQ-Xd-v0E">
+                                                <rect key="frame" x="183" y="7" width="308" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Low Angle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8q-4b-cUh">
+                                        <rect key="frame" x="335" y="67" width="243" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Italic" family="Poppins" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="angle-lowAngle" translatesAutoresizingMaskIntoConstraints="NO" id="LtX-1C-MGn">
+                                        <rect key="frame" x="335" y="106" width="243" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDP-c6-u4Q">
+                                        <rect key="frame" x="347" y="405" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="sAl-LS-bEX" eventType="touchUpInside" id="Xfe-2Y-LFv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YA-mK-qx6">
+                                        <rect key="frame" x="518" y="405" width="44" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Select"/>
+                                        <connections>
+                                            <action selector="selectButton:" destination="sAl-LS-bEX" eventType="touchUpInside" id="c3x-p1-Xow"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LPD-6Z-295">
+                                        <rect key="frame" x="287" y="267" width="340" height="117"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="456" id="2tj-Cd-gXh"/>
+                                    <constraint firstAttribute="width" constant="674" id="QdE-Cy-aMs"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kfW-vl-bMr"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JhT-Ui-QQB" firstAttribute="centerX" secondItem="kgw-Px-mtI" secondAttribute="centerX" id="fqS-O2-sF6"/>
+                            <constraint firstItem="JhT-Ui-QQB" firstAttribute="centerY" secondItem="kgw-Px-mtI" secondAttribute="centerY" id="ixl-HP-jAp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="M77-jS-n80"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="aDP-c6-u4Q" id="V4u-Fx-Yub"/>
+                        <outlet property="listType" destination="1ch-mN-GM9" id="SgG-Gq-EjK"/>
+                        <outlet property="modalTitle" destination="ntQ-Xd-v0E" id="9Lo-ly-6s6"/>
+                        <outlet property="selectButton" destination="0YA-mK-qx6" id="uPZ-7U-T5Q"/>
+                        <outlet property="titleView" destination="Iat-0o-VVP" id="BLF-sQ-PC4"/>
+                        <outlet property="typeDescriptionTV" destination="LPD-6Z-295" id="e8o-qZ-kVy"/>
+                        <outlet property="typeImage" destination="LtX-1C-MGn" id="J1A-rl-tAr"/>
+                        <outlet property="typeName" destination="A8q-4b-cUh" id="50J-ZG-uVB"/>
+                        <outlet property="typeView" destination="JhT-Ui-QQB" id="pfX-Nm-frk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ATi-Wz-hG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809.54773869346729" y="854.67625899280586"/>
         </scene>
         <!--PresentationPage-->
         <scene sceneID="dBd-Sw-zOl">
@@ -44,7 +472,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7X-sG-sdh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="-50"/>
+            <point key="canvasLocation" x="1330.1507537688442" y="-50.359712230215834"/>
         </scene>
         <!--DrawingPage-->
         <scene sceneID="T5h-IB-yi8">
@@ -54,10 +482,44 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxP-1M-Isz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="106"/>
+            <point key="canvasLocation" x="1323.1155778894472" y="105.75539568345324"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9sR-Ia-Na8">
+            <objects>
+                <navigationController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="fZI-JN-Fpx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2U4-c6-RME">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="kUp-62-ekO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5I-ma-32t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.51256281407035" y="105.75539568345324"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="pLI-ke-jhV"/>
+        <segue reference="G4f-Ks-dmY"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="angle-lowAngle" width="434" height="255"/>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

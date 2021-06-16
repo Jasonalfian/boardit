@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W2b-q4-pqg">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -7,35 +7,244 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--All Scene Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AllScenePageViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="873.5" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="allscene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Paj-R2-8Ph">
-                                <rect key="frame" x="566" y="407" width="63" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-3f-c2I">
+                                <rect key="frame" x="0.0" y="112" width="873.5" height="722"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scenes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-K2-ggS">
+                                <rect key="frame" x="23" y="50" width="800.5" height="62"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pug-K2-ggS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="23" id="EO3-o3-dIp"/>
+                            <constraint firstItem="xfW-3f-c2I" firstAttribute="top" secondItem="Pug-K2-ggS" secondAttribute="bottom" id="Y0Q-Z6-dGp"/>
+                            <constraint firstItem="xfW-3f-c2I" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ZpJ-bj-sfT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Pug-K2-ggS" secondAttribute="trailing" constant="50" id="aws-P0-P4x"/>
+                            <constraint firstAttribute="bottom" secondItem="xfW-3f-c2I" secondAttribute="bottom" id="cxJ-Yz-Dj3"/>
+                            <constraint firstItem="Pug-K2-ggS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="paf-La-Luy"/>
+                            <constraint firstItem="xfW-3f-c2I" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="q0v-LH-m1z"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7bn-4S-sqV"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="7bn-4S-sqV">
+                        <rightBarButtonItems>
+                            <barButtonItem image="play.fill" catalog="system" id="LBe-pN-ZDT">
+                                <color key="tintColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="dk8-CK-fFC" kind="presentation" modalPresentationStyle="fullScreen" id="yiM-Pr-e4U"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="JWq-Hl-Czk"/>
+                            <barButtonItem image="line.horizontal.3.decrease.circle.fill" catalog="system" id="bnO-ey-D5F">
+                                <color key="tintColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="table" destination="xfW-3f-c2I" id="zKq-HU-zoB"/>
                         <segue destination="vJf-0C-a8Z" kind="show" identifier="editSubsceneSegue" id="JCj-l6-kSI"/>
                         <segue destination="xL4-lt-sPH" kind="show" identifier="presentationSegue" id="nrT-ub-gz4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="885.42713567839201" y="92.805755395683462"/>
+            <point key="canvasLocation" x="1592.964824120603" y="92.805755395683462"/>
+        </scene>
+        <!--New Project View Controller-->
+        <scene sceneID="Niy-ch-dSX">
+            <objects>
+                <viewController id="C0l-V2-pD9" customClass="NewProjectViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96q-OB-71Q">
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="794"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="gsZ-ZK-Mhj">
+                                <rect key="frame" x="91" y="212" width="522" height="370"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9L-BB-alq">
+                                        <rect key="frame" x="37" y="29" width="120" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="New Project">
+                                                <attributes>
+                                                    <font key="NSFont" size="20" name="Poppins-SemiBold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8o1-bO-jVg">
+                                        <rect key="frame" x="37" y="308" width="448" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Create New Project">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Create New Project">
+                                                    <attributes>
+                                                        <font key="NSFont" size="14" name="Poppins-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="createNewProjectButton:" destination="C0l-V2-pD9" eventType="touchUpInside" id="AZR-ao-s1O"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BJ4-IZ-bEd">
+                                        <rect key="frame" x="37" y="113" width="448" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7H-1f-bBw">
+                                        <rect key="frame" x="37" y="167" width="138" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Aspect Ratio">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="Poppins-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9WD-41-bdu">
+                                        <rect key="frame" x="44" y="212" width="152" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="16:9">
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="Poppins-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="enamBelasButton:" destination="C0l-V2-pD9" eventType="touchUpInside" id="rAN-IB-Hmm"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Us6-RT-rz1">
+                                        <rect key="frame" x="30" y="197" width="180" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QM8-KJ-BBG">
+                                        <rect key="frame" x="397" y="212" width="70" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="1:1">
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="Poppins-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="satuButton:" destination="C0l-V2-pD9" eventType="touchUpInside" id="ZKg-s7-Fyw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKQ-T1-5Pu">
+                                        <rect key="frame" x="241" y="212" width="93" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="4:3">
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="Poppins-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="empatButton:" destination="C0l-V2-pD9" eventType="touchUpInside" id="OAd-FP-ruZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etH-AJ-Jzf">
+                                        <rect key="frame" x="37" y="79" width="107" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="New Project">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="Poppins-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dkm-ud-Rih">
+                                        <rect key="frame" x="227" y="197" width="121" height="99"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go5-Ik-yD8">
+                                        <rect key="frame" x="383" y="197" width="98" height="99"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="qvk-7M-GPQ"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2A2-GH-rge"/>
+                    </view>
+                    <connections>
+                        <outlet property="empatButton" destination="CKQ-T1-5Pu" id="h2u-Qp-Pc7"/>
+                        <outlet property="empatPressed" destination="Dkm-ud-Rih" id="HVD-yk-SQh"/>
+                        <outlet property="enamBelasButton" destination="9WD-41-bdu" id="21j-x3-H7B"/>
+                        <outlet property="enamBelasPressed" destination="Us6-RT-rz1" id="bAT-zD-uam"/>
+                        <outlet property="popUpView" destination="gsZ-ZK-Mhj" id="lgK-EM-Q4U"/>
+                        <outlet property="projectNameTextField" destination="BJ4-IZ-bEd" id="EAX-cU-Fqb"/>
+                        <outlet property="satuButton" destination="QM8-KJ-BBG" id="WiT-4G-1xt"/>
+                        <outlet property="satuPressed" destination="go5-Ik-yD8" id="uTw-sr-QZG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iHo-Ok-CeD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1919" y="1639"/>
         </scene>
         <!--EditSubcenePage-->
         <scene sceneID="9ta-bh-EmG">
@@ -45,7 +254,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EK2-jD-7yi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1429" y="-83"/>
+            <point key="canvasLocation" x="2032" y="47"/>
         </scene>
         <!--PresentationPage-->
         <scene sceneID="EvH-ia-ArE">
@@ -55,10 +264,127 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0R-8f-T5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1429" y="199"/>
+            <point key="canvasLocation" x="2032" y="329"/>
+        </scene>
+        <!--Projects-->
+        <scene sceneID="Nrq-bn-EIq">
+            <objects>
+                <viewController id="0A5-7C-KVY" customClass="ProjectViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BHq-tv-SmG">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-NG-z9d">
+                                <rect key="frame" x="100" y="112" width="320" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYg-GX-mDf">
+                                <rect key="frame" x="120" y="754" width="280" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UdJ-FV-CcN"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="+ Add Project">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name="Poppins-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="C0l-V2-pD9" kind="presentation" id="gzc-1W-7fu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QmP-93-1YP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N6S-NG-z9d" firstAttribute="trailing" secondItem="QmP-93-1YP" secondAttribute="trailing" id="BLc-K7-Szx"/>
+                            <constraint firstItem="QmP-93-1YP" firstAttribute="bottom" secondItem="IYg-GX-mDf" secondAttribute="bottom" constant="10" id="QZh-Qh-mrp"/>
+                            <constraint firstItem="IYg-GX-mDf" firstAttribute="top" secondItem="N6S-NG-z9d" secondAttribute="bottom" constant="20" id="R0t-Hy-cPd"/>
+                            <constraint firstItem="IYg-GX-mDf" firstAttribute="leading" secondItem="QmP-93-1YP" secondAttribute="leading" constant="20" id="XjD-2z-9wN"/>
+                            <constraint firstItem="N6S-NG-z9d" firstAttribute="top" secondItem="QmP-93-1YP" secondAttribute="top" id="c1K-Ys-YCP"/>
+                            <constraint firstItem="QmP-93-1YP" firstAttribute="trailing" secondItem="IYg-GX-mDf" secondAttribute="trailing" constant="20" id="cPw-sZ-nuN"/>
+                            <constraint firstItem="N6S-NG-z9d" firstAttribute="leading" secondItem="QmP-93-1YP" secondAttribute="leading" id="dUf-TF-yG7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Projects" id="RpQ-vy-PEO"/>
+                    <connections>
+                        <outlet property="addProjectButton" destination="IYg-GX-mDf" id="5Cg-hF-uCX"/>
+                        <outlet property="projectTable" destination="N6S-NG-z9d" id="kIA-h3-2QH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E26-2C-4lY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1932.6633165829146" y="941.726618705036"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TDR-rz-rhM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LF9-EH-BTW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wrr-QK-muK">
+                        <rect key="frame" x="0.0" y="0.0" width="873.5" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="DCJ-cL-8MQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mqH-tA-zNr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885.42713567839201" y="92.805755395683462"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="gIx-ST-fCp">
+            <objects>
+                <splitViewController allowDoubleColumnStyle="YES" id="W2b-q4-pqg" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="LF9-EH-BTW" kind="relationship" relationship="detailViewController" id="L5c-wU-JkO"/>
+                        <segue destination="09G-u2-Dcu" kind="relationship" relationship="masterViewController" id="p08-GQ-rxp"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Rs-lN-u1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="555" y="909"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iUg-R0-DjC">
+            <objects>
+                <navigationController id="09G-u2-Dcu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kOc-We-2VY">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="112"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="44"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0A5-7C-KVY" kind="relationship" relationship="rootViewController" id="MCj-Rd-QGD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0v-gg-5dg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1247" y="942"/>
+        </scene>
+        <!--PresentationPage-->
+        <scene sceneID="QEU-XY-9Ei">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PresentationPage" id="dk8-CK-fFC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kus-8C-Tly"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gve-SR-1TO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="-301"/>
         </scene>
     </scenes>
     <resources>
+        <image name="line.horizontal.3.decrease.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
