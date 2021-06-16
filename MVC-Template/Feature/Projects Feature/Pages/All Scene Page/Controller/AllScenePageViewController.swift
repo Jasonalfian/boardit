@@ -72,7 +72,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         
     return cell
         
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -90,7 +90,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        present(splitVC, animated: true)
 //    }
     
-    }
+    
 
 
 struct Model {

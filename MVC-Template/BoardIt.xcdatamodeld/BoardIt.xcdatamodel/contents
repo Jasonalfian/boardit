@@ -13,6 +13,9 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Save" representedClassName="Save" syncable="YES" codeGenerationType="class">
+        <attribute name="state" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Scene" representedClassName="Scene" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -25,6 +28,7 @@
         <attribute name="movement" optional="YES" attributeType="String"/>
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pencilKitData" optional="YES" attributeType="Binary"/>
+        <attribute name="rawImage" optional="YES" attributeType="Binary"/>
         <attribute name="sceneDescription" optional="YES" attributeType="String"/>
         <attribute name="shotSize" optional="YES" attributeType="String"/>
         <attribute name="storyboard" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
@@ -32,7 +36,8 @@
     </entity>
     <elements>
         <element name="Project" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Save" positionX="-45" positionY="72" width="128" height="44"/>
         <element name="Scene" positionX="-54" positionY="-9" width="128" height="89"/>
-        <element name="SubScene" positionX="-36" positionY="9" width="128" height="164"/>
+        <element name="SubScene" positionX="-36" positionY="9" width="128" height="179"/>
     </elements>
 </model>
