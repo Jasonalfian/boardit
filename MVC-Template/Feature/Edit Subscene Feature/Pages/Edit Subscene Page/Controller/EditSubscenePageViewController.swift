@@ -58,7 +58,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     var rawImage:Data!
     var pencilKitData:Data!
     
-    var subscene:SubScene!
+    var sceneNumber:Int!
     
     @objc func changeText(_ data: Notification){
         
@@ -158,15 +158,15 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         
         //Get SubScene
         listSubScene = coreData.getAllData(entity: SubScene.self)
-        
-        if (listSubScene.count != 0) {
+//
+        if (subScene == nil) {
             subScene = listSubScene[0]
         }
         
         //Move core data to local variable
         if (subScene != nil){
             
-            self.title = "SubScene \(subScene.number).\(String(describing: subScene.subtoscene!.number))"
+            self.title = "SubScene \(subScene.number).\(String(describing: sceneNumber)))"
             descriptionText = subScene.sceneDescription ?? placeHolder
             angle = subScene.angle ?? "- Select -"
             shotSize = subScene.shotSize ?? "- Select -"
@@ -207,6 +207,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if (initStoryboardImage != nil) {
             storyboardImage.image = initStoryboardImage
         }
+        
+        testBackButton.setTitle(String(sceneNumber+1), for: .normal)
         
     }
     

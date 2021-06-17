@@ -62,10 +62,10 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
             listSubScene = coreData.getAllSubScene(scene: item)
             
             for item in listSubScene{
-                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , addNew: false))
+                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , scene: item.subtoscene, addNew: false, subScene: item))
             }
             
-            model1.append(Model(addNew: true))
+            model1.append(Model(scene: item, addNew: true))
             models.append(model1)
             model1 = []
             
@@ -80,6 +80,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
         cell.navigationController = self.navigationController
+        
         
 //        // Define attributes
 //        let labelFont = UIFont(name: "Poppins-Bold", size: 18)
@@ -125,14 +126,18 @@ struct Model {
     
     let imageName: Data?
     let addNew: Bool?
+    let scene: Scene?
+    let subScene: SubScene?
     
-    init(desc: String? = nil, size: String? = nil, angle: String? = nil, movement: String? = nil, imageName: Data? = nil, addNew: Bool? = true) {
+    init(desc: String? = nil, size: String? = nil, angle: String? = nil, movement: String? = nil, imageName: Data? = nil, scene: Scene? = nil, addNew: Bool? = true, subScene: SubScene? = nil) {
         self.desc = desc
         self.size = size
         self.angle = angle
         self.movement = movement
         self.imageName = imageName
         self.addNew = addNew
+        self.scene = scene
+        self.subScene = subScene
     }
     
     
