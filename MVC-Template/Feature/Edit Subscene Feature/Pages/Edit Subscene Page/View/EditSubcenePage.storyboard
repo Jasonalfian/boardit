@@ -330,7 +330,7 @@
                         <outlet property="saveButton" destination="lHF-Ce-HyN" id="qFK-5W-xJ6"/>
                         <outlet property="shotSizeSelector" destination="n5F-tL-PB1" id="NWU-0Q-6Yf"/>
                         <outlet property="storyboardImage" destination="IiQ-cB-Ij4" id="vXw-Lb-sUg"/>
-                        <segue destination="yWe-e8-8bc" kind="show" identifier="drawingSegue" id="SfN-6v-426"/>
+                        <segue destination="yWe-e8-8bc" kind="presentation" identifier="drawingSegue" modalPresentationStyle="fullScreen" id="SfN-6v-426"/>
                         <segue destination="bPH-Vu-9ea" kind="show" id="2cW-15-dTh"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="saveSegue" id="zvc-Oo-22z"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="backSaveSegue" id="Mde-nt-4YX"/>
@@ -505,7 +505,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="pLI-ke-jhV"/>
-        <segue reference="G4f-Ks-dmY"/>
+        <segue reference="Mde-nt-4YX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="angle-lowAngle" width="434" height="255"/>

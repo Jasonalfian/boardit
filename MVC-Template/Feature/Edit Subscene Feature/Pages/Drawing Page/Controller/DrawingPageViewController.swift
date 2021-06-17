@@ -23,10 +23,10 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
 
     let toolPicker: PKToolPicker! = PKToolPicker()
     
-    var drawing: Data? = Data()
-    var imagePlain: Data? = Data()
-    var screenType: Int? = 0
-    var usedTitle: String = "Drawing Page"
+    var drawing: Data!
+    var imagePlain: Data!
+    var screenType: Int!
+    var usedTitle: String!
     
     var dataModelController: CoreDataManager!
     
@@ -37,7 +37,6 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = usedTitle
-        
         setCanvas()
         setPicker()
     }
@@ -106,7 +105,8 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     @IBAction func backButton(_ sender: UIBarButtonItem) {
         generateThumbnail()
         
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func clearCanvasButtonTapped(_ sender: UIBarButtonItem) {
