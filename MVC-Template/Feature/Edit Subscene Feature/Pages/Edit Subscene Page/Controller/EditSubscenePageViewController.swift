@@ -221,7 +221,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
 
         let newVC2 = segue.destination as? EditSaveModalViewController
         
-        let destVC = segue.destination as? DrawingPageViewController
+        let drawNavCon = segue.destination as? UINavigationController
+        let destVC = drawNavCon?.viewControllers.first as? DrawingPageViewController
         
         if (segue.identifier == "angleSegue"){
             newVC!.titleSegue = "Angle Type"
@@ -252,7 +253,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             newVC2!.anyDifference = anyDifference
         }
         
-        if(segue.identifier == "drawingSegue") {
+        if (segue.identifier == "drawingSegue") {
             destVC?.drawing = pencilKitData
             destVC?.imagePlain = rawImage
             destVC?.usedTitle = self.title!
