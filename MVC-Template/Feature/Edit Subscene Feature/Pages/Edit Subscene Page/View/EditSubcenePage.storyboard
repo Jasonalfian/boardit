@@ -340,7 +340,6 @@
                         <outlet property="storyboardImage" destination="IiQ-cB-Ij4" id="vXw-Lb-sUg"/>
                         <segue destination="yWe-e8-8bc" kind="presentation" identifier="drawingSegue" modalPresentationStyle="fullScreen" id="SfN-6v-426"/>
                         <outlet property="testBackButton" destination="uxZ-Vd-Zrl" id="w9M-3M-GDC"/>
-                        <segue destination="yWe-e8-8bc" kind="show" identifier="drawingSegue" id="SfN-6v-426"/>
                         <segue destination="bPH-Vu-9ea" kind="show" id="2cW-15-dTh"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="saveSegue" id="zvc-Oo-22z"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="backSaveSegue" id="Mde-nt-4YX"/>
