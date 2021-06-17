@@ -14,6 +14,11 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var addProjectButton: UIButton!
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        NotificationCenter.default.post(name: Notification.Name("loadFromProject"), object:listProject[indexPath.row])
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listProject.count
     }
@@ -48,6 +53,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     {
         listProject = coreData.getAllData(entity: Project.self)
         self.projectTable.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
     }
     
         
@@ -64,8 +70,9 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         addProjectButton.layer.borderWidth = 1
         addProjectButton.layer.cornerRadius = 30
         
+        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
 
-        
     }
 }

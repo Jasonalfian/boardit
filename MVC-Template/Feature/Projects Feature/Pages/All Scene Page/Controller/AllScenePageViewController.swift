@@ -30,36 +30,49 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         
         listProject = coreData.getAllData(entity: Project.self)
         print("jumlah data project",listProject.count)
-        
-        listScene = coreData.getAllProjectScene(project: listProject[0])
-        print("Jumlah data scene", listScene.count)
-
+                
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
+        
+        fetchDataLocal(project: listProject[0])
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
+        
+    }
+    
+    @objc func fetchData(data: Notification) {
+        
+        var selectedProject:Project
+        
+        selectedProject = data.object as! Project
+        fetchDataLocal(project: selectedProject)
+       
+    }
+    
+    func fetchDataLocal(project: Project) {
+        
+        listScene = coreData.getAllProjectScene(project: project)
         
         for item in listScene {
             
             listSubScene = coreData.getAllSubScene(scene: item)
             
             for item in listSubScene{
-                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: (item.storyboard ?? defaultImage.pngData())!))
+                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: (item.storyboard ?? nil)!))
             }
             
             models.append(model1)
             model1 = []
             
         }
-        
-        
-       
-        
+        table.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
     
-        cell.textLabel?.text = "      Scene \(listScene[indexPath.row].number)"
+        cell.textLabel?.text = "      Scene \(indexPath.row+1)"
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
 
