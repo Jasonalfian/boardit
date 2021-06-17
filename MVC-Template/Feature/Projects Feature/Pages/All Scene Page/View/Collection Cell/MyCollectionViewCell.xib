@@ -78,6 +78,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78V-W7-MAg">
+                        <rect key="frame" x="0.0" y="30" width="462" height="318"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <action selector="goToEditScene:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0DF-KI-25r"/>
+                        </connections>
+                    </button>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o4x-cs-F8m" userLabel="New Scene">
                         <rect key="frame" x="0.0" y="30" width="462" height="318"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -123,6 +130,7 @@
                 <outlet property="BaseHitam" destination="c3O-pv-Isp" id="ZCt-Hm-0hr"/>
                 <outlet property="BaseView" destination="hce-Kq-jVi" id="h7P-Zf-d47"/>
                 <outlet property="addNewSubscene" destination="o4x-cs-F8m" id="7qa-yJ-zSv"/>
+                <outlet property="goToEditScene" destination="78V-W7-MAg" id="UP5-HA-ByH"/>
                 <outlet property="myDesc" destination="Oel-qh-GCB" id="hjQ-jc-Tg5"/>
                 <outlet property="myImageView" destination="qgQ-xL-dsO" id="vZG-Eh-D5o"/>
                 <outlet property="myMovement" destination="9A6-Lc-TMF" id="h68-zh-dS4"/>

@@ -17,13 +17,15 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet var myShotAngle: UILabel!
     @IBOutlet var myMovement: UILabel!
     @IBOutlet weak var addNewSubscene: UIView!
+    @IBOutlet weak var goToEditScene: UIButton!
     
     var navigationController: UINavigationController?
+    var sceneNumber:Int!
     
     var hideController: Bool!
     var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
     var scene: Scene!
-    var subScene: SubScene!
+    var subScene: SubScene?
     
     var coreData = CoreDataManager()
     
@@ -60,6 +62,9 @@ class MyCollectionViewCell: UICollectionViewCell {
         if self.hideController == true {
             addNewSubscene.isHidden = false
         }
+        
+        self.scene = model.scene
+        self.subScene = model.subScene
     
     }
     
@@ -71,11 +76,27 @@ class MyCollectionViewCell: UICollectionViewCell {
             return nibView
         }
     
+    @IBAction func goToEditScene(_ sender: UIButton) {
+        let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
+        let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
+//        editPage.subScene = self.subScene
+        editPage.subScene = subScene
+        editPage.sceneNumber = sceneNumber
+        
+        if let splitView = navigationController?.parent as? UISplitViewController {
+            UIView.animate(withDuration: 0.3, animations: {
+                splitView.preferredDisplayMode = .primaryHidden
+                    }, completion: nil)
+        }
+        self.navigationController?.present(editPage, animated: true)
+    }
+    
     @IBAction func addNewSubScene(_ sender: UIButton) {
         
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
-        editPage.subScene = self.subScene
+//        editPage.subScene = self.subScene
+        editPage.sceneNumber = sceneNumber
         
         if let splitView = navigationController?.parent as? UISplitViewController {
             UIView.animate(withDuration: 0.3, animations: {

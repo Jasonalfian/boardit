@@ -63,6 +63,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         
         cell.navigationController = self.navigationController
         cell.configure(with: models[indexPath.row])
+        cell.sceneNumber = indexPath.row
         
         return cell
     }
