@@ -45,6 +45,7 @@ class CoreDataManager {
         newProject.name = name
         newProject.dateCreated = Date()
         newProject.ratio = ratio
+        newProject.lastModified = Date()
         
         if (tempProjectList.count == 0){
             

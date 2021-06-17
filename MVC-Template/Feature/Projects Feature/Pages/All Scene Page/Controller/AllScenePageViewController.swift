@@ -12,6 +12,11 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     var aspectRatio = 0
     var coreData = CoreDataManager()
     var listProject:[Project] = []
+    var listScene:[Scene] = []
+    var listSubScene:[SubScene] = []
+    var model1 = [Model]()
+    var models = [[Model]]()
+    var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
     
     @IBOutlet var table: UITableView!
 //    @IBAction func sideBar(_ sender: Any) {
@@ -20,33 +25,33 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        
 //    }
     
-    var models = [Model]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        listProject = coreData.getAllData(entity: Project.self)
-//        print("jumlah data",listProject.count)
-//        for item in listProject {
-//            print(item.name,item.ratio,item.number)
-//        }
+        listProject = coreData.getAllData(entity: Project.self)
+        print("jumlah data project",listProject.count)
+        
+        listScene = coreData.getAllProjectScene(project: listProject[0])
+        print("Jumlah data scene", listScene.count)
 
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
-
-
-        models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
-
-        models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
-
-        models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
-
-        models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
-        models.append(Model(desc: "Toni jalan ke depan rumah", size: "Medium Close Up", angle: "Ground Level", movement: "Static", imageName: "Ground Level"))
-
-        models.append(Model(desc: "Toni tersandung oleh batu", size: "Medium Close Up", angle: "Eye Level", movement: "Static", imageName: "Eye Level"))
+        
+        for item in listScene {
+            
+            listSubScene = coreData.getAllSubScene(scene: item)
+            
+            for item in listSubScene{
+                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: (item.storyboard ?? defaultImage.pngData())!))
+            }
+            
+            models.append(model1)
+            model1 = []
+            
+        }
+        
+        
        
         
     }
@@ -54,7 +59,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
     
-        cell.textLabel?.text = "      Scene 1"
+        cell.textLabel?.text = "      Scene \(listScene[indexPath.row].number)"
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
 
@@ -68,7 +73,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //
 //        cell.textLabel?.attributedText = attrString
         
-        cell.configure(with: models)
+        cell.configure(with: models[indexPath.row])
         
     return cell
         
@@ -77,7 +82,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        return listScene.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,9 +106,9 @@ struct Model {
     let angle: String
     let movement: String
     
-    let imageName: String
+    let imageName: Data
     
-    init(desc: String, size: String, angle: String, movement: String, imageName: String ) {
+    init(desc: String, size: String, angle: String, movement: String, imageName: Data) {
         self.desc = desc
         self.size = size
         self.angle = angle

@@ -40,7 +40,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         self.myShotSize.text = model.size
         self.myShotAngle.text = model.angle
         self.myMovement.text = model.movement
-        self.myImageView.image = UIImage(named: model.imageName)
+        self.myImageView.image = UIImage(data: model.imageName)
         
     }
     

@@ -10,6 +10,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var coreData = CoreDataManager()
     var listProject:[Project] = []
+    var dateFormatter = DateFormatter()
     
     @IBOutlet weak var addProjectButton: UIButton!
     
@@ -20,9 +21,15 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewProjectTableViewCell", for: indexPath) as! NewProjectTableViewCell
         
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
         let result = listProject[indexPath.row]
         cell.projectName.text = result.name
-
+        if result.lastModified == nil {
+            cell.projectDate.text = dateFormatter.string(from: result.dateCreated!)
+        } else {
+            cell.projectDate.text = dateFormatter.string(from: result.lastModified!)
+        }
         
             return cell
         }
