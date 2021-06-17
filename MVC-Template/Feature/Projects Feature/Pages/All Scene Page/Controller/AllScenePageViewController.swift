@@ -16,7 +16,8 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     var listSubScene:[SubScene] = []
     var model1 = [Model]()
     var models = [[Model]]()
-    var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
+    
+    var myCollectionView = MyCollectionViewCell()
     
     @IBOutlet var table: UITableView!
 //    @IBAction func sideBar(_ sender: Any) {
@@ -39,6 +40,8 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
         
+        myCollectionView.prepareScreen(navController: self.navigationController!)
+        
     }
     
     @objc func fetchData(data: Notification) {
@@ -59,9 +62,10 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
             listSubScene = coreData.getAllSubScene(scene: item)
             
             for item in listSubScene{
-                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: (item.storyboard ?? nil)!))
+                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , addNew: false))
             }
             
+            model1.append(Model(addNew: true))
             models.append(model1)
             model1 = []
             
@@ -75,7 +79,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         cell.textLabel?.text = "      Scene \(indexPath.row+1)"
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
-
+        cell.navigationController = self.navigationController
         
 //        // Define attributes
 //        let labelFont = UIFont(name: "Poppins-Bold", size: 18)
@@ -114,19 +118,21 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 
 
 struct Model {
-    let desc: String
-    let size: String
-    let angle: String
-    let movement: String
+    let desc: String?
+    let size: String?
+    let angle: String?
+    let movement: String?
     
-    let imageName: Data
+    let imageName: Data?
+    let addNew: Bool?
     
-    init(desc: String, size: String, angle: String, movement: String, imageName: Data) {
+    init(desc: String? = nil, size: String? = nil, angle: String? = nil, movement: String? = nil, imageName: Data? = nil, addNew: Bool? = true) {
         self.desc = desc
         self.size = size
         self.angle = angle
         self.movement = movement
         self.imageName = imageName
+        self.addNew = addNew
     }
     
     

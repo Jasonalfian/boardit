@@ -16,6 +16,16 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var BaseHitam: UIView!
     @IBOutlet var myShotAngle: UILabel!
     @IBOutlet var myMovement: UILabel!
+    @IBOutlet weak var addNewSubscene: UIView!
+    
+    var navigationController: UINavigationController?
+    
+    var hideController: Bool!
+    var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
+    var scene: Scene!
+    var subScene: SubScene!
+    
+    var coreData = CoreDataManager()
     
     static let identifier = "MyCollectionViewCell"
     
@@ -29,9 +39,13 @@ class MyCollectionViewCell: UICollectionViewCell {
         
 //        BaseView.layer.borderWidth = 1
 //        BaseView.layer.borderColor = #colorLiteral(red: 0.1930259168, green: 0.1930313706, blue: 0.19302845, alpha: 1)
+        
         BaseView.layer.cornerRadius = 30
         BaseHitam.layer.cornerRadius = 30
         BaseHitam.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
+        addNewSubscene.isHidden = true
+        addNewSubscene.layer.cornerRadius = 30
         
     }
 
@@ -40,7 +54,37 @@ class MyCollectionViewCell: UICollectionViewCell {
         self.myShotSize.text = model.size
         self.myShotAngle.text = model.angle
         self.myMovement.text = model.movement
-        self.myImageView.image = UIImage(data: model.imageName)
+        self.myImageView.image = UIImage(data: ((model.imageName ?? defaultImage.pngData())!))
+        self.hideController = model.addNew
+        
+        if self.hideController == true {
+            addNewSubscene.isHidden = false
+        }
+    
+    }
+    
+    func prepareScreen(navController: UINavigationController)-> UIView {
+
+            navigationController = navController
+        let nibView = Bundle.main.loadNibNamed("MyCollectionViewCell", owner: self, options: nil)?[0] as! UIView
+            self.addSubview(nibView)
+            return nibView
+        }
+    
+    @IBAction func addNewSubScene(_ sender: UIButton) {
+        
+        let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
+        let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
+        editPage.subScene = self.subScene
+        
+        if let splitView = navigationController?.parent as? UISplitViewController {
+            UIView.animate(withDuration: 0.3, animations: {
+                splitView.preferredDisplayMode = .primaryHidden
+                    }, completion: nil)
+        }
+        self.navigationController?.present(editPage, animated: true)
+//        pushViewController(editPage, animated: true)
+//        (editPage, animated: true)
         
     }
     

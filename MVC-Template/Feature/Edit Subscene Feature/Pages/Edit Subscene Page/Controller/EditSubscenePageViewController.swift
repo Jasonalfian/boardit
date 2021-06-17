@@ -35,6 +35,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var shotSizeSelector: UIButton!
     @IBOutlet weak var movementTypeSelector: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var testBackButton: UIButton!
     
     //subscene placeholder
     var subScene:SubScene!
@@ -56,6 +57,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     var initStoryboardImage:UIImage!
     var rawImage:Data!
     var pencilKitData:Data!
+    
+    var subscene:SubScene!
     
     @objc func changeText(_ data: Notification){
         
@@ -435,6 +438,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         } else {
             print("Back button success")
         }
+    }
+    
+    @IBAction func testBackButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func reDoTutorial(_ sender: UIBarButtonItem) {
