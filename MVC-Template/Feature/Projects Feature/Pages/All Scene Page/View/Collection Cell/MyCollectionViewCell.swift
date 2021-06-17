@@ -79,6 +79,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBAction func goToEditScene(_ sender: UIButton) {
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
+
 //        editPage.subScene = self.subScene
         editPage.subScene = subScene
         editPage.sceneNumber = sceneNumber
@@ -88,13 +89,16 @@ class MyCollectionViewCell: UICollectionViewCell {
                 splitView.preferredDisplayMode = .primaryHidden
                     }, completion: nil)
         }
-        self.navigationController?.present(editPage, animated: true)
+
+        self.navigationController?.pushViewController(editPage, animated: true)
     }
     
     @IBAction func addNewSubScene(_ sender: UIButton) {
         
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
+        let navController = UINavigationController(rootViewController: editPage)
+        window?.rootViewController = navController
 //        editPage.subScene = self.subScene
         editPage.sceneNumber = sceneNumber
         
@@ -103,10 +107,9 @@ class MyCollectionViewCell: UICollectionViewCell {
                 splitView.preferredDisplayMode = .primaryHidden
                     }, completion: nil)
         }
-        self.navigationController?.present(editPage, animated: true)
-//        pushViewController(editPage, animated: true)
-//        (editPage, animated: true)
         
+        self.navigationController?.present(navController, animated: true)
+        self.navigationController?.pushViewController(editPage, animated: true)
     }
     
 }

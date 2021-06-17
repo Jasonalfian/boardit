@@ -60,6 +60,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     var sceneNumber:Int!
     
+    var isFirst = true
+    
     @objc func changeText(_ data: Notification){
         
         let arrayData = data.object as! [String]
@@ -99,9 +101,12 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         
         let arrayData = data.object as! passData
         
-        storyboardImage.image = arrayData.thumbnail
+        initStoryboardImage = arrayData.thumbnail
         pencilKitData = arrayData.drawStroke.dataRepresentation()
         rawImage = arrayData.imagePlain.pngData()
+        
+        storyboardImage.image = initStoryboardImage
+        isFirst = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,14 +177,18 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             shotSize = subScene.shotSize ?? "- Select -"
             movement = subScene.movement ?? "- Select -"
             
-            pencilKitData = subScene.pencilKitData ?? Data()
-            rawImage = subScene.rawImage ?? UIImage().pngData()
-            
-            if (subScene.storyboard != nil){
-                initStoryboardImage = UIImage(data: subScene.storyboard!)
-            } else {
-                initStoryboardImage = nil
+//            Ga dijalanin pas masuk halaman edit subcene dari drawing page
+            if isFirst == true {
+                pencilKitData = subScene.pencilKitData ?? Data()
+                rawImage = subScene.rawImage ?? UIImage().pngData()
+                
+                if (subScene.storyboard != nil){
+                    initStoryboardImage = UIImage(data: subScene.storyboard!)
+                } else {
+                    initStoryboardImage = nil
+                }
             }
+
         } else {
             
             self.title = "Test Edit Subscene"
@@ -267,6 +276,12 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
                 destVC?.screenType = Int(subScene.subtoscene!.scenetoproject!.ratio)
             } else {
                 destVC?.screenType = 16
+            }
+            
+            if initStoryboardImage != nil {
+                destVC?.imagePlain = initStoryboardImage.pngData()
+            } else {
+                
             }
         }
     }
@@ -405,7 +420,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
            
-        }
+    }
     
     @IBAction func goToPresentationPage(_ sender: UIBarButtonItem) {
         
@@ -444,7 +459,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func testBackButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func reDoTutorial(_ sender: UIBarButtonItem) {

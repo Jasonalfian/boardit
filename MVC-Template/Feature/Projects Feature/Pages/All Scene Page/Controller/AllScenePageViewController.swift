@@ -36,12 +36,16 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         table.delegate = self
         table.dataSource = self
         
+//        coreData.createScene(project: listProject[0])
+        listScene = coreData.getAllProjectScene(project: listProject[0])
+        
+//        coreData.createSubScene(scene: listScene[0], description: "Ayam Bakar 2", angle: "Eye Level", shotSize: "Long Shot", movement: "Push In", storyboard: UIImage().pngData())
+        
         fetchDataLocal(project: listProject[0])
         
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
         
         myCollectionView.prepareScreen(navController: self.navigationController!)
-        
     }
     
     @objc func fetchData(data: Notification) {
