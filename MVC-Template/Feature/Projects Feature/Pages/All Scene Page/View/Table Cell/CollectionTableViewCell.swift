@@ -9,7 +9,8 @@ import UIKit
 
 class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-
+    var navigationController: UINavigationController?
+    
     static let identifier = "CollectionTableViewCell"
     
     static func nib() -> UINib {
@@ -60,6 +61,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as!  MyCollectionViewCell
         
+        cell.navigationController = self.navigationController
         cell.configure(with: models[indexPath.row])
         
         return cell

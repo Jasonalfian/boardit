@@ -121,7 +121,7 @@ class CoreDataManager {
             let request:NSFetchRequest<T> = NSFetchRequest<T>(entityName: entityName)
             
             if (entityName == "Project") {
-                request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending: true)]
+                request.sortDescriptors = [NSSortDescriptor(key:"lastModified",ascending: false)]
             }
             
             data = try context.fetch(request)
@@ -175,7 +175,7 @@ class CoreDataManager {
     }
     
     //Update Data
-    func updateProject(project: Project!, name:String?, modifiedDate:Date? ) {
+    func updateProject(project: Project!, name:String? = nil, modifiedDate:Date? = nil ) {
         
         project.name = name ?? project.name
         project.lastModified = modifiedDate ?? project.lastModified

@@ -16,7 +16,8 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     var listSubScene:[SubScene] = []
     var model1 = [Model]()
     var models = [[Model]]()
-    var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
+    
+    var myCollectionView = MyCollectionViewCell()
     
     @IBOutlet var table: UITableView!
 //    @IBAction func sideBar(_ sender: Any) {
@@ -30,39 +31,55 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         
         listProject = coreData.getAllData(entity: Project.self)
         print("jumlah data project",listProject.count)
-        
-        listScene = coreData.getAllProjectScene(project: listProject[0])
-        print("Jumlah data scene", listScene.count)
-
+                
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
+        
+        fetchDataLocal(project: listProject[0])
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
+        
+        myCollectionView.prepareScreen(navController: self.navigationController!)
+        
+    }
+    
+    @objc func fetchData(data: Notification) {
+        
+        var selectedProject:Project
+        
+        selectedProject = data.object as! Project
+        fetchDataLocal(project: selectedProject)
+       
+    }
+    
+    func fetchDataLocal(project: Project) {
+        
+        listScene = coreData.getAllProjectScene(project: project)
         
         for item in listScene {
             
             listSubScene = coreData.getAllSubScene(scene: item)
             
             for item in listSubScene{
-                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: (item.storyboard ?? defaultImage.pngData())!))
+                model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , addNew: false))
             }
             
+            model1.append(Model(addNew: true))
             models.append(model1)
             model1 = []
             
         }
-        
-        
-       
-        
+        table.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
     
-        cell.textLabel?.text = "      Scene \(listScene[indexPath.row].number)"
+        cell.textLabel?.text = "      Scene \(indexPath.row+1)"
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
-
+        cell.navigationController = self.navigationController
         
 //        // Define attributes
 //        let labelFont = UIFont(name: "Poppins-Bold", size: 18)
@@ -101,19 +118,21 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 
 
 struct Model {
-    let desc: String
-    let size: String
-    let angle: String
-    let movement: String
+    let desc: String?
+    let size: String?
+    let angle: String?
+    let movement: String?
     
-    let imageName: Data
+    let imageName: Data?
+    let addNew: Bool?
     
-    init(desc: String, size: String, angle: String, movement: String, imageName: Data) {
+    init(desc: String? = nil, size: String? = nil, angle: String? = nil, movement: String? = nil, imageName: Data? = nil, addNew: Bool? = true) {
         self.desc = desc
         self.size = size
         self.angle = angle
         self.movement = movement
         self.imageName = imageName
+        self.addNew = addNew
     }
     
     
