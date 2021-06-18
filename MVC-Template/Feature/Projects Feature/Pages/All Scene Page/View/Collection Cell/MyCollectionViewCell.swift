@@ -97,8 +97,8 @@ class MyCollectionViewCell: UICollectionViewCell {
         
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
-        let navController = UINavigationController(rootViewController: editPage)
-        window?.rootViewController = navController
+//        let navController = UINavigationController(rootViewController: editPage)
+//        window?.rootViewController = navController
 //        editPage.subScene = self.subScene
         editPage.sceneNumber = sceneNumber
         
@@ -108,7 +108,7 @@ class MyCollectionViewCell: UICollectionViewCell {
                     }, completion: nil)
         }
         
-        self.navigationController?.present(navController, animated: true)
+//        self.navigationController?.present(navController, animated: true)
         self.navigationController?.pushViewController(editPage, animated: true)
     }
     
