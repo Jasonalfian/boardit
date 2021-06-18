@@ -57,6 +57,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     var rawImage:Data!
     var pencilKitData:Data!
     
+    var sceneNumber:Int!
+    
+    var isFirst = true
+    
     @objc func changeText(_ data: Notification){
         
         let arrayData = data.object as! [String]
@@ -96,14 +100,32 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         
         let arrayData = data.object as! passData
         
-        storyboardImage.image = arrayData.thumbnail
+        initStoryboardImage = arrayData.thumbnail
         pencilKitData = arrayData.drawStroke.dataRepresentation()
         rawImage = arrayData.imagePlain.pngData()
+        
+        storyboardImage.image = arrayData.thumbnail
+        descriptionEditor.text = arrayData.descriptionText
+        angleTypeSelector.setTitle(arrayData.angleSelected, for: .normal)
+        shotSizeSelector.setTitle(arrayData.shotSizeSelected, for: .normal)
+        movementTypeSelector.setTitle(arrayData.movementTypeSelected, for: .normal)
+        
+        isFirst = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    @objc func backMainPage() {
+        print("masuk close")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func resetSaveTrigger() {
+        resetInitValue()
+        haveSaved = true
+    }
+    
+    override func viewDidLoad() {
         
-        super.viewWillAppear(true)
+        super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeText), name: Notification.Name("refresh"), object: nil)
         
@@ -112,6 +134,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(changeImagePencil), name: Notification.Name("updateImage"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(saveSubScene), name: Notification.Name("saveSubScene"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(backMainPage), name: Notification.Name("backMainPage"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetSaveTrigger), name: Notification.Name("resetSaveTrigger"), object: nil)
         
         initalSetup()
         // Do any additional setup after loading the view.
@@ -155,28 +181,32 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         
         //Get SubScene
         listSubScene = coreData.getAllData(entity: SubScene.self)
-        
-        if (listSubScene.count != 0) {
+//
+        if (subScene == nil) {
             subScene = listSubScene[0]
         }
         
         //Move core data to local variable
         if (subScene != nil){
             
-            self.title = "SubScene \(subScene.number).\(String(describing: subScene.subtoscene!.number))"
-            descriptionText = subScene.sceneDescription ?? placeHolder
-            angle = subScene.angle ?? "- Select -"
-            shotSize = subScene.shotSize ?? "- Select -"
-            movement = subScene.movement ?? "- Select -"
+            self.title = "SubScene \(String(describing: subScene.subtoscene!.number)).\(String(describing: sceneNumber! + 1))"
             
-            pencilKitData = subScene.pencilKitData ?? Data()
-            rawImage = subScene.rawImage ?? UIImage().pngData()
-            
-            if (subScene.storyboard != nil){
-                initStoryboardImage = UIImage(data: subScene.storyboard!)
-            } else {
-                initStoryboardImage = nil
+//            Ga dijalanin pas masuk halaman edit subcene dari drawing page
+            if isFirst == true {
+                descriptionText = subScene.sceneDescription ?? placeHolder
+                angle = subScene.angle ?? "- Select -"
+                shotSize = subScene.shotSize ?? "- Select -"
+                movement = subScene.movement ?? "- Select -"
+                pencilKitData = subScene.pencilKitData ?? Data()
+                rawImage = subScene.rawImage ?? UIImage().pngData()
+                
+                if (subScene.storyboard != nil){
+                    initStoryboardImage = UIImage(data: subScene.storyboard!)
+                } else {
+                    initStoryboardImage = nil
+                }
             }
+
         } else {
             
             self.title = "Test Edit Subscene"
@@ -221,7 +251,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
 
         let newVC2 = segue.destination as? EditSaveModalViewController
         
-        let destVC = segue.destination as? DrawingPageViewController
+        let drawNavCon = segue.destination as? UINavigationController
+        let destVC = drawNavCon?.viewControllers.first as? DrawingPageViewController
         
         if (segue.identifier == "angleSegue"){
             newVC!.titleSegue = "Angle Type"
@@ -252,7 +283,13 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             newVC2!.anyDifference = anyDifference
         }
         
-        if(segue.identifier == "drawingSegue") {
+        if (segue.identifier == "drawingSegue") {
+            
+            destVC?.descriptionEditorText = descriptionEditor.text
+            destVC?.angleSelected = angleTypeSelector.title(for: .normal)
+            destVC?.shotSizeSelected = shotSizeSelector.title(for: .normal)
+            destVC?.movementSelected = movementTypeSelector.title(for: .normal)
+            
             destVC?.drawing = pencilKitData
             destVC?.imagePlain = rawImage
             destVC?.usedTitle = self.title!
@@ -261,6 +298,12 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
                 destVC?.screenType = Int(subScene.subtoscene!.scenetoproject!.ratio)
             } else {
                 destVC?.screenType = 16
+            }
+            
+            if initStoryboardImage != nil {
+                destVC?.imagePlain = initStoryboardImage.pngData()
+            } else {
+                
             }
         }
     }
@@ -399,7 +442,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
            
-        }
+    }
     
     @IBAction func goToPresentationPage(_ sender: UIBarButtonItem) {
         
@@ -430,12 +473,20 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func backButton(_ sender: UIBarButtonItem) {
         
-        if (listSave[1].state == true && checkBackTrigger()){
-        performSegue(withIdentifier: "backSaveSegue", sender: nil)
+        if (haveSaved == false){
+            if(checkBackTrigger() == false){
+                backMainPage()
+            } else {
+                performSegue(withIdentifier: "backSaveSegue", sender: nil)
+            }
         } else {
             print("Back button success")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: subScene.subtoscene?.scenetoproject)
+            self.navigationController?.popViewController(animated: true)
         }
     }
+    
+
     
     @IBAction func reDoTutorial(_ sender: UIBarButtonItem) {
         

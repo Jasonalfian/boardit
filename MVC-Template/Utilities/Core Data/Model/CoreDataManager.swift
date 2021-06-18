@@ -45,6 +45,7 @@ class CoreDataManager {
         newProject.name = name
         newProject.dateCreated = Date()
         newProject.ratio = ratio
+        newProject.lastModified = Date()
         
         if (tempProjectList.count == 0){
             
@@ -120,7 +121,7 @@ class CoreDataManager {
             let request:NSFetchRequest<T> = NSFetchRequest<T>(entityName: entityName)
             
             if (entityName == "Project") {
-                request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending: true)]
+                request.sortDescriptors = [NSSortDescriptor(key:"lastModified",ascending: false)]
             }
             
             data = try context.fetch(request)
@@ -140,7 +141,7 @@ class CoreDataManager {
         do {
             let request = Scene.fetchRequest() as NSFetchRequest<Scene>
             
-            request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending: true)]
+            request.sortDescriptors = [NSSortDescriptor(key:"number",ascending: true)]
             let pred = NSPredicate(format:"scenetoproject == %@", project as Project)
             request.predicate = pred
             
@@ -174,7 +175,7 @@ class CoreDataManager {
     }
     
     //Update Data
-    func updateProject(project: Project!, name:String?, modifiedDate:Date? ) {
+    func updateProject(project: Project!, name:String? = nil, modifiedDate:Date? = nil ) {
         
         project.name = name ?? project.name
         project.lastModified = modifiedDate ?? project.lastModified

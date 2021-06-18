@@ -10,8 +10,14 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var coreData = CoreDataManager()
     var listProject:[Project] = []
+    var dateFormatter = DateFormatter()
     
     @IBOutlet weak var addProjectButton: UIButton!
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        NotificationCenter.default.post(name: Notification.Name("loadFromProject"), object:listProject[indexPath.row])
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listProject.count
@@ -20,9 +26,15 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewProjectTableViewCell", for: indexPath) as! NewProjectTableViewCell
         
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
         let result = listProject[indexPath.row]
         cell.projectName.text = result.name
-
+        if result.lastModified == nil {
+            cell.projectDate.text = dateFormatter.string(from: result.dateCreated!)
+        } else {
+            cell.projectDate.text = dateFormatter.string(from: result.lastModified!)
+        }
         
             return cell
         }
@@ -40,13 +52,24 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func loadList(notification: NSNotification)
     {
         listProject = coreData.getAllData(entity: Project.self)
+        
         self.projectTable.reloadData()
+        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
+        
     }
     
         
     override func viewDidLoad() {
         super.viewDidLoad()
         listProject = coreData.getAllData(entity: Project.self)
+        
+        if (listProject.count == 0){
+            coreData.createProject(name: "First Project", ratio: 16)
+            listProject = coreData.getAllData(entity: Project.self)
+            
+            coreData.createScene(project: listProject[0])
+        }
         
 //        self.projectTable.register(UINib(nibName: "NewProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         let nib = UINib(nibName: "NewProjectTableViewCell", bundle: nil)
@@ -57,8 +80,9 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         addProjectButton.layer.borderWidth = 1
         addProjectButton.layer.cornerRadius = 30
         
+        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
 
-        
     }
 }
