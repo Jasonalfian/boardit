@@ -43,14 +43,15 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         
         fetchDataLocal(project: listProject[0])
         
-        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name("loadFromProject"), object: nil)
         
         myCollectionView.prepareScreen(navController: self.navigationController!)
     }
     
-    @objc func fetchData(data: Notification) {
+    @objc func fetchData(_ data: Notification) {
         
         var selectedProject:Project
+        print(data.object)
         
         selectedProject = data.object as! Project
         fetchDataLocal(project: selectedProject)

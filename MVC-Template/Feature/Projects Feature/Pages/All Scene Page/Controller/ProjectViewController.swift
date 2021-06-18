@@ -53,7 +53,9 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     {
         listProject = coreData.getAllData(entity: Project.self)
         self.projectTable.reloadData()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
+        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        
     }
     
         

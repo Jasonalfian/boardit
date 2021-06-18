@@ -58,12 +58,14 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
             empatPressed.layer.borderWidth = 0
             aspectRatio = 0
             
-            //listProject = coreData.getAllData(entity: Project.self)
+            listProject = coreData.getAllData(entity: Project.self)
 //            self.performSegue(withIdentifier: "unwind", sender: self)
             
 //            vc.projectTable.reloadData()
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name("loadFromProject"), object: listProject[0])
+            
+            NotificationCenter.default.post(name: NSNotification.Name("load"), object: listProject[0])
             
             if((self.presentingViewController) != nil){
                 self.dismiss(animated: true, completion: nil)
