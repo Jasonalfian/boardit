@@ -29,6 +29,8 @@ class EditSaveModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        warningView.layer.cornerRadius = 15
+        
         yesButton.layer.cornerRadius = 15
         yesButton.layer.borderWidth = 1
         
@@ -62,7 +64,7 @@ class EditSaveModalViewController: UIViewController {
                     self.warningView.isHidden = true
                     
                 if (self.haveSavedSegue == true || anyDifference == false){
-                        self.saveOnlyLabel.text = "No Changes have been made"
+                        self.saveOnlyLabel.text = "Your changes have been saved"
                     } else {
                         self.saveOnlyLabel.text = "Your changes have been saved"
                     
@@ -77,11 +79,18 @@ class EditSaveModalViewController: UIViewController {
             coreData.changeSaveState(saving: segueSave)
             NotificationCenter.default.post(name: Notification.Name("refreshSave"), object:nil)
         }
-        self.dismiss(animated: true, completion: nil)
         
+        if (segueSender == "saveButton" ){
         NotificationCenter.default.post(name: Notification.Name("saveSubScene"), object:nil)
-        print("yes selected")
+            NotificationCenter.default.post(name: Notification.Name("resetSaveTrigger"), object:nil)
+        print("Saved with some empty attribute"
+        )}
         
+        self.dismiss(animated: true, completion: nil)
+        if (segueSender == "backButton"){
+            NotificationCenter.default.post(name: Notification.Name("backMainPage"), object:nil)
+            print("Exit without saving")
+        }
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {

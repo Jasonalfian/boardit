@@ -52,9 +52,10 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func loadList(notification: NSNotification)
     {
         listProject = coreData.getAllData(entity: Project.self)
+        
         self.projectTable.reloadData()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
         self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
         
     }
     
@@ -62,6 +63,13 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         listProject = coreData.getAllData(entity: Project.self)
+        
+        if (listProject.count == 0){
+            coreData.createProject(name: "First Project", ratio: 16)
+            listProject = coreData.getAllData(entity: Project.self)
+            
+            coreData.createScene(project: listProject[0])
+        }
         
 //        self.projectTable.register(UINib(nibName: "NewProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         let nib = UINib(nibName: "NewProjectTableViewCell", bundle: nil)

@@ -18,24 +18,41 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AllScenePageViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="873.5" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="873" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-3f-c2I">
-                                <rect key="frame" x="0.0" y="101.5" width="873.5" height="732.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scenes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-K2-ggS">
-                                <rect key="frame" x="23" y="50" width="800.5" height="51.5"/>
+                                <rect key="frame" x="23" y="50" width="800.5" height="62"/>
                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-3f-c2I">
+                                <rect key="frame" x="0.0" y="112" width="873.5" height="722"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKY-US-mk7">
+                                <rect key="frame" x="20" y="754" width="280" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WPq-J2-zJV"/>
+                                    <constraint firstAttribute="width" constant="280" id="jNV-VP-5Ww"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewScene:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KkS-Wd-80S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="tKY-US-mk7" secondAttribute="bottom" constant="30" id="6Jq-uC-0KR"/>
                             <constraint firstItem="Pug-K2-ggS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="23" id="EO3-o3-dIp"/>
+                            <constraint firstItem="tKY-US-mk7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="VJy-Wl-xAR"/>
                             <constraint firstItem="xfW-3f-c2I" firstAttribute="top" secondItem="Pug-K2-ggS" secondAttribute="bottom" id="Y0Q-Z6-dGp"/>
                             <constraint firstItem="xfW-3f-c2I" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ZpJ-bj-sfT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Pug-K2-ggS" secondAttribute="trailing" constant="50" id="aws-P0-P4x"/>
@@ -61,6 +78,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addNewScene" destination="tKY-US-mk7" id="ZMe-II-VP0"/>
                         <outlet property="table" destination="xfW-3f-c2I" id="zKq-HU-zoB"/>
                         <segue destination="vJf-0C-a8Z" kind="show" identifier="editSubsceneSegue" id="JCj-l6-kSI"/>
                         <segue destination="xL4-lt-sPH" kind="show" identifier="presentationSegue" id="nrT-ub-gz4"/>
@@ -275,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-NG-z9d">
-                                <rect key="frame" x="100" y="108" width="320" height="626"/>
+                                <rect key="frame" x="100" y="112" width="320" height="622"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYg-GX-mDf">
@@ -357,7 +375,7 @@
             <objects>
                 <navigationController id="09G-u2-Dcu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kOc-We-2VY">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="112"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="44"/>

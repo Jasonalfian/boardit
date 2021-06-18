@@ -35,7 +35,6 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var shotSizeSelector: UIButton!
     @IBOutlet weak var movementTypeSelector: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet weak var testBackButton: UIButton!
     
     //subscene placeholder
     var subScene:SubScene!
@@ -105,13 +104,28 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         pencilKitData = arrayData.drawStroke.dataRepresentation()
         rawImage = arrayData.imagePlain.pngData()
         
-        storyboardImage.image = initStoryboardImage
+        storyboardImage.image = arrayData.thumbnail
+        descriptionEditor.text = arrayData.descriptionText
+        angleTypeSelector.setTitle(arrayData.angleSelected, for: .normal)
+        shotSizeSelector.setTitle(arrayData.shotSizeSelected, for: .normal)
+        movementTypeSelector.setTitle(arrayData.movementTypeSelected, for: .normal)
+        
         isFirst = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    @objc func backMainPage() {
+        print("masuk close")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func resetSaveTrigger() {
+        resetInitValue()
+        haveSaved = true
+    }
+    
+    override func viewDidLoad() {
         
-        super.viewWillAppear(true)
+        super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(changeText), name: Notification.Name("refresh"), object: nil)
         
@@ -120,6 +134,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(changeImagePencil), name: Notification.Name("updateImage"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(saveSubScene), name: Notification.Name("saveSubScene"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(backMainPage), name: Notification.Name("backMainPage"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetSaveTrigger), name: Notification.Name("resetSaveTrigger"), object: nil)
         
         initalSetup()
         // Do any additional setup after loading the view.
@@ -171,14 +189,14 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         //Move core data to local variable
         if (subScene != nil){
             
-            self.title = "SubScene \(subScene.number).\(String(describing: sceneNumber)))"
-            descriptionText = subScene.sceneDescription ?? placeHolder
-            angle = subScene.angle ?? "- Select -"
-            shotSize = subScene.shotSize ?? "- Select -"
-            movement = subScene.movement ?? "- Select -"
+            self.title = "SubScene \(String(describing: subScene.subtoscene!.number)).\(String(describing: sceneNumber! + 1))"
             
 //            Ga dijalanin pas masuk halaman edit subcene dari drawing page
             if isFirst == true {
+                descriptionText = subScene.sceneDescription ?? placeHolder
+                angle = subScene.angle ?? "- Select -"
+                shotSize = subScene.shotSize ?? "- Select -"
+                movement = subScene.movement ?? "- Select -"
                 pencilKitData = subScene.pencilKitData ?? Data()
                 rawImage = subScene.rawImage ?? UIImage().pngData()
                 
@@ -216,8 +234,6 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if (initStoryboardImage != nil) {
             storyboardImage.image = initStoryboardImage
         }
-        
-        testBackButton.setTitle(String(sceneNumber+1), for: .normal)
         
     }
     
@@ -268,6 +284,12 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         }
         
         if (segue.identifier == "drawingSegue") {
+            
+            destVC?.descriptionEditorText = descriptionEditor.text
+            destVC?.angleSelected = angleTypeSelector.title(for: .normal)
+            destVC?.shotSizeSelected = shotSizeSelector.title(for: .normal)
+            destVC?.movementSelected = movementTypeSelector.title(for: .normal)
+            
             destVC?.drawing = pencilKitData
             destVC?.imagePlain = rawImage
             destVC?.usedTitle = self.title!
@@ -451,17 +473,20 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func backButton(_ sender: UIBarButtonItem) {
         
-        if (listSave[1].state == true && checkBackTrigger()){
-        performSegue(withIdentifier: "backSaveSegue", sender: nil)
+        if (haveSaved == false){
+            if(checkBackTrigger() == false){
+                backMainPage()
+            } else {
+                performSegue(withIdentifier: "backSaveSegue", sender: nil)
+            }
         } else {
             print("Back button success")
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: subScene.subtoscene?.scenetoproject)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
-    @IBAction func testBackButton(_ sender: UIButton) {
-//        self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
-    }
+
     
     @IBAction func reDoTutorial(_ sender: UIBarButtonItem) {
         

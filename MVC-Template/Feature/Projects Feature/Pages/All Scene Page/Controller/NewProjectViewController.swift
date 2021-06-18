@@ -59,6 +59,8 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
             aspectRatio = 0
             
             listProject = coreData.getAllData(entity: Project.self)
+            coreData.createScene(project: listProject[0])
+            
 //            self.performSegue(withIdentifier: "unwind", sender: self)
             
 //            vc.projectTable.reloadData()

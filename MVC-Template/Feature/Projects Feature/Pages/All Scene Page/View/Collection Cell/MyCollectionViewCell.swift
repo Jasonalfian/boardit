@@ -28,6 +28,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     var subScene: SubScene?
     
     var coreData = CoreDataManager()
+    var listSubScene:[SubScene]!
     
     static let identifier = "MyCollectionViewCell"
     
@@ -52,16 +53,38 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
 
     public func configure(with model: Model) {
-        self.myDesc.text = model.desc
-        self.myShotSize.text = model.size
-        self.myShotAngle.text = model.angle
-        self.myMovement.text = model.movement
+        
+        
+        if (model.desc == "Enter your description here"){
+            self.myDesc.text = "-"
+        } else {
+            self.myDesc.text = model.desc
+        }
+        
+        if (model.angle == "- Select -"){
+            self.myShotAngle.text = "-"
+        } else {
+            self.myShotAngle.text = model.angle
+        }
+        
+        if (model.size == "- Select -"){
+            self.myShotAngle.text = "-"
+        } else {
+            self.myShotSize.text = model.size
+        }
+        
+        if (model.movement == "- Select -"){
+            self.myMovement.text = "-"
+        } else {
+            self.myMovement.text = model.movement
+        }
+        
         self.myImageView.image = UIImage(data: ((model.imageName ?? defaultImage.pngData())!))
         self.hideController = model.addNew
         
-        if self.hideController == true {
-            addNewSubscene.isHidden = false
-        }
+//        if self.hideController == true {
+            addNewSubscene.isHidden = !self.hideController
+//        }
         
         self.scene = model.scene
         self.subScene = model.subScene
@@ -97,10 +120,17 @@ class MyCollectionViewCell: UICollectionViewCell {
         
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
+        
 //        let navController = UINavigationController(rootViewController: editPage)
 //        window?.rootViewController = navController
-//        editPage.subScene = self.subScene
+        
         editPage.sceneNumber = sceneNumber
+        
+        //create new subscene
+        coreData.createSubScene(scene: self.scene)
+        listSubScene = coreData.getAllSubScene(scene: self.scene)
+        self.subScene = listSubScene.last
+        editPage.subScene = self.subScene
         
         if let splitView = navigationController?.parent as? UISplitViewController {
             UIView.animate(withDuration: 0.3, animations: {
@@ -108,7 +138,7 @@ class MyCollectionViewCell: UICollectionViewCell {
                     }, completion: nil)
         }
         
-//        self.navigationController?.present(navController, animated: true)
+//      self.navigationController?.present(navController, animated: true)
         self.navigationController?.pushViewController(editPage, animated: true)
     }
     

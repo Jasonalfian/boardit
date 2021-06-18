@@ -28,6 +28,11 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     var screenType: Int!
     var usedTitle: String!
     
+    var descriptionEditorText: String!
+    var angleSelected: String!
+    var shotSizeSelected: String!
+    var movementSelected: String!
+    
     var dataModelController: CoreDataManager!
     
     var hasModifiedDrawing = false
@@ -95,7 +100,7 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
 
-        NotificationCenter.default.post(name: Notification.Name("updateImage"), object: passData(thumb: thumbnailImage, image: uploadedImageView.image ?? UIImage(), stroke: canvasView.drawing))
+        NotificationCenter.default.post(name: Notification.Name("updateImage"), object: passData(thumb: thumbnailImage, image: uploadedImageView.image ?? UIImage(), stroke: canvasView.drawing, description: descriptionEditorText, angle: angleSelected, shotSize: shotSizeSelected, movementType: movementSelected))
     }
     
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
@@ -180,10 +185,18 @@ struct passData {
     var thumbnail: UIImage?
     var imagePlain: UIImage
     var drawStroke: PKDrawing
+    var descriptionText: String
+    var angleSelected: String
+    var shotSizeSelected: String
+    var movementTypeSelected: String
     
-    init(thumb: UIImage?, image: UIImage, stroke: PKDrawing) {
+    init(thumb: UIImage?, image: UIImage, stroke: PKDrawing, description: String, angle: String, shotSize: String, movementType: String) {
         self.thumbnail = thumb
         self.imagePlain = image
         self.drawStroke = stroke
+        self.descriptionText = description
+        self.angleSelected = angle
+        self.shotSizeSelected = shotSize
+        self.movementTypeSelected = movementType
     }
 }

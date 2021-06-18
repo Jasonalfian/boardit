@@ -141,7 +141,7 @@ class CoreDataManager {
         do {
             let request = Scene.fetchRequest() as NSFetchRequest<Scene>
             
-            request.sortDescriptors = [NSSortDescriptor(key:"dateCreated",ascending: true)]
+            request.sortDescriptors = [NSSortDescriptor(key:"number",ascending: true)]
             let pred = NSPredicate(format:"scenetoproject == %@", project as Project)
             request.predicate = pred
             
