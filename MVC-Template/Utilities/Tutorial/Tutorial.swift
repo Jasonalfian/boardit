@@ -13,15 +13,18 @@ class Tutorial {
         let overlayView = UIView(frame: view.frame)
         overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
-        view.addSubview(overlayView)
+        UIView.transition(with: view, duration: 0.2, options: [.transitionCrossDissolve], animations: {
+            view.addSubview(overlayView)
+        }, completion: nil)
         view.bringSubviewToFront(elementToShow)
         
         return overlayView
     }
     
-    static func createPopOver(tutorialText: String, elementToPoint: UIView, direction: UIPopoverArrowDirection) -> UIViewController {
+    static func createPopOver(tutorialText: String, step: String, elementToPoint: UIView, direction: UIPopoverArrowDirection) -> UIViewController {
         let popOverVC = PopOverViewController()
         popOverVC.tutorialText = tutorialText
+        popOverVC.tutorialSteps = step
         popOverVC.modalPresentationStyle = .popover
         
         let presentationController = popOverVC.popoverPresentationController!
