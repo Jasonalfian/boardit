@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andy going to The City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7N-Fb-CsL">
-                        <rect key="frame" x="34" y="15" width="271" height="20"/>
+                        <rect key="frame" x="34" y="15" width="271" height="24"/>
                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -39,15 +39,15 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Modified 20/12/2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOn-1b-VGc">
-                        <rect key="frame" x="34" y="35" width="276" height="14"/>
+                        <rect key="frame" x="34" y="39" width="276" height="17"/>
                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38C-dI-wpQ">
-                        <rect key="frame" x="291" y="20" width="13" height="22"/>
+                        <rect key="frame" x="289" y="20" width="18" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="chevron.right" catalog="system"/>
+                        <state key="normal" image="pencil" catalog="system"/>
                         <connections>
                             <action selector="editProject:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hiA-rU-tYf"/>
                         </connections>
@@ -84,7 +84,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -61,7 +61,7 @@ class MyCollectionViewCell: UICollectionViewCell, TableObserver {
     var sceneNumber:Int!
     
     var hideController: Bool!
-    var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
+    var defaultImage = #imageLiteral(resourceName: "empty Image")
     var scene: Scene!
     var subScene: SubScene?
     
