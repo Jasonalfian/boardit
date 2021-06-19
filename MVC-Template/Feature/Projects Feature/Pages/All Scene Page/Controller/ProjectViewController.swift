@@ -14,6 +14,17 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var addProjectButton: UIButton!
     
+    @objc func tesPopover(_ data: Notification) {
+        
+        let indexRow = data.object as! Int
+        
+        let indexPath = NSIndexPath(row: indexRow, section: 0)
+        let cell = projectTable.cellForRow(at: indexPath as IndexPath) as! NewProjectTableViewCell
+        
+        cell.renameProject()
+    }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         NotificationCenter.default.post(name: Notification.Name("loadFromProject"), object:listProject[indexPath.row])
@@ -30,6 +41,11 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let result = listProject[indexPath.row]
         cell.projectName.text = result.name
+        cell.projectTextView.text = result.name
+        cell.viewController = self.navigationController
+        cell.indexRowNumber = indexPath.row
+        cell.project = result
+        
         if result.lastModified == nil {
             cell.projectDate.text = dateFormatter.string(from: result.dateCreated!)
         } else {
@@ -49,7 +65,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var projectTable: UITableView!
     
-    @objc func loadList(notification: NSNotification)
+    @objc func loadList(notification: Notification)
     {
         listProject = coreData.getAllData(entity: Project.self)
         
@@ -83,6 +99,8 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(tesPopover), name: NSNotification.Name(rawValue: "renamePopOver"), object: nil)
 
     }
 }
