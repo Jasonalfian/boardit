@@ -7,8 +7,10 @@
 
 import UIKit
 
-class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CollectionObserver {
    
+    @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var presentationBarButton: UIBarButtonItem!
     @IBOutlet weak var addNewScene: UIButton!
    
     var aspectRatio = 0
@@ -20,14 +22,50 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     var models = [[Model]]()
     var currentProject: Project!
     
+    var modelCore1 = [SubScene]()
+    var modelCore2 = [[SubScene]]()
+    var modelCore3 = [[SubScene]]()
+    var observerController = ObserverController()
+    
     var myCollectionView = MyCollectionViewCell()
     
     @IBOutlet var table: UITableView!
-//    @IBAction func sideBar(_ sender: Any) {
-//
-//    didTapButton()
-//        
-//    }
+    
+    enum Mode {
+        case view
+        case select
+    }
+    
+    var mMode: Mode = .view {
+        didSet {
+            switch mMode {
+            case .view:
+                selectBarButton.title = "Select"
+                navigationItem.leftBarButtonItem = nil
+                
+                for item in observerController.tableObservers {
+                    item.changeMultipleSelectStatus(status: false)
+                }
+            case .select:
+                selectBarButton.title = "Cancel"
+                navigationItem.leftBarButtonItem = deleteBarButton
+                
+                for item in observerController.tableObservers {
+                    item.changeMultipleSelectStatus(status: true)
+                }
+            }
+        }
+    }
+    
+    lazy var selectBarButton: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(didSelectButtonClicked(_:)))
+        return barButtonItem
+    }()
+    
+    lazy var deleteBarButton: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didDeleteButtonClicked(_:)))
+        return barButtonItem
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +77,44 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         table.delegate = self
         table.dataSource = self
         
-//        coreData.createScene(project: listProject[0])
-        
         currentProject = listProject[0]
         listScene = coreData.getAllProjectScene(project: currentProject)
         addNewScene.layer.borderWidth = 1
         addNewScene.layer.cornerRadius = 30
         addNewScene.setTitle("+ Add Scene", for: .normal)
-//        coreData.createSubScene(scene: listScene[0], description: "Ayam Bakar 2", angle: "Eye Level", shotSize: "Long Shot", movement: "Push In", storyboard: UIImage().pngData())
-        
+
         fetchDataLocal(project: currentProject)
+        setupBarButton()
+        
+        observerController.collObservers.append(self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name("loadFromProject"), object: nil)
+    }
+    
+    func didChange() {
+        fetchDataLocal(project: currentProject)
+    }
+    
+    func setupBarButton() {
+        self.navigationItem.rightBarButtonItems = [presentationBarButton, filterBarButton, selectBarButton]
+    }
+    
+    @IBAction func didPresentationButtonClicked(_ sender: UIBarButtonItem) {
         
+    }
+    
+    @IBAction func didFilterButtonClicked(_ sender: UIBarButtonItem) {
         
+    }
+    
+    @objc func didSelectButtonClicked(_ sender: UIBarButtonItem) {
+        mMode = mMode == .view ? .select : .view
+    }
+    
+    @objc func didDeleteButtonClicked(_ sender: UIBarButtonItem) {
+        for item in observerController.tableObservers {
+            item.didDeleteTapped()
+        }
     }
     
     @objc func fetchData(_ data: Notification) {
@@ -81,15 +143,24 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
                 
                 print("subscene number \(item.number)")
                 model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , scene: item.subtoscene, addNew: false, subScene: item))
+                
+                modelCore1.append(item)
             }
             
             model1.append(Model(scene: item, addNew: true))
             
             models.append(model1)
+            modelCore2.append(modelCore1)
             
+            modelCore1.removeAll()
             model1.removeAll()
+
             
         }
+        
+        modelCore3 = modelCore2
+        modelCore2.removeAll()
+        
         table.reloadData()
     }
     
@@ -100,7 +171,10 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
         cell.navigationController = self.navigationController
-        
+        cell.observerController = self.observerController
+        cell.sceneNum = indexPath.row
+        cell.modelCore = modelCore3[indexPath.row]
+        cell.coreData = self.coreData
         
 //        // Define attributes
 //        let labelFont = UIFont(name: "Poppins-Bold", size: 18)
@@ -112,7 +186,6 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        cell.textLabel?.attributedText = attrString
         
         cell.configure(with: models[indexPath.row])
-        
     return cell
         
     }
@@ -141,7 +214,6 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     
     }
 
-
 struct Model {
     let desc: String?
     let size: String?
@@ -154,6 +226,7 @@ struct Model {
     let subScene: SubScene?
     
     init(desc: String? = nil, size: String? = nil, angle: String? = nil, movement: String? = nil, imageName: Data? = nil, scene: Scene? = nil, addNew: Bool, subScene: SubScene? = nil) {
+        
         self.desc = desc
         self.size = size
         self.angle = angle
