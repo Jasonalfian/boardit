@@ -21,11 +21,14 @@ class Tutorial {
         return overlayView
     }
     
-    static func createPopOver(tutorialText: String, step: String, elementToPoint: UIView, direction: UIPopoverArrowDirection) -> UIViewController {
+    static func createPopOver(tutorialText: String, step: String?, elementToPoint: UIView, direction: UIPopoverArrowDirection, isInsideModal: Bool, hasSidebar: Bool, onDismiss: ((Bool) -> Void)? = nil) -> UIViewController {
         let popOverVC = PopOverViewController()
         popOverVC.tutorialText = tutorialText
         popOverVC.tutorialSteps = step
+        popOverVC.isInsideModal = isInsideModal
+        popOverVC.hasSidebar = hasSidebar
         popOverVC.modalPresentationStyle = .popover
+        popOverVC.onDismiss = onDismiss
         
         let presentationController = popOverVC.popoverPresentationController!
         presentationController.sourceView = elementToPoint
@@ -51,7 +54,7 @@ class Tutorial {
     }
     
     static var tutorialData = [
-        TutorialDataModel(id: 0, description: "Hey, welcome to Board It! Would you like a tutorial to get started?"),
+        TutorialDataModel(id: 0, description: "Hey, welcome to Board It! We would like to walk you through this app.\n\nPress anywhere to continue"),
         TutorialDataModel(id: 1, description: "Great! we will teach you how to make the perfect storyboard.\n\nBut before that, let's add a new project first by pressing this button."),
         TutorialDataModel(id: 2, description: "You can name your project and choose the aspect ratio for your project.\n\nAfter those things are filled, press the \"Create New Project\" button."),
         TutorialDataModel(id: 3, description: "Woohoo! You created your first project.\n\nTo create a storyboard for a scene, press the \"Add Subscene\" button."),
@@ -67,7 +70,8 @@ class Tutorial {
         TutorialDataModel(id: 13, description: "To make it quick we provide you with a drawing."),
         TutorialDataModel(id: 14, description: "Tap the \"Save\" button to go back and see the whole scene!"),
         TutorialDataModel(id: 15, description: "You can read the instructions if you ever need it again."),
-        TutorialDataModel(id: 16, description: "Congrats! You've made your first storyboard!\n\nPress the back button to save your creation."),
-        TutorialDataModel(id: 17, description: "Here you can add more sub-scenes, add new scenes, and edit the things you've made!\n\nSo that's all for the tutorial! Go create more amazing storyboards!"),
+        TutorialDataModel(id: 16, description: "Congrats! You've made your first storyboard!\n\nPress this button to save your creation."),
+        TutorialDataModel(id: 17, description: "After changes saved, you can press this button to go back to main menu"),
+        TutorialDataModel(id: 18, description: "Here you can add more sub-scenes, add new scenes, and edit the things you've made!\n\nSo that's all for the tutorial! Go create more amazing storyboards!"),
     ]
 }

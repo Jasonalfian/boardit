@@ -11,6 +11,7 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     var coreData = CoreDataManager()
     var listProject:[Project] = []
     var dateFormatter = DateFormatter()
+    var popOver: UIViewController?
     
     @IBOutlet weak var addProjectButton: UIButton!
     
@@ -117,5 +118,25 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         NotificationCenter.default.addObserver(self, selector: #selector(tesPopover), name: NSNotification.Name(rawValue: "renamePopOver"), object: nil)
 
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            print(UserDefaults.standard.integer(forKey: "tutorialStep"))
+            firstTutorial()
+        }
+    }
+    
+    func firstTutorial() {
+        let popOverVC = PopOverViewController()
+        popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 0)!.description
+        popOverVC.isInsideModal = false
+        popOverVC.hasSidebar = true
+        popOverVC.onDismiss = { result in
+            self.popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 1)!.description, step: nil, elementToPoint: self.addProjectButton, direction: .down, isInsideModal: false, hasSidebar: true)
+            self.present(self.popOver!, animated: true)
+            UserDefaults.standard.setValue(2, forKey: "tutorialStep")
+        }
+        popOverVC.modalPresentationStyle = .formSheet
+        
+        self.present(popOverVC, animated: true)
+        UserDefaults.standard.setValue(1, forKey: "tutorialSetp")
     }
 }

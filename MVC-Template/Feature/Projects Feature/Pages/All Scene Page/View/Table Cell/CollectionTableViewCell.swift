@@ -12,6 +12,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     var navigationController: UINavigationController?
     var observerController: ObserverController!
     var coreData: CoreDataManager!
+    var firstCell: MyCollectionViewCell?
     
     var sceneNum: Int!
     static let identifier = "CollectionTableViewCell"
@@ -108,6 +109,10 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         cell.sceneNumber = indexPath.row
         cell.observerController = self.observerController
         cell.setObserver()
+        
+        if indexPath.row == 0 {
+            self.firstCell = cell
+        }
         
         return cell
     }

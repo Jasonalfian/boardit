@@ -61,16 +61,34 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     var isFirst = true
     
+    var overlay: UIView?
+    var popOver: UIViewController?
+    
     @objc func changeText(_ data: Notification){
         
         let arrayData = data.object as! [String]
         
         if(arrayData[1] == "Angle Type"){
             self.angleTypeSelector.setTitle("\(arrayData[0])", for: .normal)
+            
+            if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 7 {
+                displayTutorial(element: shotSizeSelector, text: Tutorial.getTutorialDataByID(id: 7)!.description, step: "7/17", direction: .up)
+                UserDefaults.standard.setValue(8, forKey: "tutorialStep")
+            }
         } else if(arrayData[1] == "Shot Type"){
             self.shotSizeSelector.setTitle("\(arrayData[0])", for: .normal)
+            
+            if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 9 {
+                displayTutorial(element: movementTypeSelector, text: Tutorial.getTutorialDataByID(id: 9)!.description, step: "9/17", direction: .up)
+                UserDefaults.standard.setValue(10, forKey: "tutorialStep")
+            }
         } else if(arrayData[1] == "Movement Type"){
             self.movementTypeSelector.setTitle("\(arrayData[0])", for: .normal)
+            
+            if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 11 {
+                displayTutorial(element: storyboardImage, text: Tutorial.getTutorialDataByID(id: 11)!.description, step: "11/17", direction: .down)
+                UserDefaults.standard.setValue(12, forKey: "tutorialStep")
+            }
         }
 
     }
@@ -140,7 +158,54 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(resetSaveTrigger), name: Notification.Name("resetSaveTrigger"), object: nil)
         
         initalSetup()
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            if UserDefaults.standard.integer(forKey: "tutorialStep") == 4 {
+                displayTutorial(element: descriptionEditor, text: Tutorial.getTutorialDataByID(id: 4)!.description, step: "4/17", direction: .up)
+                UserDefaults.standard.setValue(5, forKey: "tutorialStep")
+            }
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    func displayTutorial(element: UIView, text: String, step: String, direction: UIPopoverArrowDirection, isInsideModal: Bool = false) {
+        if let ov = overlay {
+            ov.isHidden = true
+        }
+        overlay = Tutorial.createOverlay(view: view, elementToShow: element)
+        overlay!.isHidden = false
+        popOver = Tutorial.createPopOver(tutorialText: text, step: step, elementToPoint: element, direction: direction, isInsideModal: isInsideModal, hasSidebar: false)
+        self.present(popOver!, animated: true)
+    }
+    
+    func fifteenthTutorial() {
+        if UserDefaults.standard.integer(forKey: "tutorialStep") == 15 {
+            let popOver3 = PopOverViewController()
+            popOver3.tutorialText = Tutorial.getTutorialDataByID(id: 15)!.description
+            popOver3.tutorialSteps = "15/17"
+            popOver3.isInsideModal = false
+            popOver3.hasSidebar = true
+            popOver3.modalPresentationStyle = .popover
+            popOver3.popoverPresentationController?.permittedArrowDirections = .up
+            popOver3.popoverPresentationController?.barButtonItem = redoTutorial
+            popOver3.onDismiss = { result in
+                self.displayTutorial(element: self.saveButton, text: Tutorial.getTutorialDataByID(id: 16)!.description, step: "16/17", direction: .down)
+                UserDefaults.standard.setValue(17, forKey: "tutorialStep")
+            }
+            self.present(popOver3, animated: true)
+            UserDefaults.standard.setValue(16, forKey: "tutorialStep")
+        }
+        else if UserDefaults.standard.integer(forKey: "tutorialStep") == 17 {
+            let popOver3 = PopOverViewController()
+            popOver3.tutorialText = Tutorial.getTutorialDataByID(id: 17)!.description
+            popOver3.tutorialSteps = "17/17"
+            popOver3.isInsideModal = false
+            popOver3.hasSidebar = true
+            popOver3.modalPresentationStyle = .popover
+            popOver3.popoverPresentationController?.permittedArrowDirections = .up
+            popOver3.popoverPresentationController?.barButtonItem = backButton
+            self.present(popOver3, animated: true)
+            UserDefaults.standard.setValue(18, forKey: "tutorialStep")
+        }
     }
     
     func initalSetup() {
@@ -254,6 +319,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         let drawNavCon = segue.destination as? UINavigationController
         let destVC = drawNavCon?.viewControllers.first as? DrawingPageViewController
         
+        if let ov = overlay {
+            ov.isHidden = true
+        }
+        
         if (segue.identifier == "angleSegue"){
             newVC!.titleSegue = "Angle Type"
             newVC!.startingIndex = getAngleIndex()
@@ -270,6 +339,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if (segue.identifier == "saveSegue"){
             newVC2!.segueSender = "saveButton"
             newVC2!.segueSave = listSave[0]
+            newVC2!.parentVC = self
         }
 
         if (segue.identifier == "backSaveSegue"){
@@ -281,6 +351,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             newVC2!.segueSender = "saveOnlySegue"
             newVC2!.haveSavedSegue = haveSaved
             newVC2!.anyDifference = anyDifference
+            newVC2!.parentVC = self
         }
         
         if (segue.identifier == "drawingSegue") {
@@ -293,6 +364,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             destVC?.drawing = pencilKitData
             destVC?.imagePlain = rawImage
             destVC?.usedTitle = self.title!
+            destVC?.parentController = self
             
             if subScene != nil {
                 destVC?.screenType = Int(subScene.subtoscene!.scenetoproject!.ratio)
@@ -377,6 +449,16 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if descriptionEditor.text.isEmpty {
             descriptionEditor.text = placeHolder
             descriptionEditor.textColor = UIColor.lightGray
+        }
+        
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 5 {
+            if !descriptionEditor.text.isEmpty && descriptionEditor.text != placeHolder {
+                if let ov = overlay {
+                    ov.isHidden = true
+                }
+                displayTutorial(element: angleTypeSelector, text: Tutorial.getTutorialDataByID(id: 5)!.description, step: "5/17", direction: .up)
+                UserDefaults.standard.setValue(6, forKey: "tutorialStep")
+            }
         }
     }
     

@@ -14,6 +14,7 @@ class EditSaveModalViewController: UIViewController {
     var anyDifference:Bool!
     var haveSavedSegue:Bool!
     var coreData = CoreDataManager()
+    var parentVC: EditSubscenePageViewController?
     
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var chechBox: UIButton!
@@ -104,7 +105,9 @@ class EditSaveModalViewController: UIViewController {
     }
     
     @IBAction func saveOnly(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.parentVC?.fifteenthTutorial()
+        }
     }
     
     @IBAction func changeCheckBox(_ sender: UIButton) {

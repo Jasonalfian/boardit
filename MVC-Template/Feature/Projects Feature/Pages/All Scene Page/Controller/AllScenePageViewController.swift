@@ -29,6 +29,8 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     
     var myCollectionView = MyCollectionViewCell()
     
+    var firstCell: CollectionTableViewCell?
+    
     @IBOutlet var table: UITableView!
     
     enum Mode {
@@ -162,6 +164,19 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         modelCore2.removeAll()
         
         table.reloadData()
+        
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 18 {
+            let popOverVC = PopOverViewController()
+            popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 18)!.description
+            popOverVC.isInsideModal = false
+            popOverVC.hasSidebar = true
+            popOverVC.onDismiss = { result in
+                UserDefaults.standard.setValue(false, forKey: "isTutorial")
+            }
+            popOverVC.modalPresentationStyle = .formSheet
+            
+            self.present(popOverVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -186,6 +201,9 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        cell.textLabel?.attributedText = attrString
         
         cell.configure(with: models[indexPath.row])
+        if indexPath.row == 0 {
+            self.firstCell = cell
+        }
     return cell
         
     }
@@ -204,6 +222,13 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         return 380
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == listScene.count - 1 && UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 3 {
+            loadTutorial(element: firstCell!)
+            UserDefaults.standard.setValue(4, forKey: "tutorialStep")
+        }
+    }
+    
 //    @objc private func didTapButton() {
 //        let splitVC = UISplitViewController(style: .doubleColumn)
 //
@@ -212,7 +237,12 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        present(splitVC, animated: true)
 //    }
     
+    func loadTutorial(element: UIView) {
+        let popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 3)!.description, step: "3/17", elementToPoint: element, direction: .right, isInsideModal: false, hasSidebar: true)
+        self.present(popOver, animated: true)
     }
+    
+}
 
 struct Model {
     let desc: String?

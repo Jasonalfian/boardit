@@ -139,5 +139,18 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 2 {
+            DispatchQueue.main.async {
+                self.loadTutorial()
+                UserDefaults.standard.setValue(3, forKey: "tutorialStep")
+            }
+        }
+    }
+    
+    func loadTutorial() {
+//        let overlay = Tutorial.createOverlay(view: view.superview!, elementToShow: view)
+        let popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 2)!.description, step: "2/17", elementToPoint: view, direction: .left, isInsideModal: true, hasSidebar: true)
+        self.present(popOver, animated: true)
     }
 }

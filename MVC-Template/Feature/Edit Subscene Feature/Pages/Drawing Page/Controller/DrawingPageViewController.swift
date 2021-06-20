@@ -20,6 +20,8 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     @IBOutlet weak var botConst: NSLayoutConstraint!
     @IBOutlet weak var rightConst: NSLayoutConstraint!
     @IBOutlet weak var topConst: NSLayoutConstraint!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     let toolPicker: PKToolPicker! = PKToolPicker()
     
@@ -39,11 +41,59 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     
     var thumbnailImage: UIImage!
     
+    var popOver: UIViewController?
+    var overlay: UIView?
+    
+    var parentController: EditSubscenePageViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = usedTitle
         setCanvas()
         setPicker()
+        
+        firstTutorial()
+    }
+    
+    func displayOverlay(element: UIView) {
+        if let ov = overlay {
+            ov.isHidden = true
+        }
+        overlay = Tutorial.createOverlay(view: view, elementToShow: element)
+        overlay!.isHidden = false
+    }
+    
+    func firstTutorial() {
+        let popOverVC = PopOverViewController()
+        popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 12)!.description
+        popOverVC.tutorialSteps = "12/17"
+        popOverVC.isInsideModal = false
+        popOverVC.hasSidebar = true
+        popOverVC.onDismiss = { result in
+            
+            self.displayOverlay(element: self.canvasView)
+            self.popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 13)!.description, step: "13/17", elementToPoint: self.canvasView, direction: .left, isInsideModal: false, hasSidebar: false, onDismiss: { result in
+                if let ov = self.overlay {
+                    ov.isHidden = true
+                }
+                let popOver3 = PopOverViewController()
+                popOver3.tutorialText = Tutorial.getTutorialDataByID(id: 14)!.description
+                popOver3.tutorialSteps = "14/17"
+                popOver3.isInsideModal = false
+                popOver3.hasSidebar = false
+                popOver3.modalPresentationStyle = .popover
+                popOver3.popoverPresentationController?.permittedArrowDirections = .up
+                popOver3.popoverPresentationController?.barButtonItem = self.saveButton
+                self.present(popOver3, animated: true)
+                UserDefaults.standard.setValue(15, forKey: "tutorialStep")
+            })
+            self.present(self.popOver!, animated: true)
+            UserDefaults.standard.setValue(14, forKey: "tutorialStep")
+        }
+        popOverVC.modalPresentationStyle = .formSheet
+        
+        self.present(popOverVC, animated: true)
+        UserDefaults.standard.setValue(13, forKey: "tutorialSetp")
     }
     
     func setCanvas() {
@@ -117,7 +167,11 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     @IBAction func backButton(_ sender: UIBarButtonItem) {
         generateThumbnail()
 
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            if UserDefaults.standard.integer(forKey: "tutorialStep") == 15 {
+                self.parentController!.fifteenthTutorial()
+            }
+        }
     }
     
     @IBAction func clearCanvasButtonTapped(_ sender: UIBarButtonItem) {

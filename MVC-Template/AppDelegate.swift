@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.object(forKey: "isTutorial") == nil {
             UserDefaults.standard.setValue(true, forKey: "isTutorial")
         }
+        
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            UserDefaults.standard.setValue(0, forKey: "tutorialStep")
+        }
         return true
     }
 
