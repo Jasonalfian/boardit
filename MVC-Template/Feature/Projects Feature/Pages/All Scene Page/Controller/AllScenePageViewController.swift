@@ -93,6 +93,27 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name("loadFromProject"), object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        lastTutorial()
+    }
+    
+    func lastTutorial() {
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 18 {
+            let popOverVC = PopOverViewController()
+            popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 18)!.description
+            popOverVC.isInsideModal = false
+            popOverVC.hasSidebar = true
+            popOverVC.onDismiss = { result in
+                UserDefaults.standard.setValue(false, forKey: "isTutorial")
+            }
+            popOverVC.modalPresentationStyle = .formSheet
+            
+            DispatchQueue.main.async {
+                self.present(popOverVC, animated: true)
+            }
+        }
+    }
+    
     func didChange() {
         fetchDataLocal(project: currentProject)
     }
@@ -165,19 +186,6 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         modelCore2.removeAll()
         
         table.reloadData()
-        
-        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 18 {
-            let popOverVC = PopOverViewController()
-            popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 18)!.description
-            popOverVC.isInsideModal = false
-            popOverVC.hasSidebar = true
-            popOverVC.onDismiss = { result in
-                UserDefaults.standard.setValue(false, forKey: "isTutorial")
-            }
-            popOverVC.modalPresentationStyle = .formSheet
-            
-            self.present(popOverVC, animated: true)
-        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

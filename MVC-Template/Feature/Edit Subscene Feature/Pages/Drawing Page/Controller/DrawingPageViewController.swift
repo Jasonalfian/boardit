@@ -52,7 +52,9 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
         setCanvas()
         setPicker()
         
-        firstTutorial()
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            firstTutorial()
+        }
     }
     
     func displayOverlay(element: UIView) {
