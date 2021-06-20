@@ -64,6 +64,22 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     
     var overlay: UIView?
     var popOver: UIViewController?
+    var isRedo = false
+    
+    func moveTutorial() {
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 7 {
+            displayTutorial(element: shotSizeSelector, text: Tutorial.getTutorialDataByID(id: 7)!.description, step: "7/17", direction: .up)
+            UserDefaults.standard.setValue(8, forKey: "tutorialStep")
+        }
+        else if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 9 {
+            displayTutorial(element: movementTypeSelector, text: Tutorial.getTutorialDataByID(id: 9)!.description, step: "9/17", direction: .up)
+            UserDefaults.standard.setValue(10, forKey: "tutorialStep")
+        }
+        else if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 11 {
+            displayTutorial(element: storyboardImage, text: Tutorial.getTutorialDataByID(id: 11)!.description, step: "11/17", direction: .down)
+            UserDefaults.standard.setValue(12, forKey: "tutorialStep")
+        }
+    }
     
     @objc func changeText(_ data: Notification){
         
@@ -72,24 +88,12 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if(arrayData[1] == "Angle Type"){
             self.angleTypeSelector.setTitle("\(arrayData[0])", for: .normal)
             
-            if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 7 {
-                displayTutorial(element: shotSizeSelector, text: Tutorial.getTutorialDataByID(id: 7)!.description, step: "7/17", direction: .up)
-                UserDefaults.standard.setValue(8, forKey: "tutorialStep")
-            }
         } else if(arrayData[1] == "Shot Type"){
             self.shotSizeSelector.setTitle("\(arrayData[0])", for: .normal)
             
-            if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 9 {
-                displayTutorial(element: movementTypeSelector, text: Tutorial.getTutorialDataByID(id: 9)!.description, step: "9/17", direction: .up)
-                UserDefaults.standard.setValue(10, forKey: "tutorialStep")
-            }
         } else if(arrayData[1] == "Movement Type"){
             self.movementTypeSelector.setTitle("\(arrayData[0])", for: .normal)
             
-            if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 11 {
-                displayTutorial(element: storyboardImage, text: Tutorial.getTutorialDataByID(id: 11)!.description, step: "11/17", direction: .down)
-                UserDefaults.standard.setValue(12, forKey: "tutorialStep")
-            }
         }
 
     }
@@ -175,7 +179,9 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         overlay = Tutorial.createOverlay(view: view, elementToShow: element)
         overlay!.isHidden = false
         popOver = Tutorial.createPopOver(tutorialText: text, step: step, elementToPoint: element, direction: direction, isInsideModal: isInsideModal, hasSidebar: false)
-        self.present(popOver!, animated: true)
+        DispatchQueue.main.async {
+            self.present(self.popOver!, animated: true)
+        }
     }
     
     func fifteenthTutorial() {
@@ -327,14 +333,17 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         if (segue.identifier == "angleSegue"){
             newVC!.titleSegue = "Angle Type"
             newVC!.startingIndex = getAngleIndex()
+            newVC!.prevVC = self
         }
         if (segue.identifier == "shotSegue"){
             newVC!.titleSegue = "Shot Type"
             newVC!.startingIndex = getShotIndex()
+            newVC!.prevVC = self
         }
         if (segue.identifier == "movementSegue"){
             newVC!.titleSegue = "Movement Type"
             newVC!.startingIndex = getMovementIndex()
+            newVC!.prevVC = self
         }
         
         if (segue.identifier == "saveSegue"){
@@ -356,7 +365,9 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         }
         
         if (segue.identifier == "drawingSegue") {
-            
+            if isRedo {
+                UserDefaults.standard.setValue(false, forKey: "isTutorial")
+            }
             destVC?.descriptionEditorText = descriptionEditor.text
             destVC?.angleSelected = angleTypeSelector.title(for: .normal)
             destVC?.shotSizeSelected = shotSizeSelector.title(for: .normal)
@@ -583,7 +594,10 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
 
     
     @IBAction func reDoTutorial(_ sender: UIBarButtonItem) {
-        
+        isRedo = true
+        UserDefaults.standard.setValue(true, forKey: "isTutorial")
+        displayTutorial(element: descriptionEditor, text: Tutorial.getTutorialDataByID(id: 4)!.description, step: "4/17", direction: .up)
+        UserDefaults.standard.setValue(5, forKey: "tutorialStep")
     }
     
 }

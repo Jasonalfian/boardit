@@ -235,9 +235,10 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
         
         returnData.append(typeName.text!)
         returnData.append(titleSegue)
+        NotificationCenter.default.post(name: Notification.Name("refresh"), object:self.returnData)
         
         self.dismiss(animated: true) {
-            NotificationCenter.default.post(name: Notification.Name("refresh"), object:self.returnData)
+            self.prevVC.moveTutorial()
         }
     }
     
