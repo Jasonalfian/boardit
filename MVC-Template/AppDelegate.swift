@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.bool(forKey: "isTutorial") {
             UserDefaults.standard.setValue(0, forKey: "tutorialStep")
         }
+        
+        Thread.sleep(forTimeInterval: 2)
         return true
     }
 
