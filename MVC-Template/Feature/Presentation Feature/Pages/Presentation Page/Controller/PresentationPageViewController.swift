@@ -27,7 +27,7 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navTitle.title = projectTitlePassingBro   
+        navTitle.title = projectTitlePassingBro
     }
     
     @IBAction func tapSceneMenu(_ sender: UIButton) {
@@ -51,7 +51,9 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
         movementText.text = scene.movement
         
         counterSceneText.text = counter
-//        thumbnailImage.image = image
+        
+        let imageTemp = #imageLiteral(resourceName: "empty Image")
+        thumbnailImage.image = UIImage(data: scene.storyboard ?? imageTemp.pngData()!)
     }
     
     func HideButton(isHideNext: Bool, isHidePrev : Bool) {
