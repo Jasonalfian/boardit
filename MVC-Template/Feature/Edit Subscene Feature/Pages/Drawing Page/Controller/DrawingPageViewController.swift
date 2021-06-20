@@ -68,17 +68,24 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
             botConst.constant = 60
         }
         
-//        convert from DATA type
+//        Catch the data from edit page into drawing page
         do {
             canvasView.drawing = try PKDrawing(data: drawing ?? Data())
         } catch {
             print("Your Drawing could not be found")
         }
         
-        uploadedImageView.image = UIImage(data: imagePlain ?? Data())
+//        Uploaded Background image
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            uploadedImageView.image = UIImage(named: "tutorialDrawing")
+        } else {
+            uploadedImageView.image = UIImage(data: imagePlain ?? Data())
+        }
+        
         uploadedImageView.frame = canvasView.bounds
         uploadedImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         uploadedImageView.clipsToBounds = true
+        
         canvasView.addSubview(uploadedImageView)
         canvasView.sendSubviewToBack(uploadedImageView)
         
@@ -109,8 +116,7 @@ class DrawingPageViewController: UIViewController, PKCanvasViewDelegate, PKToolP
     
     @IBAction func backButton(_ sender: UIBarButtonItem) {
         generateThumbnail()
-        
-//        navigationController?.popViewController(animated: true)
+
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -173,9 +179,6 @@ extension DrawingPageViewController: UIImagePickerControllerDelegate, UINavigati
         uploadedImageView.clipsToBounds = true
         canvasView.addSubview(uploadedImageView)
         canvasView.sendSubviewToBack(uploadedImageView)
-//        let contentView = canvasView.subviews[0]
-//            contentView.addSubview(uploadedImageView)
-//            contentView.sendSubviewToBack(uploadedImageView)
         
         picker.dismiss(animated: true, completion: nil)
     }
