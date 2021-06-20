@@ -63,15 +63,30 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
     @IBOutlet weak var projectTable: UITableView!
     
     @objc func loadList(notification: Notification)
     {
+        
+        var row = notification.object as! Int
+        
         listProject = coreData.getAllData(entity: Project.self)
         
         self.projectTable.reloadData()
-        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
+        
+//        if (row == nil) {
+//        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
+//        } else {
+            
+            if (row == listProject.count){
+                row = row - 1
+            }
+            
+            self.projectTable.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .top)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[row])
+//        }
         
     }
     

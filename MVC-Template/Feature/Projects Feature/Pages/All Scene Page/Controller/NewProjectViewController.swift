@@ -67,7 +67,7 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
             
 //            NotificationCenter.default.post(name: NSNotification.Name("loadFromProject"), object: listProject[0])
             
-            NotificationCenter.default.post(name: NSNotification.Name("load"), object: listProject[0])
+            NotificationCenter.default.post(name: NSNotification.Name("load"), object: 0)
             
             if((self.presentingViewController) != nil){
                 self.dismiss(animated: true, completion: nil)

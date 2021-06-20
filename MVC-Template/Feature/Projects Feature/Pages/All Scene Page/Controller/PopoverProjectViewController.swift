@@ -16,7 +16,6 @@ class PopoverProjectViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-  
     
     @IBAction func renameAction(_ sender: UIButton) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "renamePopOver"), object: buttonRow)
@@ -24,6 +23,8 @@ class PopoverProjectViewController: UIViewController{
     }
     
     @IBAction func deleteAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "deleteWarning"), object: buttonRow)
         
     }
     

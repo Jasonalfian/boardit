@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W2b-q4-pqg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W2b-q4-pqg">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +11,9 @@
     <customFonts key="customFonts">
         <array key="Poppins-Bold.ttf">
             <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -22,13 +26,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scenes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-K2-ggS">
-                                <rect key="frame" x="23" y="50" width="800.5" height="51.5"/>
+                                <rect key="frame" x="23" y="50" width="800.5" height="62"/>
                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-3f-c2I">
-                                <rect key="frame" x="0.0" y="101.5" width="873.5" height="732.5"/>
+                                <rect key="frame" x="0.0" y="112" width="873.5" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKY-US-mk7">
@@ -270,6 +274,74 @@
             </objects>
             <point key="canvasLocation" x="1919" y="1639"/>
         </scene>
+        <!--Delete Confirmation View Controller-->
+        <scene sceneID="EuI-OQ-wvY">
+            <objects>
+                <viewController storyboardIdentifier="deleteProjectWarning" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="a54-SH-Ypp" customClass="deleteConfirmationViewController" customModule="BoardIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b6O-Pe-eck">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6E-Tp-z0O">
+                                <rect key="frame" x="336" y="317" width="522" height="200"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Are you sure you want to delete project &quot;Andy pergi ke pasar&quot; and it's content?" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6c0-Pw-Tcb">
+                                        <rect key="frame" x="44" y="33" width="435" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kl-IP-WY2">
+                                        <rect key="frame" x="300" y="128" width="130" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="a54-SH-Ypp" eventType="touchUpInside" id="48V-yD-ZZf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXU-aB-Q9Z">
+                                        <rect key="frame" x="105" y="128" width="130" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                        <state key="normal" title="Yes">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="yesAction:" destination="a54-SH-Ypp" eventType="touchUpInside" id="c2I-of-HuG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="522" id="DWe-RO-qwu"/>
+                                    <constraint firstAttribute="height" constant="200" id="X0a-Qh-yYx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="txZ-ZN-aiM"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d6E-Tp-z0O" firstAttribute="centerY" secondItem="b6O-Pe-eck" secondAttribute="centerY" id="Q7c-OS-p5H"/>
+                            <constraint firstItem="d6E-Tp-z0O" firstAttribute="centerX" secondItem="b6O-Pe-eck" secondAttribute="centerX" id="zF3-y6-18z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="6kl-IP-WY2" id="9f6-Rf-UAo"/>
+                        <outlet property="deleteView" destination="d6E-Tp-z0O" id="9re-Wc-uNg"/>
+                        <outlet property="deleteWarning" destination="6c0-Pw-Tcb" id="nyO-gJ-PfT"/>
+                        <outlet property="yesButton" destination="kXU-aB-Q9Z" id="EGe-WB-LQA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKB-9V-A6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2584.924623115578" y="1638.8489208633096"/>
+        </scene>
         <!--EditSubcenePage-->
         <scene sceneID="9ta-bh-EmG">
             <objects>
@@ -299,7 +371,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-NG-z9d">
-                                <rect key="frame" x="100" y="108" width="320" height="626"/>
+                                <rect key="frame" x="100" y="112" width="320" height="622"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYg-GX-mDf">
@@ -339,6 +411,7 @@
                     <connections>
                         <outlet property="addProjectButton" destination="IYg-GX-mDf" id="5Cg-hF-uCX"/>
                         <outlet property="projectTable" destination="N6S-NG-z9d" id="kIA-h3-2QH"/>
+                        <segue destination="a54-SH-Ypp" kind="presentation" identifier="deleteProjectSegue" id="YNN-nx-gV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E26-2C-4lY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -381,7 +454,7 @@
             <objects>
                 <navigationController id="09G-u2-Dcu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="kOc-We-2VY">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="112"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="44"/>
@@ -457,6 +530,9 @@
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

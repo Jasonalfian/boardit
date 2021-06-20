@@ -55,6 +55,7 @@
 		5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */; };
 		5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C6457266DF384002F89CD /* BoardIt.xcdatamodeld */; };
 		5E52FCCB267DFE7C00899E32 /* PopoverProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52FCCA267DFE7C00899E32 /* PopoverProjectViewController.swift */; };
+		5E52FCD0267F081C00899E32 /* deleteConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52FCCF267F081C00899E32 /* deleteConfirmationViewController.swift */; };
 		5E9FB21B2678FE6F00F929A5 /* EditSaveModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */; };
 		5EE46C9E2671B1D50080242C /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */; };
 		5EE46C9F2671B1D50080242C /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */; };
@@ -130,6 +131,7 @@
 		5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E4C6458266DF384002F89CD /* BoardIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoardIt.xcdatamodel; sourceTree = "<group>"; };
 		5E52FCCA267DFE7C00899E32 /* PopoverProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverProjectViewController.swift; sourceTree = "<group>"; };
+		5E52FCCF267F081C00899E32 /* deleteConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteConfirmationViewController.swift; sourceTree = "<group>"; };
 		5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSaveModalViewController.swift; sourceTree = "<group>"; };
 		5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				069228872679BB3500464037 /* ProjectViewController.swift */,
 				023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */,
 				5E52FCCA267DFE7C00899E32 /* PopoverProjectViewController.swift */,
+				5E52FCCF267F081C00899E32 /* deleteConfirmationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E52FCD0267F081C00899E32 /* deleteConfirmationViewController.swift in Sources */,
 				29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */,
 				2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */,
 				0C7CDE32267B8CB8001AE38E /* PopOverViewController.swift in Sources */,

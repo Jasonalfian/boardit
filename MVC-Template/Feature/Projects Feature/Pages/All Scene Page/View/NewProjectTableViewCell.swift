@@ -21,6 +21,7 @@ class NewProjectTableViewCell: UITableViewCell, UITextViewDelegate, UIPopoverPre
     var coreData = CoreDataManager()
     
     var project:Project!
+    var listProject:[Project]!
     
     override func awakeFromNib() {
         
@@ -30,12 +31,30 @@ class NewProjectTableViewCell: UITableViewCell, UITextViewDelegate, UIPopoverPre
         
         projectTextView.delegate = self
         self.projectTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
+        NotificationCenter.default.addObserver(self, selector: #selector(goToDeleteWarning), name: NSNotification.Name(rawValue: "deleteWarning"), object: nil)
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(runFromPopover), name: NSNotification.Name("runFromPopover"), object: nil)
 //         Initialization code
 //        Bulet.layer.cornerRadius = 9
 //        Bulet.layer.borderWidth = 1
 //        Bulet.layer.borderColor = #colorLiteral(red: 0.1000000015, green: 0.1000000015, blue: 0.1000000015, alpha: 1)
+    }
+    
+    @objc func goToDeleteWarning(_ data: Notification) {
+        
+        let rowNumber = data.object as! Int
+        
+        let storyboard : UIStoryboard = UIStoryboard(name: "AllScenePage", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "deleteProjectWarning") as! deleteConfirmationViewController
+        
+        listProject = coreData.getAllData(entity: Project.self)
+        
+        vc.modalPresentationStyle = .overFullScreen
+        vc.project = listProject[rowNumber]
+        vc.rowNumber = rowNumber
+        
+        viewController.present(vc, animated: true, completion: nil)
+        
     }
     
     @IBAction func editProject(_ sender: UIButton) {
