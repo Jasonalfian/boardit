@@ -19,19 +19,15 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    
+    var indexScene = 0
+    var indexSubscene = 0
+    var currentProject : Project!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navTitle.title = projectTitlePassingBro
-        
-        sceneListController = SceneListController()
-        sceneListController?.delegateController = self
-        sceneMenu = SideMenuNavigationController(rootViewController: sceneListController ?? SceneListController())
-        sceneMenu?.leftSide = true
-        sceneMenu?.title = "Scenes"
-        sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
-        
-        sceneListController?.InitializeData()
+        navTitle.title = projectTitlePassingBro   
     }
     
     @IBAction func tapSceneMenu(_ sender: UIButton) {
@@ -61,6 +57,18 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     func HideButton(isHideNext: Bool, isHidePrev : Bool) {
         nextButton.isHidden = isHideNext
         prevButton.isHidden = isHidePrev
+    }
+    
+    func createSceneListController(){
+        
+        sceneListController = SceneListController()
+        sceneListController?.delegateController = self
+        sceneMenu = SideMenuNavigationController(rootViewController: sceneListController ?? SceneListController())
+        sceneMenu?.leftSide = true
+        sceneMenu?.title = "Scenes"
+        sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
+        
+        sceneListController?.InitializeData(idxScene: indexScene, idxSubscene: indexSubscene, pro: currentProject)
     }
 }
 
@@ -126,24 +134,17 @@ class SceneListController : UITableViewController{
 //        delegateController?.ChangeSubScene(scene: allSubsScenez[indexPath.section][indexPath.row], counter : "\(indexPath.row+1)/\(allSubsScenez[indexPath.section].count)")
     }
     
-    func InitializeData(){
+    func InitializeData(idxScene : Int, idxSubscene : Int, pro : Project){
         
-        //Get Core Data
-        var listProject : [Project] = []
-        
-        //Harusnya disini dapet project sekarang apa dari page sebelum
-        listProject = coreData.getAllData(entity: Project.self)
-        
-        //Harusnya disini dapet dari page sebelum
-        let listScene = coreData.getAllProjectScene(project: listProject[0])
+        let listScene = coreData.getAllProjectScene(project: pro)
         
         for i in listScene {
             allSubsScenez.append(coreData.getAllSubScene(scene: i))
         }
         
         //Diganti sesuai dari sebelum page
-        indexScene = 0
-        indexSubscene = 0
+        indexScene = idxScene
+        indexSubscene = idxSubscene
         
         CheckButtons()
         

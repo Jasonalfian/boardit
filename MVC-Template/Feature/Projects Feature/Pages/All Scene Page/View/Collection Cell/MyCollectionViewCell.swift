@@ -59,6 +59,7 @@ class MyCollectionViewCell: UICollectionViewCell, TableObserver {
     
     var navigationController: UINavigationController?
     var sceneNumber:Int!
+    var subSceneNumber : Int!
     
     var hideController: Bool!
     var defaultImage = #imageLiteral(resourceName: "empty Image")
@@ -139,13 +140,15 @@ class MyCollectionViewCell: UICollectionViewCell, TableObserver {
         return nibView
     }
     
+    //farrel
     @IBAction func goToEditScene(_ sender: UIButton) {
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
 
 //        editPage.subScene = self.subScene
         editPage.subScene = subScene
-        editPage.sceneNumber = sceneNumber
+        editPage.subSceneNumber = subSceneNumber
+        editPage.SceneNumber = sceneNumber
         
         if let splitView = navigationController?.parent as? UISplitViewController {
             UIView.animate(withDuration: 0.3, animations: {
@@ -164,7 +167,7 @@ class MyCollectionViewCell: UICollectionViewCell, TableObserver {
 //        let navController = UINavigationController(rootViewController: editPage)
 //        window?.rootViewController = navController
         
-        editPage.sceneNumber = sceneNumber
+        editPage.subSceneNumber = sceneNumber
         
         //create new subscene
         coreData.createSubScene(scene: self.scene)

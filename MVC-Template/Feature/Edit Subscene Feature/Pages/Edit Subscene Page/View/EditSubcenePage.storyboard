@@ -334,7 +334,7 @@
                         <outlet property="shotSizeSelector" destination="n5F-tL-PB1" id="NWU-0Q-6Yf"/>
                         <outlet property="storyboardImage" destination="IiQ-cB-Ij4" id="vXw-Lb-sUg"/>
                         <segue destination="yWe-e8-8bc" kind="presentation" identifier="drawingSegue" modalPresentationStyle="fullScreen" id="SfN-6v-426"/>
-                        <segue destination="bPH-Vu-9ea" kind="show" id="2cW-15-dTh"/>
+                        <segue destination="bPH-Vu-9ea" kind="presentation" identifier="presentationSegue" modalPresentationStyle="fullScreen" id="2cW-15-dTh"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="saveSegue" id="zvc-Oo-22z"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="backSaveSegue" id="Mde-nt-4YX"/>
                         <segue destination="TiJ-s6-pM8" kind="presentation" identifier="saveOnlySegue" id="G4f-Ks-dmY"/>

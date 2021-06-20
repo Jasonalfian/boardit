@@ -57,7 +57,8 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     var rawImage:Data!
     var pencilKitData:Data!
     
-    var sceneNumber:Int!
+    var subSceneNumber:Int!
+    var SceneNumber : Int!
     
     var isFirst = true
     
@@ -254,7 +255,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         //Move core data to local variable
         if (subScene != nil){
             
-            self.title = "SubScene \(String(describing: subScene.subtoscene!.number)).\(String(describing: sceneNumber! + 1))"
+            self.title = "SubScene \(String(describing: subScene.subtoscene!.number)).\(String(describing: subSceneNumber! + 1))"
             
 //            Ga dijalanin pas masuk halaman edit subcene dari drawing page
             if isFirst == true {
@@ -377,6 +378,16 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             } else {
                 
             }
+        }
+        if(segue.identifier == "presentationSegue"){
+            let presentVC = segue.destination as? PresentationPageViewController
+            
+            presentVC?.indexScene = SceneNumber //SceneNumber
+            presentVC?.indexSubscene = subSceneNumber //subSceneNumber
+            
+            presentVC?.currentProject = subScene.subtoscene?.scenetoproject
+            presentVC?.projectTitlePassingBro = subScene.subtoscene?.scenetoproject?.name
+            presentVC?.createSceneListController()
         }
     }
     
@@ -527,7 +538,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func goToPresentationPage(_ sender: UIBarButtonItem) {
-        
+        self.performSegue(withIdentifier: "presentationSegue", sender: self)
     }
     
     @IBAction func saveButton(_ sender: UIButton) {

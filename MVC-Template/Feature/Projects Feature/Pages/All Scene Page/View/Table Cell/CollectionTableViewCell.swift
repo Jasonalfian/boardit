@@ -15,6 +15,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     var firstCell: MyCollectionViewCell?
     
     var sceneNum: Int!
+    
     static let identifier = "CollectionTableViewCell"
     
     var modelCore: [SubScene]!
@@ -106,7 +107,8 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         
         cell.navigationController = self.navigationController
         cell.configure(with: models[indexPath.row])
-        cell.sceneNumber = indexPath.row
+        cell.sceneNumber = sceneNum
+        cell.subSceneNumber = indexPath.row
         cell.observerController = self.observerController
         cell.setObserver()
         

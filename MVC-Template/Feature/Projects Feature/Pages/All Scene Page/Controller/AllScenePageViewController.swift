@@ -102,7 +102,8 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func didPresentationButtonClicked(_ sender: UIBarButtonItem) {
-        
+        //Perform Segue
+        self.performSegue(withIdentifier: "presentationSegue", sender: self)
     }
     
     @IBAction func didFilterButtonClicked(_ sender: UIBarButtonItem) {
@@ -242,6 +243,17 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         self.present(popOver, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "presentationSegue"){
+            let presentVC = segue.destination as? PresentationPageViewController
+            presentVC?.indexScene = 0
+            presentVC?.indexSubscene = 0
+            presentVC?.currentProject =  currentProject
+            presentVC?.projectTitlePassingBro = currentProject.name
+            presentVC?.createSceneListController()
+        }
+    }
 }
 
 struct Model {
