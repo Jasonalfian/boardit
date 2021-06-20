@@ -380,14 +380,14 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
             }
         }
         if(segue.identifier == "presentationSegue"){
-            let presentVC = segue.destination as? PresentationPageViewController
             
-            presentVC?.indexScene = SceneNumber //SceneNumber
-            presentVC?.indexSubscene = subSceneNumber //subSceneNumber
-            
-            presentVC?.currentProject = subScene.subtoscene?.scenetoproject
-            presentVC?.projectTitlePassingBro = subScene.subtoscene?.scenetoproject?.name
-            presentVC?.createSceneListController()
+            let destinationVC = segue.destination as! UINavigationController
+            if let presentVC = destinationVC.viewControllers[0] as? PresentationPageViewController {
+                presentVC.indexScene = SceneNumber //SceneNumber
+                presentVC.indexSubscene = subSceneNumber //subSceneNumber
+                presentVC.currentProjectZ = subScene.subtoscene?.scenetoproject
+                presentVC.projectTitlePassingBro = subScene.subtoscene?.scenetoproject?.name
+            }
         }
     }
     

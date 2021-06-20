@@ -246,12 +246,14 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segue.identifier == "presentationSegue"){
-            let presentVC = segue.destination as? PresentationPageViewController
-            presentVC?.indexScene = 0
-            presentVC?.indexSubscene = 0
-            presentVC?.currentProject =  currentProject
-            presentVC?.projectTitlePassingBro = currentProject.name
-            presentVC?.createSceneListController()
+            let destinationVC = segue.destination as! UINavigationController
+            if let presentVC = destinationVC.viewControllers[0] as? PresentationPageViewController{
+                
+                presentVC.indexScene = 0
+                presentVC.indexSubscene = 0
+                presentVC.currentProjectZ = currentProject as Project
+                presentVC.projectTitlePassingBro = currentProject.name
+            }
         }
     }
 }

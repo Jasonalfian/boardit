@@ -22,12 +22,21 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     
     var indexScene = 0
     var indexSubscene = 0
-    var currentProject : Project!
+    var currentProjectZ : Project!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navTitle.title = projectTitlePassingBro
+        
+        sceneListController = SceneListController()
+        sceneListController?.delegateController = self
+        sceneMenu = SideMenuNavigationController(rootViewController: sceneListController ?? SceneListController())
+        sceneMenu?.leftSide = true
+        sceneMenu?.title = "Scenes"
+        sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
+        
+        sceneListController?.InitializeData(idxScene: indexScene, idxSubscene: indexSubscene, pro: currentProjectZ!)
     }
     
     @IBAction func tapSceneMenu(_ sender: UIButton) {
@@ -59,18 +68,6 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     func HideButton(isHideNext: Bool, isHidePrev : Bool) {
         nextButton.isHidden = isHideNext
         prevButton.isHidden = isHidePrev
-    }
-    
-    func createSceneListController(){
-        
-        sceneListController = SceneListController()
-        sceneListController?.delegateController = self
-        sceneMenu = SideMenuNavigationController(rootViewController: sceneListController ?? SceneListController())
-        sceneMenu?.leftSide = true
-        sceneMenu?.title = "Scenes"
-        sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
-        
-        sceneListController?.InitializeData(idxScene: indexScene, idxSubscene: indexSubscene, pro: currentProject)
     }
 }
 
