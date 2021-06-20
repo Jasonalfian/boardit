@@ -44,6 +44,16 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
     
     var vc: ProjectViewController!
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 21
+    }
+    
     @IBAction func createNewProjectButton(_ sender: Any) {
         if projectNameTextField.text == ""
         {

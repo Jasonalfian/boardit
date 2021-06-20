@@ -460,6 +460,7 @@ class EditSubscenePageViewController: UIViewController, UITextViewDelegate {
         } else{
             
             saveSubScene()
+            coreData.updateProject(project: subScene.subtoscene!.scenetoproject, modifiedDate: Date())
             resetInitValue()
             performSegue(withIdentifier: "saveOnlySegue", sender: nil)
             haveSaved = true
