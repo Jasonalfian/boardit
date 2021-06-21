@@ -127,7 +127,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
             
             if models[indexPath.row].addNew == false {
                 dictionarySelectedIndexPath[indexPath] = true
-                print("TRUE : \(sceneNum) \(indexPath.row) \(indexPath.count)")
+//                print("TRUE : \(sceneNum) \(indexPath.row) \(indexPath.count)")
             }
             
         }
@@ -136,7 +136,7 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if modeStatus == true {
             dictionarySelectedIndexPath[indexPath] = false
-            print("FALSE")
+//            print("FALSE")
         }
     }
     

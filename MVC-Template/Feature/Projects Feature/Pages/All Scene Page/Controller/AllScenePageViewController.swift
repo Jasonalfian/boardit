@@ -73,7 +73,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         listProject = coreData.getAllData(entity: Project.self)
-        print("jumlah data project",listProject.count)
+//        print("jumlah data project",listProject.count)
                 
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
@@ -128,7 +128,15 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func didFilterButtonClicked(_ sender: UIBarButtonItem) {
+        let filterController = self.storyboard?.instantiateViewController(withIdentifier: "filterView") as? FilterViewController
+        filterController?.modalPresentationStyle = .popover
         
+        if let filterPopOverController = filterController?.popoverPresentationController {
+            filterPopOverController.permittedArrowDirections = .up
+            filterPopOverController.delegate = self
+            filterPopOverController.barButtonItem = sender
+        }
+        present(filterController!, animated: true, completion: nil)
     }
     
     @objc func didSelectButtonClicked(_ sender: UIBarButtonItem) {
@@ -160,12 +168,12 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
             
             listSubScene = coreData.getAllSubScene(scene: item)
             
-            print("scene no: \(item.number)")
-            print("Jumlah subscene: \(listSubScene.count)")
+//            print("scene no: \(item.number)")
+//            print("Jumlah subscene: \(listSubScene.count)")
             
             for item in listSubScene{
                 
-                print("subscene number \(item.number)")
+//                print("subscene number \(item.number)")
                 model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , scene: item.subtoscene, addNew: false, subScene: item))
                 
                 modelCore1.append(item)
@@ -192,6 +200,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
     
         cell.textLabel?.text = "      Scene \(indexPath.row+1)"
+        cell.textLabel?.isHidden = true //Andy Filter
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
         cell.navigationController = self.navigationController
@@ -213,7 +222,7 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.row == 0 {
             self.firstCell = cell
         }
-    return cell
+        return cell
         
     }
         
@@ -265,6 +274,21 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 }
+extension AllScenePageViewController: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+
+    }
+
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+}
+
 
 struct Model {
     let desc: String?
