@@ -124,8 +124,12 @@ class CollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
         case false:
             print("View Status")
         case true:
-            dictionarySelectedIndexPath[indexPath] = true
-            print("TRUE : \(sceneNum) \(indexPath.row)")
+            
+            if models[indexPath.row].addNew == false {
+                dictionarySelectedIndexPath[indexPath] = true
+                print("TRUE : \(sceneNum) \(indexPath.row) \(indexPath.count)")
+            }
+            
         }
     }
     
