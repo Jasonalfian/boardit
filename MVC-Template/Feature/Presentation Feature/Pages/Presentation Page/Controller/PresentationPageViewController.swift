@@ -193,7 +193,17 @@ class SceneListController : UITableViewController{
     }
     
     func CheckButtons(){
-        let hideNext : Bool = allSubsScenez[indexScene].count == (indexSubscene+1) && (allSubsScenez[indexScene+1].count == 0 || allSubsScenez.count == (indexScene+1))
+        
+        let isLastSubscene = allSubsScenez[indexScene].count == (indexSubscene+1)
+        
+        let isLastScene = allSubsScenez.count == (indexScene+1)
+        var isNextSceneEmpty = isLastScene
+        if !isLastScene {
+            let isLastSceneEmpty = allSubsScenez[indexScene+1].count == 0
+            isNextSceneEmpty = isLastSceneEmpty
+        }
+                    
+        let hideNext : Bool = isLastSubscene && (isNextSceneEmpty)
         let hidePrev : Bool = (indexScene-1) < 0 && (indexSubscene-1) < 0
         delegateController?.HideButton(isHideNext: hideNext, isHidePrev: hidePrev)
     }
