@@ -27,12 +27,6 @@ class MyCollectionViewCell: UICollectionViewCell, TableObserver {
     
     @IBOutlet weak var selectIndicator: UIImageView!
     
-    override var isHighlighted: Bool {
-        didSet {
-            highlightIndicator.isHidden = !isHighlighted
-        }
-    }
-    
     override var isSelected: Bool {
         didSet {
             highlightIndicator.isHidden = !isSelected
