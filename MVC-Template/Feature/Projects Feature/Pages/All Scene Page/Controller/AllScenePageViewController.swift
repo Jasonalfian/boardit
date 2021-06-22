@@ -9,7 +9,7 @@ import UIKit
 
 class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CollectionObserver {
    
-    @IBOutlet weak var filterBarButton: UIBarButtonItem!
+//    @IBOutlet weak var filterBarButton: UIBarButtonItem!
     @IBOutlet weak var presentationBarButton: UIBarButtonItem!
     @IBOutlet weak var addNewScene: UIButton!
    
@@ -119,26 +119,26 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func setupBarButton() {
-        self.navigationItem.rightBarButtonItems = [presentationBarButton, filterBarButton, selectBarButton]
+        self.navigationItem.rightBarButtonItems = [presentationBarButton, selectBarButton]
     }
     
     @IBAction func didPresentationButtonClicked(_ sender: UIBarButtonItem) {
         //Perform Segue
         self.performSegue(withIdentifier: "presentationSegue", sender: self)
     }
-    
-    @IBAction func didFilterButtonClicked(_ sender: UIBarButtonItem) {
-        let filterController = self.storyboard?.instantiateViewController(withIdentifier: "filterView") as? FilterViewController
-        filterController?.modalPresentationStyle = .popover
-        
-        if let filterPopOverController = filterController?.popoverPresentationController {
-            filterPopOverController.permittedArrowDirections = .up
-            filterPopOverController.delegate = self
-            filterPopOverController.barButtonItem = sender
-        }
-        present(filterController!, animated: true, completion: nil)
-    }
-    
+//
+//    @IBAction func didFilterButtonClicked(_ sender: UIBarButtonItem) {
+//        let filterController = self.storyboard?.instantiateViewController(withIdentifier: "filterView") as? FilterViewController
+//        filterController?.modalPresentationStyle = .popover
+//
+//        if let filterPopOverController = filterController?.popoverPresentationController {
+//            filterPopOverController.permittedArrowDirections = .up
+//            filterPopOverController.delegate = self
+//            filterPopOverController.barButtonItem = sender
+//        }
+//        present(filterController!, animated: true, completion: nil)
+//    }
+//
     @objc func didSelectButtonClicked(_ sender: UIBarButtonItem) {
         mMode = mMode == .view ? .select : .view
     }

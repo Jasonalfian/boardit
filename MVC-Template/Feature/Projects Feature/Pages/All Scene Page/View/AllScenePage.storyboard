@@ -75,18 +75,11 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem id="JWq-Hl-Czk"/>
-                            <barButtonItem image="line.horizontal.3.decrease" catalog="system" id="bnO-ey-D5F">
-                                <color key="tintColor" white="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="didFilterButtonClicked:" destination="Y6W-OH-hqX" id="lTY-9M-4ga"/>
-                                </connections>
-                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addNewScene" destination="tKY-US-mk7" id="ZMe-II-VP0"/>
-                        <outlet property="filterBarButton" destination="bnO-ey-D5F" id="vWc-n4-yif"/>
                         <outlet property="presentationBarButton" destination="LBe-pN-ZDT" id="0gh-Fn-XP1"/>
                         <outlet property="table" destination="xfW-3f-c2I" id="zKq-HU-zoB"/>
                         <segue destination="vJf-0C-a8Z" kind="show" identifier="editSubsceneSegue" id="JCj-l6-kSI"/>
@@ -687,7 +680,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="trash" catalog="system" width="121" height="128"/>
