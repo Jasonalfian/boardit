@@ -11,8 +11,20 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
     var coreData = CoreDataManager()
     var listProject:[Project] = []
     var dateFormatter = DateFormatter()
+    var popOver: UIViewController?
     
     @IBOutlet weak var addProjectButton: UIButton!
+    
+    @objc func tesPopover(_ data: Notification) {
+        
+        let indexRow = data.object as! Int
+        
+        let indexPath = NSIndexPath(row: indexRow, section: 0)
+        let cell = projectTable.cellForRow(at: indexPath as IndexPath) as! NewProjectTableViewCell
+        
+        cell.renameProject()
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -30,6 +42,11 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let result = listProject[indexPath.row]
         cell.projectName.text = result.name
+        cell.projectTextView.text = result.name
+        cell.viewController = self.navigationController
+        cell.indexRowNumber = indexPath.row
+        cell.project = result
+        
         if result.lastModified == nil {
             cell.projectDate.text = dateFormatter.string(from: result.dateCreated!)
         } else {
@@ -47,15 +64,30 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
     @IBOutlet weak var projectTable: UITableView!
     
-    @objc func loadList(notification: NSNotification)
+    @objc func loadList(notification: Notification)
     {
+        
+        var row = notification.object as! Int
+        
         listProject = coreData.getAllData(entity: Project.self)
         
         self.projectTable.reloadData()
-        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
+        
+//        if (row == nil) {
+//        self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[0])
+//        } else {
+            
+            if (row == listProject.count){
+                row = row - 1
+            }
+            
+            self.projectTable.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .top)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadFromProject"), object: listProject[row])
+//        }
         
     }
     
@@ -83,6 +115,28 @@ class ProjectViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.projectTable.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(tesPopover), name: NSNotification.Name(rawValue: "renamePopOver"), object: nil)
 
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            print(UserDefaults.standard.integer(forKey: "tutorialStep"))
+            firstTutorial()
+        }
+    }
+    
+    func firstTutorial() {
+        let popOverVC = PopOverViewController()
+        popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 0)!.description
+        popOverVC.isInsideModal = false
+        popOverVC.hasSidebar = true
+        popOverVC.onDismiss = { result in
+            self.popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 1)!.description, step: nil, elementToPoint: self.addProjectButton, direction: .down, isInsideModal: false, hasSidebar: true)
+            self.present(self.popOver!, animated: true)
+            UserDefaults.standard.setValue(2, forKey: "tutorialStep")
+        }
+        popOverVC.modalPresentationStyle = .formSheet
+        
+        self.present(popOverVC, animated: true)
+        UserDefaults.standard.setValue(1, forKey: "tutorialSetp")
     }
 }

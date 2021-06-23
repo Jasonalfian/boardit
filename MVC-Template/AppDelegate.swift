@@ -15,6 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if UserDefaults.standard.object(forKey: "isTutorial") == nil {
+            UserDefaults.standard.setValue(true, forKey: "isTutorial")
+        }
+        
+        if UserDefaults.standard.bool(forKey: "isTutorial") {
+            UserDefaults.standard.setValue(0, forKey: "tutorialStep")
+        }
+        
+        Thread.sleep(forTimeInterval: 2)
         return true
     }
 

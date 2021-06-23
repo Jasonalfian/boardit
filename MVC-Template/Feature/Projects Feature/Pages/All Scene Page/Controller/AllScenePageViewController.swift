@@ -7,8 +7,10 @@
 
 import UIKit
 
-class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class AllScenePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CollectionObserver {
    
+//    @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var presentationBarButton: UIBarButtonItem!
     @IBOutlet weak var addNewScene: UIButton!
    
     var aspectRatio = 0
@@ -20,39 +22,131 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
     var models = [[Model]]()
     var currentProject: Project!
     
+    var modelCore1 = [SubScene]()
+    var modelCore2 = [[SubScene]]()
+    var modelCore3 = [[SubScene]]()
+    var observerController = ObserverController()
+    
     var myCollectionView = MyCollectionViewCell()
     
+    var firstCell: CollectionTableViewCell?
+    
     @IBOutlet var table: UITableView!
-//    @IBAction func sideBar(_ sender: Any) {
-//
-//    didTapButton()
-//        
-//    }
+    
+    enum Mode {
+        case view
+        case select
+    }
+    
+    var mMode: Mode = .view {
+        didSet {
+            switch mMode {
+            case .view:
+                selectBarButton.title = "Select"
+                navigationItem.leftBarButtonItem = nil
+                
+                for item in observerController.tableObservers {
+                    item.changeMultipleSelectStatus(status: false)
+                }
+            case .select:
+                selectBarButton.title = "Cancel"
+                navigationItem.leftBarButtonItem = deleteBarButton
+                
+                for item in observerController.tableObservers {
+                    item.changeMultipleSelectStatus(status: true)
+                }
+            }
+        }
+    }
+    
+    lazy var selectBarButton: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(didSelectButtonClicked(_:)))
+        return barButtonItem
+    }()
+    
+    lazy var deleteBarButton: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didDeleteButtonClicked(_:)))
+        return barButtonItem
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         listProject = coreData.getAllData(entity: Project.self)
-        print("jumlah data project",listProject.count)
+//        print("jumlah data project",listProject.count)
                 
         table.register(CollectionTableViewCell.nib(), forCellReuseIdentifier: CollectionTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
-        
-//        coreData.createScene(project: listProject[0])
         
         currentProject = listProject[0]
         listScene = coreData.getAllProjectScene(project: currentProject)
         addNewScene.layer.borderWidth = 1
         addNewScene.layer.cornerRadius = 30
         addNewScene.setTitle("+ Add Scene", for: .normal)
-//        coreData.createSubScene(scene: listScene[0], description: "Ayam Bakar 2", angle: "Eye Level", shotSize: "Long Shot", movement: "Push In", storyboard: UIImage().pngData())
-        
+
         fetchDataLocal(project: currentProject)
+        setupBarButton()
+        
+        observerController.collObservers.append(self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(fetchData), name: NSNotification.Name("loadFromProject"), object: nil)
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        lastTutorial()
+    }
+    
+    func lastTutorial() {
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 18 {
+            let popOverVC = PopOverViewController()
+            popOverVC.tutorialText = Tutorial.getTutorialDataByID(id: 18)!.description
+            popOverVC.isInsideModal = false
+            popOverVC.hasSidebar = true
+            popOverVC.onDismiss = { result in
+                UserDefaults.standard.setValue(false, forKey: "isTutorial")
+            }
+            popOverVC.modalPresentationStyle = .formSheet
+            
+            DispatchQueue.main.async {
+                self.present(popOverVC, animated: true)
+            }
+        }
+    }
+    
+    func didChange() {
+        fetchDataLocal(project: currentProject)
+    }
+    
+    func setupBarButton() {
+        self.navigationItem.rightBarButtonItems = [presentationBarButton, selectBarButton]
+    }
+    
+    @IBAction func didPresentationButtonClicked(_ sender: UIBarButtonItem) {
+        //Perform Segue
+        self.performSegue(withIdentifier: "presentationSegue", sender: self)
+    }
+//
+//    @IBAction func didFilterButtonClicked(_ sender: UIBarButtonItem) {
+//        let filterController = self.storyboard?.instantiateViewController(withIdentifier: "filterView") as? FilterViewController
+//        filterController?.modalPresentationStyle = .popover
+//
+//        if let filterPopOverController = filterController?.popoverPresentationController {
+//            filterPopOverController.permittedArrowDirections = .up
+//            filterPopOverController.delegate = self
+//            filterPopOverController.barButtonItem = sender
+//        }
+//        present(filterController!, animated: true, completion: nil)
+//    }
+//
+    @objc func didSelectButtonClicked(_ sender: UIBarButtonItem) {
+        mMode = mMode == .view ? .select : .view
+    }
+    
+    @objc func didDeleteButtonClicked(_ sender: UIBarButtonItem) {
+        for item in observerController.tableObservers {
+            item.didDeleteTapped()
+        }
     }
     
     @objc func fetchData(_ data: Notification) {
@@ -74,22 +168,31 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
             
             listSubScene = coreData.getAllSubScene(scene: item)
             
-            print("scene no: \(item.number)")
-            print("Jumlah subscene: \(listSubScene.count)")
+//            print("scene no: \(item.number)")
+//            print("Jumlah subscene: \(listSubScene.count)")
             
             for item in listSubScene{
                 
-                print("subscene number \(item.number)")
+//                print("subscene number \(item.number)")
                 model1.append(Model(desc: item.sceneDescription ?? "-", size: item.shotSize ?? "-" , angle: item.angle ?? "-", movement: item.movement ?? "-", imageName: item.storyboard , scene: item.subtoscene, addNew: false, subScene: item))
+                
+                modelCore1.append(item)
             }
             
             model1.append(Model(scene: item, addNew: true))
             
             models.append(model1)
+            modelCore2.append(modelCore1)
             
+            modelCore1.removeAll()
             model1.removeAll()
+
             
         }
+        
+        modelCore3 = modelCore2
+        modelCore2.removeAll()
+        
         table.reloadData()
     }
     
@@ -97,10 +200,14 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         let cell = table.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as! CollectionTableViewCell
     
         cell.textLabel?.text = "      Scene \(indexPath.row+1)"
+        cell.textLabel?.isHidden = true //Andy Filter
         cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 20)
         cell.textLabel?.textAlignment = .left
         cell.navigationController = self.navigationController
-        
+        cell.observerController = self.observerController
+        cell.sceneNum = indexPath.row
+        cell.modelCore = modelCore3[indexPath.row]
+        cell.coreData = self.coreData
         
 //        // Define attributes
 //        let labelFont = UIFont(name: "Poppins-Bold", size: 18)
@@ -112,8 +219,10 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        cell.textLabel?.attributedText = attrString
         
         cell.configure(with: models[indexPath.row])
-        
-    return cell
+        if indexPath.row == 0 {
+            self.firstCell = cell
+        }
+        return cell
         
     }
         
@@ -131,6 +240,13 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
         return 380
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == listScene.count - 1 && UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 3 {
+            loadTutorial(element: firstCell!)
+            UserDefaults.standard.setValue(4, forKey: "tutorialStep")
+        }
+    }
+    
 //    @objc private func didTapButton() {
 //        let splitVC = UISplitViewController(style: .doubleColumn)
 //
@@ -139,7 +255,39 @@ class AllScenePageViewController: UIViewController, UITableViewDelegate, UITable
 //        present(splitVC, animated: true)
 //    }
     
+    func loadTutorial(element: UIView) {
+        let popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 3)!.description, step: "3/17", elementToPoint: element, direction: .right, isInsideModal: false, hasSidebar: true)
+        self.present(popOver, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "presentationSegue"){
+            let destinationVC = segue.destination as! UINavigationController
+            if let presentVC = destinationVC.viewControllers[0] as? PresentationPageViewController{
+                
+                presentVC.indexScene = 0
+                presentVC.indexSubscene = 0
+                presentVC.currentProjectZ = currentProject as Project
+                presentVC.projectTitlePassingBro = currentProject.name
+            }
+        }
+    }
+}
+extension AllScenePageViewController: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+
+    }
+
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+}
 
 
 struct Model {
@@ -154,6 +302,7 @@ struct Model {
     let subScene: SubScene?
     
     init(desc: String? = nil, size: String? = nil, angle: String? = nil, movement: String? = nil, imageName: Data? = nil, scene: Scene? = nil, addNew: Bool, subScene: SubScene? = nil) {
+        
         self.desc = desc
         self.size = size
         self.angle = angle

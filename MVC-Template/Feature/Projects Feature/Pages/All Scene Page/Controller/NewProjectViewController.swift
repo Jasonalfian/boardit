@@ -44,6 +44,16 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
     
     var vc: ProjectViewController!
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 21
+    }
+    
     @IBAction func createNewProjectButton(_ sender: Any) {
         if projectNameTextField.text == ""
         {
@@ -67,7 +77,7 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
             
 //            NotificationCenter.default.post(name: NSNotification.Name("loadFromProject"), object: listProject[0])
             
-            NotificationCenter.default.post(name: NSNotification.Name("load"), object: listProject[0])
+            NotificationCenter.default.post(name: NSNotification.Name("load"), object: 0)
             
             if((self.presentingViewController) != nil){
                 self.dismiss(animated: true, completion: nil)
@@ -129,5 +139,18 @@ class NewProjectViewController: UIViewController, UITextFieldDelegate{
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        if UserDefaults.standard.bool(forKey: "isTutorial") && UserDefaults.standard.integer(forKey: "tutorialStep") == 2 {
+            DispatchQueue.main.async {
+                self.loadTutorial()
+                UserDefaults.standard.setValue(3, forKey: "tutorialStep")
+            }
+        }
+    }
+    
+    func loadTutorial() {
+//        let overlay = Tutorial.createOverlay(view: view.superview!, elementToShow: view)
+        let popOver = Tutorial.createPopOver(tutorialText: Tutorial.getTutorialDataByID(id: 2)!.description, step: "2/17", elementToPoint: view, direction: .left, isInsideModal: true, hasSidebar: true)
+        self.present(popOver, animated: true)
     }
 }

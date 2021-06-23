@@ -19,9 +19,14 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
     
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    
+    var indexScene = 0
+    var indexSubscene = 0
+    var currentProjectZ : Project!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navTitle.title = projectTitlePassingBro
         
         sceneListController = SceneListController()
@@ -31,7 +36,7 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
         sceneMenu?.title = "Scenes"
         sceneMenu?.navigationBar.barTintColor = #colorLiteral(red: 0.1450980392, green: 0.1450980392, blue: 0.1450980392, alpha: 1)
         
-        sceneListController?.InitializeData()
+        sceneListController?.InitializeData(idxScene: indexScene, idxSubscene: indexSubscene, pro: currentProjectZ!)
     }
     
     @IBAction func tapSceneMenu(_ sender: UIButton) {
@@ -55,7 +60,9 @@ class PresentationPageViewController: UIViewController, SceneListControllerDeleg
         movementText.text = scene.movement
         
         counterSceneText.text = counter
-//        thumbnailImage.image = image
+        
+        let imageTemp = #imageLiteral(resourceName: "empty Image")
+        thumbnailImage.image = UIImage(data: scene.storyboard ?? imageTemp.pngData()!)
     }
     
     func HideButton(isHideNext: Bool, isHidePrev : Bool) {
@@ -126,24 +133,17 @@ class SceneListController : UITableViewController{
 //        delegateController?.ChangeSubScene(scene: allSubsScenez[indexPath.section][indexPath.row], counter : "\(indexPath.row+1)/\(allSubsScenez[indexPath.section].count)")
     }
     
-    func InitializeData(){
+    func InitializeData(idxScene : Int, idxSubscene : Int, pro : Project){
         
-        //Get Core Data
-        var listProject : [Project] = []
-        
-        //Harusnya disini dapet project sekarang apa dari page sebelum
-        listProject = coreData.getAllData(entity: Project.self)
-        
-        //Harusnya disini dapet dari page sebelum
-        let listScene = coreData.getAllProjectScene(project: listProject[0])
+        let listScene = coreData.getAllProjectScene(project: pro)
         
         for i in listScene {
             allSubsScenez.append(coreData.getAllSubScene(scene: i))
         }
         
         //Diganti sesuai dari sebelum page
-        indexScene = 0
-        indexSubscene = 0
+        indexScene = idxScene
+        indexSubscene = idxSubscene
         
         CheckButtons()
         
@@ -193,7 +193,17 @@ class SceneListController : UITableViewController{
     }
     
     func CheckButtons(){
-        let hideNext : Bool = allSubsScenez[indexScene].count == (indexSubscene+1) && (allSubsScenez[indexScene+1].count == 0 || allSubsScenez.count == (indexScene+1))
+        
+        let isLastSubscene = allSubsScenez[indexScene].count == (indexSubscene+1)
+        
+        let isLastScene = allSubsScenez.count == (indexScene+1)
+        var isNextSceneEmpty = isLastScene
+        if !isLastScene {
+            let isLastSceneEmpty = allSubsScenez[indexScene+1].count == 0
+            isNextSceneEmpty = isLastSceneEmpty
+        }
+                    
+        let hideNext : Bool = isLastSubscene && (isNextSceneEmpty)
         let hidePrev : Bool = (indexScene-1) < 0 && (indexSubscene-1) < 0
         delegateController?.HideButton(isHideNext: hideNext, isHidePrev: hidePrev)
     }

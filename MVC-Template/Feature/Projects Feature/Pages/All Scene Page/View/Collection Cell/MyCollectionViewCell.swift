@@ -7,8 +7,11 @@
 
 import UIKit
 
-class MyCollectionViewCell: UICollectionViewCell {
-
+class MyCollectionViewCell: UICollectionViewCell, TableObserver {
+    
+    var observerController: ObserverController!
+    var modeStatus: Bool!
+    
     @IBOutlet var myDesc: UILabel!
     @IBOutlet var myShotSize: UILabel!
     @IBOutlet var myImageView: UIImageView!
@@ -18,12 +21,42 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet var myMovement: UILabel!
     @IBOutlet weak var addNewSubscene: UIView!
     @IBOutlet weak var goToEditScene: UIButton!
+    @IBOutlet weak var newSubscene: UIButton!
+    
+    @IBOutlet weak var highlightIndicator: UIView!
+    
+    @IBOutlet weak var selectIndicator: UIImageView!
+    
+    override var isSelected: Bool {
+        didSet {
+            highlightIndicator.isHidden = !isSelected
+            selectIndicator.isHidden = !isSelected
+        }
+    }
+    
+    func setObserver() {
+        observerController.tableObservers.append(self)
+    }
+    
+    func changeMultipleSelectStatus(status: Bool) {
+        modeStatus = status
+        if modeStatus == false {
+            goToEditScene.isEnabled = true
+            newSubscene.isEnabled = true
+//            isHighlighted = false
+        } else if modeStatus == true {
+//            isHighlighted = true
+            goToEditScene.isEnabled = false
+            newSubscene.isEnabled = false
+        }
+    }
     
     var navigationController: UINavigationController?
     var sceneNumber:Int!
+    var subSceneNumber : Int!
     
     var hideController: Bool!
-    var defaultImage = #imageLiteral(resourceName: "shotSize-extremeLongShot")
+    var defaultImage = #imageLiteral(resourceName: "empty Image")
     var scene: Scene!
     var subScene: SubScene?
     
@@ -49,7 +82,10 @@ class MyCollectionViewCell: UICollectionViewCell {
         
         addNewSubscene.isHidden = true
         addNewSubscene.layer.cornerRadius = 30
-        
+    }
+    
+    func didDeleteTapped() {
+        //
     }
 
     public func configure(with model: Model) {
@@ -92,20 +128,21 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     func prepareScreen(navController: UINavigationController)-> UIView {
-
-            navigationController = navController
+        navigationController = navController
         let nibView = Bundle.main.loadNibNamed("MyCollectionViewCell", owner: self, options: nil)?[0] as! UIView
-            self.addSubview(nibView)
-            return nibView
-        }
+        self.addSubview(nibView)
+        return nibView
+    }
     
+    //farrel
     @IBAction func goToEditScene(_ sender: UIButton) {
         let editSubSceneStoryboard = UIStoryboard(name: "EditSubcenePage", bundle: nil)
         let editPage = editSubSceneStoryboard.instantiateViewController(withIdentifier: "EditSubscenePageViewController") as! EditSubscenePageViewController
 
 //        editPage.subScene = self.subScene
         editPage.subScene = subScene
-        editPage.sceneNumber = sceneNumber
+        editPage.subSceneNumber = subSceneNumber
+        editPage.SceneNumber = sceneNumber
         
         if let splitView = navigationController?.parent as? UISplitViewController {
             UIView.animate(withDuration: 0.3, animations: {
@@ -124,7 +161,7 @@ class MyCollectionViewCell: UICollectionViewCell {
 //        let navController = UINavigationController(rootViewController: editPage)
 //        window?.rootViewController = navController
         
-        editPage.sceneNumber = sceneNumber
+        editPage.subSceneNumber = sceneNumber
         
         //create new subscene
         coreData.createSubScene(scene: self.scene)

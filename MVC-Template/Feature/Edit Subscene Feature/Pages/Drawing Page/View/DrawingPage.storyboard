@@ -37,9 +37,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Kalo" largeTitleDisplayMode="always" id="IHw-zV-Gy1">
-                        <barButtonItem key="leftBarButtonItem" title="Save" id="x3R-TQ-yXh">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="djo-db-Wtd">
                             <connections>
-                                <action selector="backButton:" destination="Y6W-OH-hqX" id="hc1-lm-OXc"/>
+                                <action selector="backButton:" destination="Y6W-OH-hqX" id="JP1-cV-NvU"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -65,6 +65,7 @@
                         <outlet property="canvasView" destination="YPF-MN-DFp" id="iP4-kc-EjV"/>
                         <outlet property="leftConst" destination="6aG-Tm-y2q" id="526-d4-q2c"/>
                         <outlet property="rightConst" destination="jWb-x0-CBd" id="8xL-Mx-vvU"/>
+                        <outlet property="saveButton" destination="djo-db-Wtd" id="NEN-RT-8Sm"/>
                         <outlet property="topConst" destination="puQ-kM-s92" id="hVC-Rt-MCG"/>
                         <outlet property="uploadedImageView" destination="PYk-6N-evf" id="5gc-cT-AEj"/>
                         <segue destination="kAS-HT-Afg" kind="show" identifier="backEditSegue" id="cpk-Kj-zcS"/>

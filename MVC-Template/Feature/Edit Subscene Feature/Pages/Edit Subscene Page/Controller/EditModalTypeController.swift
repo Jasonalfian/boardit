@@ -35,6 +35,13 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
     }
     
+    func displayTutorial(text: String, step: String) {
+        let overlay = Tutorial.createPopOver(tutorialText: text, step: step, elementToPoint: typeView, direction: .left, isInsideModal: true, hasSidebar: true)
+        DispatchQueue.main.async {
+            self.present(overlay, animated: true)
+        }
+    }
+    
     func initiateView() {
         
         //rounded corner modal
@@ -72,6 +79,10 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
                 typeDescriptionTV.text = listAngle[startingIndex].description
             }
             
+            if UserDefaults.standard.bool(forKey: "isTutorial") {
+                displayTutorial(text: Tutorial.getTutorialDataByID(id: 6)!.description, step: "6/17")
+                UserDefaults.standard.setValue(7, forKey: "tutorialStep")
+            }
         }
         else if (titleSegue == "Shot Type") {
             
@@ -93,6 +104,10 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
             
+            if UserDefaults.standard.bool(forKey: "isTutorial") {
+                displayTutorial(text: Tutorial.getTutorialDataByID(id: 8)!.description, step: "8/17")
+                UserDefaults.standard.setValue(9, forKey: "tutorialStep")
+            }
         }
         else if (titleSegue == "Movement Type") {
             
@@ -124,6 +139,11 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
             
             typeImage.animationRepeatCount = 0
             typeImage.startAnimating()
+            
+            if UserDefaults.standard.bool(forKey: "isTutorial") {
+                displayTutorial(text: Tutorial.getTutorialDataByID(id: 10)!.description, step: "10/17")
+                UserDefaults.standard.setValue(11, forKey: "tutorialStep")
+            }
         }
         
         modalTitle.text = titleSegue
@@ -215,10 +235,11 @@ class EditModalTypeController: UIViewController, UITableViewDelegate, UITableVie
         
         returnData.append(typeName.text!)
         returnData.append(titleSegue)
+        NotificationCenter.default.post(name: Notification.Name("refresh"), object:self.returnData)
         
-        NotificationCenter.default.post(name: Notification.Name("refresh"), object:returnData)
-        
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.prevVC.moveTutorial()
+        }
     }
     
 }

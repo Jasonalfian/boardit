@@ -23,6 +23,11 @@
 		0692288A2679BB3500464037 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069228872679BB3500464037 /* ProjectViewController.swift */; };
 		0692288B2679BB3500464037 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069228882679BB3500464037 /* NewProjectViewController.swift */; };
 		0692288C2679BB3500464037 /* AllSceneCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069228892679BB3500464037 /* AllSceneCollectionViewCell.swift */; };
+		0C303BC42679B5FC0064320B /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C303BC32679B5FC0064320B /* Tutorial.swift */; };
+		0C7CDE32267B8CB8001AE38E /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7CDE30267B8CB8001AE38E /* PopOverViewController.swift */; };
+		0C7CDE33267B8CB8001AE38E /* PopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7CDE31267B8CB8001AE38E /* PopOverViewController.xib */; };
+		0C7CDE37267C4462001AE38E /* TutorialDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7CDE36267C4462001AE38E /* TutorialDataModel.swift */; };
+		2930CEDF2680A4D300AB8263 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2930CEDE2680A4D300AB8263 /* FilterViewController.swift */; };
 		295B2D1F26784ED700C05322 /* coreDataExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B2D1E26784ED700C05322 /* coreDataExample.swift */; };
 		29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */; };
 		29DF7DC02677AB0B0068C330 /* NewProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */; };
@@ -50,6 +55,8 @@
 		2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C87DADF266A7256007F783E /* NetworkManager.swift */; };
 		5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */; };
 		5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C6457266DF384002F89CD /* BoardIt.xcdatamodeld */; };
+		5E52FCCB267DFE7C00899E32 /* PopoverProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52FCCA267DFE7C00899E32 /* PopoverProjectViewController.swift */; };
+		5E52FCD0267F081C00899E32 /* deleteConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E52FCCF267F081C00899E32 /* deleteConfirmationViewController.swift */; };
 		5E9FB21B2678FE6F00F929A5 /* EditSaveModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */; };
 		5EE46C9E2671B1D50080242C /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */; };
 		5EE46C9F2671B1D50080242C /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */; };
@@ -89,7 +96,12 @@
 		069228872679BB3500464037 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		069228882679BB3500464037 /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		069228892679BB3500464037 /* AllSceneCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSceneCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C303BC32679B5FC0064320B /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
+		0C7CDE30267B8CB8001AE38E /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
+		0C7CDE31267B8CB8001AE38E /* PopOverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopOverViewController.xib; sourceTree = "<group>"; };
+		0C7CDE36267C4462001AE38E /* TutorialDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataModel.swift; sourceTree = "<group>"; };
 		19B6F0AA52E8358539D433B6 /* Pods-BoardIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.debug.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.debug.xcconfig"; sourceTree = "<group>"; };
+		2930CEDE2680A4D300AB8263 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		295B2D1E26784ED700C05322 /* coreDataExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coreDataExample.swift; sourceTree = "<group>"; };
 		29DF7DBA2677AB0B0068C330 /* NewProjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectTableViewController.swift; sourceTree = "<group>"; };
 		29DF7DBB2677AB0B0068C330 /* NewProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTableViewCell.xib; sourceTree = "<group>"; };
@@ -120,6 +132,8 @@
 		46574E55D652F5C2B5F1868E /* Pods-BoardIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoardIt.release.xcconfig"; path = "Target Support Files/Pods-BoardIt/Pods-BoardIt.release.xcconfig"; sourceTree = "<group>"; };
 		5E20B1F2266F6CEB00882FD0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E4C6458266DF384002F89CD /* BoardIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BoardIt.xcdatamodel; sourceTree = "<group>"; };
+		5E52FCCA267DFE7C00899E32 /* PopoverProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverProjectViewController.swift; sourceTree = "<group>"; };
+		5E52FCCF267F081C00899E32 /* deleteConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteConfirmationViewController.swift; sourceTree = "<group>"; };
 		5E9FB21A2678FE6F00F929A5 /* EditSaveModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSaveModalViewController.swift; sourceTree = "<group>"; };
 		5EE46C8C2671B1D40080242C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		5EE46C8D2671B1D40080242C /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
@@ -218,10 +232,13 @@
 		023BAA74266F4F6400B3BB09 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2930CEDE2680A4D300AB8263 /* FilterViewController.swift */,
 				069228892679BB3500464037 /* AllSceneCollectionViewCell.swift */,
 				069228882679BB3500464037 /* NewProjectViewController.swift */,
 				069228872679BB3500464037 /* ProjectViewController.swift */,
 				023BAA7A266F500400B3BB09 /* AllScenePageViewController.swift */,
+				5E52FCCA267DFE7C00899E32 /* PopoverProjectViewController.swift */,
+				5E52FCCF267F081C00899E32 /* deleteConfirmationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -390,6 +407,17 @@
 			path = DataStore;
 			sourceTree = "<group>";
 		};
+		0C303BC22679B5FC0064320B /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				0C303BC32679B5FC0064320B /* Tutorial.swift */,
+				0C7CDE30267B8CB8001AE38E /* PopOverViewController.swift */,
+				0C7CDE31267B8CB8001AE38E /* PopOverViewController.xib */,
+				0C7CDE36267C4462001AE38E /* TutorialDataModel.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		29DF7DC32677ABB90068C330 /* Collection Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +515,7 @@
 		2C87DAA1266A0C7D007F783E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0C303BC22679B5FC0064320B /* Tutorial */,
 				29DF7DCF2677AD880068C330 /* Subscene Type */,
 				2C87DAAF266A287D007F783E /* Networking */,
 				2C87DAB0266A2882007F783E /* Core Data */,
@@ -675,6 +704,7 @@
 				5EE46CA02671B1D50080242C /* Poppins-Bold.ttf in Resources */,
 				5EE46CAE2671B1D50080242C /* Poppins-BlackItalic.ttf in Resources */,
 				5EE46CA12671B1D50080242C /* Poppins-LightItalic.ttf in Resources */,
+				0C7CDE33267B8CB8001AE38E /* PopOverViewController.xib in Resources */,
 				29DF7DC62677ABB90068C330 /* MyCollectionViewCell.xib in Resources */,
 				023BAA89266F536A00B3BB09 /* EditSubcenePage.storyboard in Resources */,
 				5EE46CAD2671B1D50080242C /* Poppins-ExtraBoldItalic.ttf in Resources */,
@@ -738,15 +768,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E52FCD0267F081C00899E32 /* deleteConfirmationViewController.swift in Sources */,
 				29DF7DBF2677AB0B0068C330 /* NewProjectTableViewController.swift in Sources */,
 				2C87DAE0266A7256007F783E /* NetworkManager.swift in Sources */,
+				0C7CDE32267B8CB8001AE38E /* PopOverViewController.swift in Sources */,
 				29DF7DD32677AD880068C330 /* ShotSize.swift in Sources */,
 				023BAA6B266F4EAD00B3BB09 /* DrawingPageViewController.swift in Sources */,
 				0692288C2679BB3500464037 /* AllSceneCollectionViewCell.swift in Sources */,
 				2C87DAB3266A3203007F783E /* ModelName.swift in Sources */,
 				5E20B1F3266F6CEB00882FD0 /* CoreDataManager.swift in Sources */,
 				2C87DABC266A667C007F783E /* ExampleTableViewCell.swift in Sources */,
+				2930CEDF2680A4D300AB8263 /* FilterViewController.swift in Sources */,
 				023BAAA1266FDBF000B3BB09 /* DataModelPresentation.swift in Sources */,
+				0C303BC42679B5FC0064320B /* Tutorial.swift in Sources */,
 				5E4C6459266DF384002F89CD /* BoardIt.xcdatamodeld in Sources */,
 				29DF7DC72677ABB90068C330 /* MyCollectionViewCell.swift in Sources */,
 				295B2D1F26784ED700C05322 /* coreDataExample.swift in Sources */,
@@ -760,8 +794,10 @@
 				023BAA7F266F507300B3BB09 /* AllProjectPageViewController.swift in Sources */,
 				0692288B2679BB3500464037 /* NewProjectViewController.swift in Sources */,
 				5E9FB21B2678FE6F00F929A5 /* EditSaveModalViewController.swift in Sources */,
+				5E52FCCB267DFE7C00899E32 /* PopoverProjectViewController.swift in Sources */,
 				0692288A2679BB3500464037 /* ProjectViewController.swift in Sources */,
 				29DF7DD42677AD880068C330 /* Movement.swift in Sources */,
+				0C7CDE37267C4462001AE38E /* TutorialDataModel.swift in Sources */,
 				29DF7DCB2677ABBF0068C330 /* CollectionTableViewCell.swift in Sources */,
 				023BAAA3266FDBFF00B3BB09 /* DataModelEdit.swift in Sources */,
 				29DF7DD52677AD880068C330 /* Angle.swift in Sources */,
