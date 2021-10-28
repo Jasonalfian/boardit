@@ -12,4 +12,5 @@ storyboard for beginner in swift
 <img width="552" alt="Screen_Shot_2021-06-22_at_22 58 31" src="https://user-images.githubusercontent.com/41385867/139180531-420c8b65-8fae-420c-8064-12f42131c089.png">
 
 # Project's Demo
+### Press thumbnail to watch the demo in youtube
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/8wy_HpMr_AY/0.jpg)](https://www.youtube.com/watch?v=8wy_HpMr_AY)
